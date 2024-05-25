@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import "./globals.css";
 import NavBar from "@/components/navbar";
+import {Providers} from "../GlobalRedux/provider"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,14 +19,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <UserProvider>
-        <body
-          className={`mx-auto min-h-screen justify-center w-full ${inter.className}`}
-        >
-          <NavBar />
-          <div className="p-8">{children}</div>
-        </body>
-      </UserProvider>
+      <Providers>
+          <UserProvider>
+            <body
+              className={`mx-auto min-h-screen justify-center w-full ${inter.className}`}
+            >
+              {/* <NavBar /> */}
+              <div className="p-8">{children}</div>
+            </body>
+          </UserProvider>
+          </Providers>
     </html>
   );
 }
