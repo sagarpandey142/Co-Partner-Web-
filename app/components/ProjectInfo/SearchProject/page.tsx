@@ -155,7 +155,7 @@ const page = () => {
 
             {/* not found page*/}
             {
-                ProjectPublished.length==0 ? (
+                ProjectPublished?.length==0 ? (
                   <div className=''>
                       <Image src={not_found} className=' w-[25rem] h-[25rem] mx-auto'/>
                    </div>

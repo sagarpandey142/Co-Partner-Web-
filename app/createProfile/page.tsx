@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import React, { useState } from 'react';
 import { signupHandler } from '../../app/Services/operations/SignupHandler';
 import { toast } from 'react-toastify'; 
@@ -6,13 +6,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../GlobalRedux/store';
 import { updateSignupData } from '../../GlobalRedux/Features/Counter/signupReducer';
 import { useRouter } from 'next/navigation';
+import { ToastContainer, toast } from 'react-hot-toast';
 
 const CreateProfile = () => {
     const { data } = useSelector((state: RootState) => state.signup);
-
     const router = useRouter();
     const dispatch = useDispatch();
-
 
     const [formData, setFormData] = useState({
         name: '',
@@ -20,13 +19,34 @@ const CreateProfile = () => {
         professional_role: '',
         github_link: '',
         linkedin_link: '',
-        tech_stack: '',
+        tech_stack: [],
         user_bio: '',
-        country:'india'
+        country: 'india'
     });
+
+    const handleCreate = () => {
+        toast.success('Your profile has been successfully created');
+        router.push('/');
+    }
+
+    const [skillInput, setSkillInput] = useState('');
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSkillChange = (e) => {
+        setSkillInput(e.target.value);
+    };
+
+    const handleAddSkill = () => {
+        if (skillInput.trim() !== '') {
+            setFormData((prevFormData) => ({
+                ...prevFormData,
+                tech_stack: [...prevFormData.tech_stack, skillInput.trim()]
+            }));
+            setSkillInput('');
+        }
     };
 
     const handleSubmit = async (e) => {
@@ -130,16 +150,31 @@ const CreateProfile = () => {
 
                     <div>
                         <label htmlFor="tech_stack" className="block text-sm font-medium text-gray-600">Tech Stack</label>
-                        <input
-                            type="text"
-                            id="tech_stack"
-                            name="tech_stack"
-                            placeholder="Enter your tech stack"
-                            className="mt-1 py-2 px-4 block w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-                            required
-                            value={formData.tech_stack}
-                            onChange={handleChange}
-                        />
+                        <div className="flex items-center">
+                            <input
+                                type="text"
+                                id="tech_stack"
+                                name="tech_stack"
+                                placeholder="Enter your tech stack"
+                                className="mt-1 py-2 px-4 block w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                value={skillInput}
+                                onChange={handleSkillChange}
+                            />
+                            <button
+                                type="button"
+                                className="ml-2 py-2 px-4 bg-blue-600 text-white rounded-lg"
+                                onClick={handleAddSkill}
+                            >
+                                Add
+                            </button>
+                        </div>
+                        <div className="mt-2">
+                            {formData.tech_stack.map((skill, index) => (
+                                <span key={index} className="inline-block bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 rounded-lg">
+                                    {skill}
+                                </span>
+                            ))}
+                        </div>
                     </div>
                 
                     <div>
@@ -172,6 +207,7 @@ const CreateProfile = () => {
                     <div>
                         <button
                             type="submit"
+                            onClick={handleCreate}
                             className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 hover:bg-blue-700 text-white"
                         >
                             Create Profile

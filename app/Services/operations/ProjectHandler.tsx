@@ -75,3 +75,24 @@ export const ApplyProject = async (email, projectid) => {
 };
 
 export default FetchProject;
+
+
+
+export const addProjects = async (
+  email: string,
+  projectName: string,
+  projectDescription: string,
+  Skill: string,
+  BasicDetail: string,
+  Category: string
+) => {
+  console.log("inside try");
+  try {
+    const response = await axios.post(ProjectApiDetail.addProject, {Email:email,projectName,projectDescription,Skill,BasicDetail, Category});
+
+    console.log("response", response);
+    return response;
+  } catch (error: any) {
+    console.log("error", error);
+  }
+};
