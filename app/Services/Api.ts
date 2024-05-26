@@ -1,4 +1,3 @@
-import { UpdatePassword } from "./operations/ProfileHandler";
 
 // projectApi.ts
 const BACKEND_URL: string = process.env.NEXT_PUBLIC_BACKEND_URL;
