@@ -1,83 +1,103 @@
-"use client"
-import React, { useState } from 'react';
+"use client";
+
+import { useUser } from "@auth0/nextjs-auth0/client";
+import { SignupButton } from "../signup-button";
+import { LoginButton } from "../login-button";
+import { LogoutButton } from "../logout-button";
 import Link from 'next/link';
 import { BsBagDashFill } from "react-icons/bs";
-import { IoIosSearch } from "react-icons/io";
-import CountrySelect from './CountrySelect'; 
+import CountrySelect from '../commonPage/CountrySelect'; 
+import React, { useState } from "react";
+import {useRouter} from 'next/navigation'
 
-const Navbar = () => {
-  const [selectedCountry, setSelectedCountry] = useState('');
+const NavBar = () => {
+  const [selectedCountry, setSelectedCountry] = useState(''); 
   const [jobTitle, setJobTitle] = useState('');
+  const { user, error, isLoading } = useUser(); 
+  const router = useRouter();
 
-  const handleCountryChange = (event:any) => {
+  const handleCountryChange = (event) => {
     setSelectedCountry(event.target.value);
   };
 
-  const handleJobTitleChange = (event:any) => {
+  const handleJobTitleChange = (event) => {
     setJobTitle(event.target.value);
   };
 
-  const handleSubmit = () => {
-    // Handle form submission
-  };
-
   return (
-    <div className="flex flex-col gap-4 text-gray-700 items-center     ">
-      <ul className="flex flex-row text-sm gap-6 items-center justify-center h-12 bg-gray-200 w-full">
-        <li>
-          <Link href="/">
-            <span>Home</span>
-          </Link>
-        </li>
-        <li>
-          <Link href="/find-job">
-            <span>Find Job</span>
-          </Link>
-        </li>
-        <li>
-          <Link href="/employers">
-            <span>Employers</span>
-          </Link>
-        </li>
-        <li>
-          <Link href="/candidates">
-            <span>Candidates</span>
-          </Link>
-        </li>
-        <li>
-          <Link href="/customer-support">
-            <span>Customer Support</span>
-          </Link>
-        </li>
-      </ul>
+    <div className="flex flex-col gap-4 text-gray-700 items-center">
+      <div className="flex gap-20 justify-around">
+        <ul className="p-3 rounded-md flex flex-row text-sm gap-6 bg-gray-200 w-full">
+          <li>
+            <Link href="/">
+              <button onClick={()=>router.push('/')}>Home</button>
+            </Link>
+          </li>
+          <li>
+              <button onClick={()=>router.push('/components/ProjectInfo/SearchProject')}>Projects</button>
 
-      <div className='w-8/12  flex   p-1 pb-2 justify-between  '>
+          </li>
+          <li>
+           
+              <button onClick={()=>router.push('/components/PrivacyPolicy')}>Privacy Policy</button>
+       
+          </li>
+          <li>
+            <Link href="/candidates">
+              <span>Contact Us</span>
+            </Link>
+          </li>
+          <li>
+            <Link href="/customer-support">
+              <span>Customer Support</span>
+            </Link>
+          </li>
+
+         
+        </ul>
+
+        <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 border-2 border-blue-600 transition-colors duration-300 inline-block text-center whitespace-nowrap" onClick={()=>router.push('/createProject')}>Create A Project</button>
+        <div className="flex gap-4 justify-evenly">
+          {!user && !isLoading && (
+            <>
+              <SignupButton />
+              <LoginButton />
+            </>
+          )}
+          {user && !isLoading && (
+            <>
+              <LogoutButton />
+            </>
+          )}
+        </div>
+      </div>
+
+      <div className=' flex items-center justify-between mt-2 gap-20'>
         <div className='flex items-center gap-3'>
-          <BsBagDashFill style={{color: '007AE9' , fontSize: '28px'}}/>
-          <p className='font-bold text-2xl text-slate-800'>Copartner</p>
+          <BsBagDashFill style={{ color: '007AE9', fontSize: '22px' }} />
+          <p className='font-bold text-xl text-slate-800'>Copartner</p>
         </div>
     
-        <div className='flex items-center  '>
-             <div className='border-[2px] border-slate-300'>
-                 <CountrySelect />
-             </div>
-
-          <div >
-            <input className=' border-[2px] border-slate-300 p-4 w-[35rem] outline-none rounded-lg' placeholder='Job Title, Keyword, Country' value={jobTitle} onChange={handleJobTitleChange} />
+      
+          <div className='rounded-md p-1'>
+            <CountrySelect />
           </div>
-        </div>
+
+          <div>
+            <input 
+              className='border-[2px] border-slate-300 px-20 py-2 w-[15rem] outline-none rounded-lg' 
+              placeholder='Search...' 
+              value={jobTitle} 
+              onChange={handleJobTitleChange} 
+            />
+          </div>
+     
+
+
         
-        <div className='flex gap-4'>
-          <button className=' border-[3px] border-slate-300 p-3 px-8 py-3 rounded-xl text-[#007AE9] font-bold '>
-            Sign In
-          </button>
-          <button className=' border-2 p-3 px-8 py-3 rounded-xl bg-[#007AE9] text-white '>
-            Post A Job
-          </button>
-        </div>
       </div>
     </div>
   );
 };
 
-export default Navbar;
+export default NavBar;

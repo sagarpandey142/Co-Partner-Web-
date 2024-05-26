@@ -24,7 +24,8 @@ export const  ProjectApiDetail = {
   FetchProjectById: BACKEND_URL + "v1/projects/findProjectById",
   addSavedProject:BACKEND_URL+"v1/addSavedProject",
   RemoveSavedProject:BACKEND_URL  +"v1/removeSavedProject",
-  applyProject:BACKEND_URL  +"v1/projects/AppliedProject"
+  applyProject:BACKEND_URL  +"v1/projects/AppliedProject",
+  addProject: BACKEND_URL+"v1/projects/AddProject"
 };
 
 export const  profileApiDetail={
