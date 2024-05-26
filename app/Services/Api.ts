@@ -1,10 +1,10 @@
 import { UpdatePassword } from "./operations/ProfileHandler";
 
 // projectApi.ts
-const BACKEND_URL: string = "https://copart-backend.onrender.com/";
+const BACKEND_URL: string = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 
-
+console.log("data",BACKEND_URL)
 export const SignupRoute={
   signup: BACKEND_URL    + "v1/signup",
   // login: BACKEND_URL + "v1/login"
