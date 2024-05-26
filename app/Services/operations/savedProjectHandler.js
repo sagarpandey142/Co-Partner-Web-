@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { savedProjectRoute } from "../Api";
 
-export const addSavedProject = async(email,_id) => {
+export const  addSavedProject = async(email,_id) => {
     try{
         const response = await axios.post(savedProjectRoute.addSavedProject,{Email:email, projectId:_id});
         console.log("response of recent jobs", response);
@@ -14,7 +14,7 @@ export const addSavedProject = async(email,_id) => {
     }
 }
 
-export const getSavedProject = async(email) => {
+export const  getSavedProject = async(email) => {
     console.log("response find ka service me",email )
     console.log("getSavedProject hai")
     try{
@@ -28,7 +28,7 @@ export const getSavedProject = async(email) => {
     }
 }
 
-export const getRecentProject = async() => {
+export const  getRecentProject = async() => {
     try{
         const response = await axios.get(savedProjectRoute.getRecentProject);
         if(response){
@@ -39,7 +39,7 @@ export const getRecentProject = async() => {
     }
 }
 
-export const RemoveSavedProject = async(Email,ProjectId) => {
+export const  RemoveSavedProject = async(Email,ProjectId) => {
     try{
         const response = await axios.post(savedProjectRoute?.RemoveSavedProject,{Email,ProjectId});
         if(response){

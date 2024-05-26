@@ -6,3 +6,7 @@ body {
   @apply bg-white; /* or any other color you prefer */
 }
 
+/* Add this to your global CSS file */
+body, html {
+  overflow: auto; /* Ensure the default is auto */
+}

@@ -1,8 +1,8 @@
 
 import Image from "next/image";
 import { getSession } from "@auth0/nextjs-auth0";
-import front from "../components/Assets/front.jpg"
-import NavBar from "../components/navbar"
+import front from "./components/Assets/front.jpg"
+import NavBar from "./components/commonPage/Navbar"
 import ProfileClient from "./profile/components/user-client";
 
 

@@ -39,6 +39,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 import signupSlice from "./Features/Counter/signupReducer";
+import ProjectSlice from "./Features/ProjectSlice";
 
 // Configuration object for redux-persist
 const persistConfig = {
@@ -49,11 +50,12 @@ const persistConfig = {
 
 // Create a persisted reducer
 const persistedReducer = persistReducer(persistConfig, signupSlice);
-
+const persistedReducerProjectSlice = persistReducer(persistConfig, ProjectSlice);
 // Configure the store with the persisted reducer
 export const store = configureStore({
   reducer: {
     signup: persistedReducer,
+    ProjectSlice:persistedReducerProjectSlice
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
     serializableCheck: {

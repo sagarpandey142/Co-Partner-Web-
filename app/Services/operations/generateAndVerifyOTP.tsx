@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const { generateVerifyOTP } = require("../Api")
 
-export const generateOTP = async(email:string,purpose:string) => {
+export const  generateOTP = async(email:string,purpose:string) => {
     console.log("hello")
     try{
         const response = await axios.post(generateVerifyOTP.generateOTP, {Email: email,purpose})
@@ -15,7 +15,7 @@ export const generateOTP = async(email:string,purpose:string) => {
     }
 }
 
-export const verifyOTP = async(email:string, user_Otp:string) => {
+export const  verifyOTP = async(email:string, user_Otp:string) => {
     
     try{
         const response = await axios.post(generateVerifyOTP.verifyOTP, {Email: email, user_Otp: user_Otp})
@@ -27,7 +27,7 @@ export const verifyOTP = async(email:string, user_Otp:string) => {
     }
 }
 
-export const login = async(email, password) => {
+export const  login = async(email, password) => {
     try{
         const response = await axios.post(generateVerifyOTP.login, {email,password})
         return response;
@@ -36,7 +36,7 @@ export const login = async(email, password) => {
     }
 }
 
-export const DecodedTokenHandler=async(token)=>{
+export const  DecodedTokenHandler=async(token)=>{
  
     try{
     const response=await axios.post(generateVerifyOTP.DecodedApi,{token});

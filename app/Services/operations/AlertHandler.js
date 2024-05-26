@@ -5,7 +5,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { DecodedTokenHandler } from "./generate&verifyOTP";
 
 
-export const GetRecentAlert=async()=>{
+export const  GetRecentAlert=async()=>{
     try{
         console.log("in the")
         const token = await AsyncStorage.getItem('token');
@@ -22,7 +22,7 @@ export const GetRecentAlert=async()=>{
     }
 }
 
-export const Recent10Alert=async()=>{
+export const  Recent10Alert=async()=>{
     try{
         const token = await AsyncStorage.getItem('token');
         //find email

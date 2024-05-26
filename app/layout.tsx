@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import "./globals.css";
-import NavBar from "@/components/navbar";
-import {Providers} from "../GlobalRedux/provider"
+import { Providers } from "../GlobalRedux/provider";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,15 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Providers>
-          <UserProvider>
-            <body
-              className={`mx-auto min-h-screen justify-center w-full ${inter.className}`}
-            >
-              {/* <NavBar /> */}
-              <div className="p-8">{children}</div>
-            </body>
-          </UserProvider>
-          </Providers>
+        <UserProvider>
+          <body className={` ${inter.className}`}>
+            <Toaster />
+            <div className="">{children}</div>
+          </body>
+        </UserProvider>
+      </Providers>
     </html>
   );
 }

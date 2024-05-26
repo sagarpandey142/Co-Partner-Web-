@@ -1,63 +1,100 @@
 import axios from 'axios';
-import {profileApiDetail} from '../Api';
+import { Profile, profileApiDetail } from '../Api';
+import toast from 'react-hot-toast';
 
-// exports.FindByEmail = async (email:string) => {
+export const UpdateProfile = async (data) => {
+    try {
+        const toastId = toast.loading("Loading...");
+        const response = await axios.put(profileApiDetail.updateProfileData, { data });
+        toast.dismiss(toastId);
 
-//     try{
-//         const response = await axios.post(Profile.profileInfo, {Email:email});
-//         console.log("response", response);
-//         if(response){
-//             return response;
-//         }
-//     }catch(error){
-//         console.log("error", error);
-//     }
-// }
-
-// exports.UpdateProfile = async(data:string) => {
-//     try{
-//         const response = await axios.put(Profile.UpdateProfile, data);
-//         console.log("response hai baba abhi ka", response);
-//         if(response){
-//             return response;
-//         }
-//     }catch(error){
-//         console.log("error", error.messege);
-//     }
-// }
-
-// exports.DeleteProfile = async(data:string) => {
-//     console.log("data",data)
-//     try{
-//         const response = await axios.delete(Profile.DeleteProfile, data);
-//         console.log("response hai baba abhi ka", response);
-//         if(response){
-//             return response;
-//         }
-//     }catch(error){
-//         console.log("error", error);
-//     }
-// }
-
-
-export const UpdatePassword = async (Email:string,newPassword:string) => {
-    try{
-        const response = await axios.post(profileApiDetail.UpdatePassword, {Email,newPassword});
-        if(response){
+        if (response) {
             return response;
         }
-    }catch(error){
-        console.log("error", error);
+    } catch (error) {
+        console.error("error", error);
+        toast.error(`error occurred: ${error}`);
     }
-}
+};
 
-
-export const FindIfEmailExists = async(email:string) => {
-    console.log("email", email)
-    try{
-        const response = await axios.post(profileApiDetail.FindIfEmailExistApi, {Email: email})
-        return response;
-    }catch(error){
-        console.log("error", error.messege);
+export const UpdateProfilePicture = async (file,Email) => {
+    try {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', 'at3gf6rj');
+        formData.append('folder', 'Copartner');
+        
+        const response = await axios.post("https://api.cloudinary.com/v1_1/dtd8peoae/image/upload", formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+        const sendSecureUrlToBac = await axios.put(profileApiDetail.UpdateProfilePic, { secure_url: response.data.secure_url,Email });
+        if (sendSecureUrlToBac) {
+            return sendSecureUrlToBac;
+        }
+    } catch (error) {
+        console.error("error", error);
+        toast.error(`error occurred: ${error}`);
     }
-}
+};
+
+export const UpdateResume = async (file, Email) => {
+    try {
+        const toastId = toast.loading("Loading...");
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', 'akr17cvp');
+        formData.append('folder', 'Copartner');
+        const response = await axios.post("https://api.cloudinary.com/v1_1/dtd8peoae/image/upload", formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+        const sendSecureUrlToBac = await axios.put(profileApiDetail.updateResume, { secure_url: response.data.secure_url,Email });
+        toast.dismiss(toastId);
+        if (sendSecureUrlToBac) {
+            return sendSecureUrlToBac;
+        }
+    } catch (error) {
+        console.error("error", error);
+        toast.error(`error occurred: ${error}`);
+    }
+};
+
+export const DeleteProfile = async (data) => {
+    try {
+        const response = await axios.delete(profileApiDetail.DeleteProfile, { data });
+        if (response) {
+            return response;
+        }
+    } catch (error) {
+        console.error("error", error);
+        toast.error(`error occurred: ${error}`);
+    }
+};
+
+export const UpdatePassword = async (Email, newPassword) => {
+    try {
+        const response = await axios.post(profileApiDetail.updatepassword, { Email, newPassword });
+        if (response) {
+            return response;
+        }
+    } catch (error) {
+        console.error("error", error);
+        toast.error(`error occurred: ${error}`);
+    }
+};
+
+export const GetUserDetail = async (Email) => {
+    try {
+        console.log("Ema",Email)
+        const response = await axios.post(profileApiDetail.profileInfo, {Email});
+        if (response) {
+            return response;
+        }
+    } catch (error) {
+        console.error("error", error);
+        toast.error(`error occurred: ${error}`);
+    }
+};
