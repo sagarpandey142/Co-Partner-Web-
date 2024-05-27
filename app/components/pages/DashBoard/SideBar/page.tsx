@@ -5,6 +5,9 @@ import { BsSuitcaseLgFill } from 'react-icons/bs';
 import { CiBookmarkMinus } from 'react-icons/ci';
 import { HiOutlineBellAlert } from 'react-icons/hi2';
 import { DashboardArray } from '../../../ArrayUsable/CandidateDashArray';
+import { LuBadgePlus } from "react-icons/lu";
+import {IoCopyOutline} from "react-icons/io5"
+
 
 // Create a mapping of icon names to icon components
 const iconMap = {
@@ -13,6 +16,8 @@ const iconMap = {
   CiBookmarkMinus: CiBookmarkMinus,
   HiOutlineBellAlert: HiOutlineBellAlert,
   MdOutlineSettings: MdOutlineSettings,
+  LuBadgePlus:LuBadgePlus,
+  IoCopyOutline:IoCopyOutline
 };
 
 const Page = ({clicktrack,setclicktrack}) => {

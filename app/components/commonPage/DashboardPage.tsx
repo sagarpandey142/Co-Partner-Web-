@@ -4,8 +4,10 @@ import { IoIosTime } from "react-icons/io";
 import { TiTick } from "react-icons/ti";
 import { FaArrowRight } from "react-icons/fa";
 import { useRouter } from 'next/navigation';
+import { RiDeleteBack2Line } from "react-icons/ri";
 
-const DashboardPage = ({cardData,Location="India"}) => {
+
+const DashboardPage = ({cardData,Location="India",deleteicon,setdeleteproject}) => {
   
   const router=useRouter();
 
@@ -15,6 +17,8 @@ const DashboardPage = ({cardData,Location="India"}) => {
 
     return params.toString();
   };
+
+  console.log("de",deleteicon=="true")
 
 
   
@@ -37,7 +41,7 @@ function handleNavigate(projectid) {
                   </p>
                   <p className=' flex gap-2 items-center text-xl'>
                        <IoIosTime/>
-                    {cardData?.BasicDetail?.spanPeriod} Months
+                    {cardData?.BasicDetail?.projectLength} 
                   
                   </p>
                </div>
@@ -49,13 +53,26 @@ function handleNavigate(projectid) {
                <TiTick/>
               Active
           </div>
-          <div className=' cursor-pointer bg-gray-200 text-blue-700 font-semibold h-fit p-5 rounded-lg text-lg flex items-center gap-2'
-          onClick={()=>{
-             handleNavigate(cardData._id)
-          }} >
-              View Detail
-              <FaArrowRight/>
-          </div>
+      <div className=' flex items-center gap-3'>
+            <div className=' cursor-pointer bg-gray-200 text-blue-700 font-semibold h-fit p-5 rounded-lg text-lg flex items-center gap-2'
+            onClick={()=>{
+              handleNavigate(cardData._id)
+            }} >
+                View Detail
+                <FaArrowRight/>
+            </div>
+            {
+               deleteicon=="true" ? (
+                    <div className=' bg-red-100 rounded-lg p-5 ' onClick={()=>{
+                      setdeleteproject(cardData?._id)
+                    }}>
+                    <RiDeleteBack2Line className=' text-red-500 font-semibold text-2xl'/>
+                    </div>
+               ) : (
+                  <div></div>
+               )
+            }
+       </div>
     </div>
   )
 }

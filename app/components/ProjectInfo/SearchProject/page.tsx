@@ -206,7 +206,7 @@ const page = () => {
                               <div className=' mt-4 flex gap-3'>
                                  <div className='text-slate-400 text-xl'>Popular Searches:</div>
                                  {
-                                       PopularSearches.map((data,index)=>(
+                                       PopularSearches.slice(0,9).map((data,index)=>(
                                              <div key={index} className='font-semibold cursor-pointer' onClick={()=>{
                                                 setFilterBasesOnTitle(data);
                                              }}>

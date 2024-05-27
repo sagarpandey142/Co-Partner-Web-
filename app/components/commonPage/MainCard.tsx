@@ -17,6 +17,7 @@ const MainCard = ({ CardData = [] }) => {
   const router = useRouter(); 
 
   const getTimeDifference = (createdAt) => {
+    console.log("created",createdAt)
     const currentTime = new Date();
     const createdTime = new Date(createdAt);
     const difference = Math.abs(currentTime - createdTime);
@@ -64,10 +65,18 @@ const MainCard = ({ CardData = [] }) => {
                     </div>
 
                   </div>
-                  <div className='flex justify-between mt-3 text-lg font-semibold text-[#007AE9] mb-4 ml-7'>
-                    <div>{data?.profileId?.name}</div>
-                    <div className='flex items-center gap-1'>
-                      <div className='pr-3' onClick={()=>{
+                  <div className='flex justify-between mt-4 text-lg font-semibold mb-4 ml-7'>
+                     <div className=' flex gap-2 items-center'>
+                           <div>
+                               <img src={data?.profileId?.ProfileImage}   className='rounded-full h-[3rem] w-[3rem] object-cover' alt='Image'/>
+                           </div>
+                           <div className=' flex flex-col gap-2'>
+                                <div className='text-[#007AE9] '>{data?.profileId?.name}</div>
+                                <div className=' uppercase text-slate-400'>{data?.profileId?.Location ?? "India"}</div>
+                           </div>
+                     </div>
+                    <div className='flex items-center  text-[#007AE9]'>
+                      <div className='pr-3  ' onClick={()=>{
                           handlePageNavigation(data._id)
                       }} >Read More</div>
                       <FaArrowRight/>

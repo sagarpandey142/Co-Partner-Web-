@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { render } from 'react-dom';
 
-export default function CountrySelect() {
+export default function CountrySelect({formData,setFormData}) {
   const [selectedCountry, setSelectedCountry] = React.useState(null);
   const defaultCountry = countries.find((country) => country.label === 'India');
 
@@ -49,6 +49,7 @@ export default function CountrySelect() {
       value={selectedCountry}
       onChange={(event, newValue) => {
         setSelectedCountry(newValue);
+        setFormData({...formData,country:newValue.label})
       }}
     />
   );

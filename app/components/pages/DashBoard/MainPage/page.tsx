@@ -8,16 +8,20 @@ import {  GetUserDetail } from '../../../../Services/operations/ProfileHandler'
 import BookmarkProject from "../BookMarkProject/page"
 import Setting from "../Settings/MainPage/page"
 import { useUser } from '@auth0/nextjs-auth0/client'
+import CreateProject from "../CreateProject/page"
+import Myproject from "../MyProject/page"
 
 const Page = () => {
   const [clicktrack, setclicktrack] = useState(0);
   const [userData, setUserData] = useState(null);
   const [loading, setloading] = useState(false);
   const { user, error, isLoading } = useUser();
+ 
   const getUserDetails = async () => {
     try {
       setloading(true);
         const userDetailResponse = await GetUserDetail(user?.email);
+        console.log("userd",userDetailResponse)
         setUserData(userDetailResponse.data.response);
       setloading(false);
     } catch (error) {
@@ -52,12 +56,20 @@ const Page = () => {
                   clicktrack === 0 ? (
                     <OverView userData={userData}  setclicktrack={setclicktrack}/>
                   ) : clicktrack === 1 ? (
-                    <AppliedProject userData={userData} />
+                      <CreateProject/>
                   ) : (
                     clicktrack==2 ? (
-                      <BookmarkProject userData={userData} />
+                      <Myproject userData={userData} />
                     ) : (
-                      <Setting userData={userData}/>
+                      clicktrack==3 ? (
+                        <AppliedProject userData={userData} />
+                      ) : (
+                         clicktrack==4 ? (
+                          <BookmarkProject userData={userData} />
+                         ) : (
+                          <Setting userData={userData}/>
+                         )
+                      )
                     )
                   )
                 }
