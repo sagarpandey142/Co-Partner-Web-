@@ -1,4 +1,5 @@
 import DashboardPage from '@/app/components/commonPage/DashboardPage'
+
 import FavouriteCommon from '@/app/components/commonPage/FavouriteCommon'
 import Image from 'next/image'
 import React from 'react'
@@ -8,7 +9,7 @@ const page = ({userData}) => {
   return (
     <div className=' p-20  w-[160%]   h-[100%]'>
         <p className=' text-slate-800 text-2xl font-semibold'>Favourite Project (<span className=' text-slate-600'>{userData?.SavedJobs.length}</span>)</p>
-         {
+         {/* {
               userData?.SavedJobs?.length>0 ? (
                 <div className=' mt-5'>
                         {
@@ -22,7 +23,7 @@ const page = ({userData}) => {
                       <Image src={not_found} className=' w-[25rem] h-[25rem] mx-auto'/>
                  </div>
               )
-         }
+         } */}
     </div>
   )
 }

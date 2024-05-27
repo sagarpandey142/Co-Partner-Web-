@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import Sidebar from "../SideBar/page"
-import Navbar from '@/app/components/commonPage/Navbar'
+import NavBar from '../../../../components/commonPage/Navbar'
 import OverView from "../OverView/page"
 import AppliedProject from "../AppliedProject/page"
 import {  GetUserDetail } from '../../../../Services/operations/ProfileHandler'
@@ -35,7 +35,7 @@ const Page = () => {
 
   return (
     <div className='overflow-hidden'>
-      <Navbar />
+      <NavBar />
       {
         loading ? (
           <div className="fixed inset-0 flex justify-center items-center h-screen bg-gray-100 bg-opacity-90 z-50">
