@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Sidebar from "../SideBar/page"
 import NavBar from '../../../../components/commonPage/Navbar'
 import OverView from "../OverView/page"
-import AppliedProject from "../AppliedProjec/page"
+import AppliedProject from "../AppliedProject/page"
 import {  GetUserDetail } from '../../../../Services/operations/ProfileHandler'
 import BookmarkProject from "../BookMarkProject/page"
 import Setting from "../Settings/MainPage/page"

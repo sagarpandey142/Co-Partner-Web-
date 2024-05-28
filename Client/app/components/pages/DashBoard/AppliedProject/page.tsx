@@ -3,18 +3,11 @@ import DashboardPage from "../../../commonPage/DashboardPage";
 import Image from 'next/image';
 import not_found from "../../../Assets/404.png";
 
-interface UserData {
-  AppliedProject: any[]; // Adjust the type as per your data structure
-  Location?: string;
-  // Add other properties as needed
-}
 
-interface Props {
-  userData: UserData;
-}
 
-const Page: React.FC<Props> = ({ userData }) => {
-    console.log("user",userData)
+
+
+const Page =  ({ userData }) => {
   return (
     <div className='w-[150%] p-20'>
       <p className='text-slate-800 text-2xl font-semibold'>Applied Project ({userData?.AppliedProject.length})</p>
@@ -33,11 +26,11 @@ const Page: React.FC<Props> = ({ userData }) => {
             </div>
           </div>
           <div>
-            {userData?.AppliedProject?.map((data, index) => (
-              <div key={index}>
-                <DashboardPage  location={userData?.Location} cardData={data}  />
+            {userData?.AppliedProject?.map((data, index) => {
+            return <div key={index}>
+                        <DashboardPage  location={userData?.Location} cardData={data}  />
               </div>
-            ))}
+           })}
           </div>
         </div>
       )}
