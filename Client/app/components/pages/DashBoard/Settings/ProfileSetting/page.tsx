@@ -11,7 +11,7 @@ import toast from 'react-hot-toast';
 
 
 
-const page = ({userData}) => {
+const Page = ({userData}) => {
 
     const[projectAlert,setProjectAlert]=useState({
         role:"",
@@ -85,4 +85,4 @@ const page = ({userData}) => {
   )
 }
 
-export default page
+export default Page;

@@ -23,7 +23,7 @@ import Footer from "../../commonPage/Footer";
 import Image from "next/image";
 import not_found from "../../Assets/404.png"
 
-const page = () => {
+const Page = () => {
    
     const[filterOpen,setFilterOpen]=useState(false);
     const[ProjectPublished,setProjectPublished]=useState([])
@@ -157,7 +157,7 @@ const page = () => {
             {
                 ProjectPublished?.length==0 ? (
                   <div className=''>
-                      <Image src={not_found} className=' w-[25rem] h-[25rem] mx-auto'/>
+                      <Image src={not_found} alt="img" className=' w-[25rem] h-[25rem] mx-auto'/>
                    </div>
                 ) : (
                      <div className="  ">
@@ -333,4 +333,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

@@ -11,13 +11,13 @@ function useIsDarkMode() {
   return theme.palette.mode === 'dark';
 }
 
-export default function MenuSimple({setOpenResume}) {
+export default function MenuSimple({ setOpenResume }) {
   // Replace this with your app logic for determining dark mode
   const isDarkMode = useIsDarkMode();
 
   const createHandleMenuClick = (menuItem: string) => {
     return () => {
-      setOpenResume(true)
+      setOpenResume(true);
     };
   };
 
@@ -27,9 +27,7 @@ export default function MenuSimple({setOpenResume}) {
         <MenuButton>My account</MenuButton>
         <Menu>
           <MenuItem onClick={createHandleMenuClick('AddNew')}>Add New</MenuItem>
-          <MenuItem >
-            Delete
-          </MenuItem>
+          <MenuItem>Delete</MenuItem>
         </Menu>
       </Dropdown>
     </div>
@@ -50,23 +48,14 @@ const Menu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
       slotProps={{
         ...props.slotProps,
         root: (ownerState) => {
-          const resolvedSlotProps = resolveSlotProps(
-            props.slotProps?.root,
-            ownerState,
-          );
+          const resolvedSlotProps = resolveSlotProps(props.slotProps?.root, ownerState);
           return {
             ...resolvedSlotProps,
-            className: clsx(
-              `${isDarkMode ? 'dark' : ''} z-10`,
-              resolvedSlotProps?.className,
-            ),
+            className: clsx(`${isDarkMode ? 'dark' : ''} z-10`, resolvedSlotProps?.className),
           };
         },
         listbox: (ownerState) => {
-          const resolvedSlotProps = resolveSlotProps(
-            props.slotProps?.listbox,
-            ownerState,
-          );
+          const resolvedSlotProps = resolveSlotProps(props.slotProps?.listbox, ownerState);
           return {
             ...resolvedSlotProps,
             className: clsx(
@@ -79,22 +68,22 @@ const Menu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
     />
   );
 });
+Menu.displayName = 'Menu';
 
-const MenuButton = React.forwardRef<HTMLButtonElement, MenuButtonProps>(
-  (props, ref) => {
-    const { className, ...other } = props;
-    return (
-      <BaseMenuButton
-        ref={ref}
-        className={clsx(
-          'cursor-pointer text-sm font-sans box-border rounded-lg font-semibold px-4 py-2 bg-white dark:bg-slate-900 border border-solid border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-200 hover:bg-slate-50 hover:dark:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 focus-visible:shadow-[0_0_0_4px_#ddd6fe] dark:focus-visible:shadow-[0_0_0_4px_#a78bfa] focus-visible:outline-none shadow-sm active:shadow-none',
-          className,
-        )}
-        {...other}
-      />
-    );
-  },
-);
+const MenuButton = React.forwardRef<HTMLButtonElement, MenuButtonProps>((props, ref) => {
+  const { className, ...other } = props;
+  return (
+    <BaseMenuButton
+      ref={ref}
+      className={clsx(
+        'cursor-pointer text-sm font-sans box-border rounded-lg font-semibold px-4 py-2 bg-white dark:bg-slate-900 border border-solid border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-200 hover:bg-slate-50 hover:dark:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 focus-visible:shadow-[0_0_0_4px_#ddd6fe] dark:focus-visible:shadow-[0_0_0_4px_#a78bfa] focus-visible:outline-none shadow-sm active:shadow-none',
+        className,
+      )}
+      {...other}
+    />
+  );
+});
+MenuButton.displayName = 'MenuButton';
 
 const MenuItem = React.forwardRef<HTMLLIElement, MenuItemProps>((props, ref) => {
   const { className, ...other } = props;
@@ -109,3 +98,4 @@ const MenuItem = React.forwardRef<HTMLLIElement, MenuItemProps>((props, ref) => 
     />
   );
 });
+MenuItem.displayName = 'MenuItem';

@@ -9,6 +9,7 @@ import { IoDocumentTextSharp } from "react-icons/io5";
 import { GiCancel } from "react-icons/gi";
 import Threedot from "./threedot"
 import { useUser } from '@auth0/nextjs-auth0/client';
+import Image from 'next/image';
 
 
 
@@ -104,7 +105,7 @@ const Personalpage = ({ userData }) => {
             <div {...getRootProps()} className='cursor-pointer mt-1 border-dashed border-4 border-gray-300 py-20 px-4 rounded-xl bg-gray-100'>
               <input {...getInputProps()} />
               {previewUrl ? (
-                <img src={previewUrl} alt="Selected" className='w-full h-28  object-fill' />
+                <Image src={previewUrl} alt="Selected" className='w-full h-28  object-fill' />
               ) : (
                 <div className='flex flex-col gap-1 mx-auto'>
                   <IoCloudUploadOutline className='mx-auto text-5xl text-slate-500' />

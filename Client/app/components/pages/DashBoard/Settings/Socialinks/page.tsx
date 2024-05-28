@@ -10,7 +10,7 @@ import { ImCancelCircle } from "react-icons/im";
 
 
 
-const page = ({userData}) => {
+const Page = ({userData}) => {
 
     const[state,setState]=useState({
         linkedinLink:userData?.LinkedIn ?? "",
@@ -79,4 +79,4 @@ const page = ({userData}) => {
   )
 }
 
-export default page
+export default Page;

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import { render } from 'react-dom';
 
 export default function CountrySelect({formData,setFormData}) {
   const [selectedCountry, setSelectedCountry] = React.useState(null);
