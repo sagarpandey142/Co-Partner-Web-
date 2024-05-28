@@ -3,13 +3,13 @@ import React, { useEffect, useState } from 'react'
 import Sidebar from "../SideBar/page"
 import NavBar from '../../../../components/commonPage/Navbar'
 import OverView from "../OverView/page"
-import AppliedProject from "../AppliedProject/page"
+import AppliedProject from "../AppliedProjec/page"
 import {  GetUserDetail } from '../../../../Services/operations/ProfileHandler'
 import BookmarkProject from "../BookMarkProject/page"
 import Setting from "../Settings/MainPage/page"
 import { useUser } from '@auth0/nextjs-auth0/client'
 import CreateProject from "../CreateProject/page"
-import Myproject from "../MyProject/page"
+import Myproject from "../MyProject/Page"
 
 const Page = () => {
   const [clicktrack, setclicktrack] = useState(0);

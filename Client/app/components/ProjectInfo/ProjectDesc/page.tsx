@@ -126,7 +126,7 @@ const Page = () => {
               <p className='text-slate-900 font-bold text-2xl'>{projectData?.projectName}</p>
               <div className='flex gap-2 items-center'>
                 <p className='text-slate-600 text-lg'>By {projectData?.profileId?.name}</p>
-                <p className='bg-green-600 text-white font-semibold px-3 py-2 rounded-md'>{projectData?.BasicDetail?.spanPeriod} Months</p>
+                <p className='bg-green-600 text-white font-semibold px-3 py-2 rounded-md'>{projectData?.BasicDetail?.projectLength} Months</p>
                 <p className='bg-pink-200 text-pink-400 px-2 py-2 font-bold rounded-lg'>Featured</p>
               </div>
             </div>

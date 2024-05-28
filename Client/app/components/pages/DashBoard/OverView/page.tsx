@@ -58,7 +58,7 @@ const Page = ({ userData, setClickTrack }) => {
       {/* Compliments */}
       <div className="w-11/23 mt-4 bg-red-400 p-9 rounded-xl font-semibold flex justify-between items-center">
         <div>
-          <Image src={userData?.ProfileImage} alt="Profile Image" className="rounded-full h-[4rem] w-[4rem] object-cover" />
+          <img src={userData?.ProfileImage}  className="rounded-full h-[4rem] w-[4rem]  object-cover" />
         </div>
         <div className="flex gap-4 rounded-full">
           <div className="flex flex-col gap-2">
