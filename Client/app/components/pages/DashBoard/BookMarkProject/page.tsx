@@ -5,7 +5,7 @@ import Image from 'next/image'
 import React from 'react'
 import not_found from "../../../Assets/404.png"
 
-const page = ({userData}) => {
+const page = (userData) => {
   return (
     <div className=' p-20  w-[160%]   h-[100%]'>
         <p className=' text-slate-800 text-2xl font-semibold'>Favourite Project (<span className=' text-slate-600'>{userData?.SavedJobs.length}</span>)</p>

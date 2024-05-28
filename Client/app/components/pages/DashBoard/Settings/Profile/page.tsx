@@ -9,7 +9,7 @@ import toast from 'react-hot-toast';
 import { useUser } from '@auth0/nextjs-auth0/client';
 
 
-const Page = ({ userData }) => {
+const Page = ( userData ) => {
   const [state, setState] = useState({
     gender: "",
     education: userData?.Education || "",

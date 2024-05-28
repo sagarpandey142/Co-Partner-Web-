@@ -8,7 +8,7 @@ import { useUser } from '@auth0/nextjs-auth0/client'
 import { DeleteProject, findProjectByEmail } from '../../../../Services/operations/ProjectHandler'
 import toast from 'react-hot-toast'
 
-const Page = ({userData}) => {
+const Page = (userData) => {
     const { user, error, isLoading } = useUser();
     const[projectData,setProjectData]=useState([]);
     const[deleteproject,setdeleteproject]=useState(null);

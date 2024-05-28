@@ -4,7 +4,7 @@ import { CiLocationOn } from "react-icons/ci";
 import { IoIosTime } from "react-icons/io";
 import { TiTick } from "react-icons/ti";
 import { FaArrowRight } from "react-icons/fa";
-import { SiReact, SiNodeDotJs, SiHtml5, SiCss3, SiJavascript } from "react-icons/si"; 
+import { SiReact, SiHtml5, SiCss3, SiJavascript } from "react-icons/si"; 
 import { useRouter } from 'next/navigation';
 import ReactImage from "../Assets/react.png"
 import Next from "../../Assets/node.png"
@@ -16,7 +16,7 @@ import { RemoveSavedProject, addSavedProject } from '../../../app/Services/opera
 
 
 
-const FavouriteCommon = ({ cardData, location,Email,projectId ,userdata}) => {
+const FavouriteCommon = ( cardData, location,Email,projectId ,userdata) => {
   const router = useRouter();
   const [isSaved, setIsSaved] = useState(true);
 

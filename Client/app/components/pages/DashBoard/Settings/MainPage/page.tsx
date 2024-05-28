@@ -9,7 +9,7 @@ import { useUser } from '@auth0/nextjs-auth0/client';
 
 
 
-const Page = ({ userData }) => {
+const Page = ( userData ) => {
     const [clickable, setClickable] = useState(0);
   
 

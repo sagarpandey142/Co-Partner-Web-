@@ -11,7 +11,7 @@ import toast from 'react-hot-toast';
 
 
 
-const Page = ({userData}) => {
+const Page = (userData) => {
 
     const[projectAlert,setProjectAlert]=useState({
         role:"",

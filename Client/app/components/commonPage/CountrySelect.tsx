@@ -1,19 +1,30 @@
 import React, { useEffect } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
+import Autocomplete, { AutocompleteRenderOptionState } from '@mui/material/Autocomplete';
 
-export default function CountrySelect({formData,setFormData}) {
-  const [selectedCountry, setSelectedCountry] = React.useState(null);
+interface CountryType {
+  code: string;
+  label: string;
+  phone: string;
+  suggested?: boolean;
+}
+
+export default function CountrySelect() {
+  const [selectedCountry, setSelectedCountry] = React.useState<CountryType | null>(null);
   const defaultCountry = countries.find((country) => country.label === 'India');
 
   useEffect(() => {
     if (!selectedCountry) {
-      setSelectedCountry(defaultCountry);
+      setSelectedCountry(defaultCountry || null);
     }
   }, [selectedCountry, defaultCountry]);
 
-  const renderOption = (props, option) => (
+  const renderOption = (
+    props: React.HTMLAttributes<HTMLLIElement>, 
+    option: CountryType, 
+    state: AutocompleteRenderOptionState
+  ) => (
     <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
       <img
         loading="lazy"
@@ -29,10 +40,9 @@ export default function CountrySelect({formData,setFormData}) {
   return (
     <Autocomplete
       id="country-select-demo"
-     
       options={countries}
       autoHighlight
-      getOptionLabel={(option) => option.label}
+      getOptionLabel={(option: CountryType) => option.label}
       renderOption={renderOption}
       renderInput={(params) => (
         <TextField
@@ -48,11 +58,11 @@ export default function CountrySelect({formData,setFormData}) {
       value={selectedCountry}
       onChange={(event, newValue) => {
         setSelectedCountry(newValue);
-        setFormData({...formData,country:newValue.label})
       }}
     />
   );
 }
+
 // From https://bitbucket.org/atlassian/atlaskit-mk-2/raw/4ad0e56649c3e6c973e226b7efaeb28cb240ccb0/packages/core/select/src/data/countries.js
 const countries: readonly CountryType[] = [
   { code: 'AD', label: 'Andorra', phone: '376' },

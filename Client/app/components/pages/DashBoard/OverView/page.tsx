@@ -9,9 +9,8 @@ import { CiBookmarkMinus } from 'react-icons/ci';
 import { FaArrowRight } from "react-icons/fa";
 import not_found from "../../../Assets/404.png";
 
-const Page = ({ userData, setClickTrack }) => {
+const Page = ( userData, setClickTrack ) => {
   const router = useRouter();
-
   const handleNavigate = () => {
     setClickTrack(3);
   };

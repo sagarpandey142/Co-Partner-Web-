@@ -14,7 +14,7 @@ import Image from 'next/image';
 
 
 
-const Personalpage = ({ userData }) => {
+const Personalpage = ( userData ) => {
 
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(userData?.ProfileImage ? userData?.ProfileImage : null);

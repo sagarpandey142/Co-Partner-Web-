@@ -8,7 +8,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { Pagination } from '@mui/material';
 import Link from 'next/link'; 
 
-const MainCard = ({ CardData = [] }) => {
+const MainCard = ( CardData = [] ) => {
   const [currentPage, setCurrentPage] = useState(1);
   const cardsPerPage = 6; // Show 3 cards per page
   const indexOfLastCard = currentPage * cardsPerPage;

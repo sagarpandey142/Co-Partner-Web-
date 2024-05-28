@@ -20,7 +20,7 @@ const iconMap = {
   IoCopyOutline:IoCopyOutline
 };
 
-const Page = ({clicktrack,setclicktrack}) => {
+const Page = (clicktrack,setclicktrack) => {
   return (
     <div className=' w-[25rem]  overflow-hidden '>
       <p className=' mt-8 text-slate-600 uppercase text-lg font-semibold'>Candidate Dashboard</p>

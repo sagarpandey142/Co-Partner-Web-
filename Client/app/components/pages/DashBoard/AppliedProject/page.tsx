@@ -7,7 +7,7 @@ import not_found from "../../../Assets/404.png";
 
 
 
-const Page =  ({ userData }) => {
+const Page =  ( userData ) => {
   return (
     <div className='w-[150%] p-20'>
       <p className='text-slate-800 text-2xl font-semibold'>Applied Project ({userData?.AppliedProject.length})</p>

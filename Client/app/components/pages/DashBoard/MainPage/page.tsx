@@ -54,7 +54,7 @@ const Page = () => {
               <div className=''>
                 {
                   clicktrack === 0 ? (
-                    <OverView userData={userData}  setclicktrack={setclicktrack}/>
+                    <OverView />
                   ) : clicktrack === 1 ? (
                       <CreateProject/>
                   ) : (
@@ -62,12 +62,12 @@ const Page = () => {
                       <Myproject userData={userData} />
                     ) : (
                       clicktrack==3 ? (
-                        <AppliedProject userData={userData} />
+                        <AppliedProject  />
                       ) : (
                          clicktrack==4 ? (
-                          <BookmarkProject userData={userData} />
+                          <BookmarkProject />
                          ) : (
-                          <Setting userData={userData}/>
+                          <Setting />
                          )
                       )
                     )
