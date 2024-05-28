@@ -1,0 +1,30 @@
+export const SkillRequired = [
+    { name: "React.js", icon: "+" },
+    { name: "Express.js", icon: "+" },
+    { name: "Node.js", icon: "+" },
+    { name: "MongoDB.js", icon: "+" },
+    { name: "Vue.js", icon: "+" },
+    { name: "Next.js", icon: "+" },
+    { name: "Blockchain.js", icon: "+" },
+    { name: "Angular.js", icon: "+" },
+    { name: "Django", icon: "+" },
+    { name: "Flask", icon: "+" },
+    { name: "Ruby on Rails", icon: "+" },
+    { name: "Laravel", icon: "+" },
+    { name: "Spring Boot", icon: "+" },
+    { name: "GraphQL", icon: "+" },
+    { name: "PostgreSQL", icon: "+" },
+    { name: "Firebase", icon: "+" },
+    { name: "Docker", icon: "+" },
+    { name: "Kubernetes", icon: "+" },
+    { name: "AWS", icon: "+" },
+    { name: "Azure", icon: "+" },
+    { name: "Google Cloud", icon: "+" },
+    { name: "TypeScript", icon: "+" },
+    { name: "Svelte", icon: "+" },
+    { name: "Tailwind CSS", icon: "+" },
+    { name: "Bootstrap", icon: "+" },
+  ];
+  
+  export default SkillRequired;
+  
