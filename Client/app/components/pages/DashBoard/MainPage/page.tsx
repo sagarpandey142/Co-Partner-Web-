@@ -26,7 +26,7 @@ const Page = () => {
         const userDetailResponse = await GetUserDetail(user?.email);
         dispatch(updateUserDataSlice(userDetailResponse.data.response));
         setUserData(userDetailResponse.data.response);
-      setloading(false);
+      setloading(false); 
     } catch (error) {
       console.error('Error fetching user details:', error);
       setloading(false);

@@ -4,6 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     userData:[],
     clicktrack:0,
+    cardData:[]
 };
 
 const UserDataSlice = createSlice({
@@ -16,9 +17,12 @@ const UserDataSlice = createSlice({
         updateclicktrack: (state, action) => {
             state.clicktrack= action.payload
         },
+        updatecardData: (state, action) => {
+            state.cardData= action.payload
+        },
         
     }
 });
 
-export const  { updateUserDataSlice,updateclicktrack} = UserDataSlice.actions;
+export const  { updateUserDataSlice,updateclicktrack,updatecardData} = UserDataSlice.actions;
 export default UserDataSlice.reducer;

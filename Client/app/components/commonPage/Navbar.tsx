@@ -57,12 +57,12 @@ const NavBar: React.FC = () => {
             {
               user ? (
                 <div className="flex gap-2 ml-3">
-                  <img 
+                  {user.picture && (<img 
                     src={user.picture} 
-                    alt={user.name} 
+                    alt='img'
                     className="hs-dropdown-toggle w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:bg-neutral-700"
                     onClick={() => router.push('/components/pages/DashBoard/MainPage')} 
-                  />
+                  />)}
                 </div>
               ) : (
                 <div>.</div>

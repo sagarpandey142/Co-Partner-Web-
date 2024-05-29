@@ -15,7 +15,7 @@ const Page = () => {
                 <div className=' mt-5'>
                         {
                           userData?.SavedJobs?.map((data,index)=>{
-                              return <FavouriteCommon key={index} userdata={userData} Email={userData?.Email}  location={userData?.Location} cardData={data}/>
+                              return <FavouriteCommon  key={index} cardData={data}/>
                           })
                       }
               </div>
