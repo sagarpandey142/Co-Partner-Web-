@@ -1,10 +1,13 @@
-'use client'
 import React, { useState } from 'react';
 import { HiOutlineXCircle, HiOutlinePlusCircle } from 'react-icons/hi';
 
-const SkillButton = ({ text,flag }) => {
-  const [isSelected, setIsSelected] = useState(false);
+interface SkillButtonProps {
+  text: string;
+  flag: boolean;
+}
 
+const SkillButton: React.FC<SkillButtonProps> = ({ text, flag }) => {
+  const [isSelected, setIsSelected] = useState(false);
 
   return (
     <button

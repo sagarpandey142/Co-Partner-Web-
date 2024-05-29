@@ -9,7 +9,7 @@ import BookmarkProject from "../BookMarkProject/page"
 import Setting from "../Settings/MainPage/page"
 import { useUser } from '@auth0/nextjs-auth0/client'
 import CreateProject from "../CreateProject/page"
-import Myproject from "../MyProject/Page"
+import Myproject from "../MyProject/page"
 
 const Page = () => {
   const [clicktrack, setclicktrack] = useState(0);
@@ -23,7 +23,7 @@ const Page = () => {
         const userDetailResponse = await GetUserDetail(user?.email);
         console.log("userd",userDetailResponse)
         setUserData(userDetailResponse.data.response);
-      setloading(false);
+      setloading(false); 
     } catch (error) {
       console.error('Error fetching user details:', error);
       setloading(false);

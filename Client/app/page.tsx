@@ -8,7 +8,7 @@ import { Router } from "next/router";
 import MainContent from "./components/commonPage/MainContent";
 import RatingsAndReviewsPage from "./components/commonPage/RatingsAndReview";
 import TechStack from "./components/commonPage/TechStack"
-import Featured from './components/commonPage/Featured'
+// import Featured from './components/commonPage/Featured'
 import Footer from "./components/commonPage/Footer"
 
 
@@ -26,7 +26,7 @@ export default async function Home() {
       <MainContent/>
       <TechStack/>
       <RatingsAndReviewsPage/>
-      <Featured/>
+      {/* <Featured/>  */}
       <Footer/>
       
       

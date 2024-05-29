@@ -6,7 +6,7 @@ import Image from 'next/image'
 import not_found from "../../../Assets/404.png"
 import { useUser } from '@auth0/nextjs-auth0/client'
 import { DeleteProject, findProjectByEmail } from '../../../../Services/operations/ProjectHandler'
-import toast from 'react-hot-toast'
+import toast from 'react-hot-toast' 
 
 const Page = (userData) => {
     const { user, error, isLoading } = useUser();
