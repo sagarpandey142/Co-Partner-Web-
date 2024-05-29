@@ -1,14 +1,15 @@
-import DashboardPage from '../../../../../app/components/commonPage/DashboardPage'
-
+"use client"
 import FavouriteCommon from '../../../../../app/components/commonPage/FavouriteCommon'
 import Image from 'next/image'
 import React from 'react'
 import not_found from "../../../Assets/404.png"
+import { useSelector } from 'react-redux'
 
-const page = (userData) => {
+const Page = () => {
+  const {userData}=useSelector((slice)=>slice.userDataSlice)
   return (
     <div className=' p-20  w-[160%]   h-[100%]'>
-        <p className=' text-slate-800 text-2xl font-semibold'>Favourite Project (<span className=' text-slate-600'>{userData?.SavedJobs.length}</span>)</p>
+        <p className=' text-slate-800 text-2xl font-semibold'>Favourite Project (<span className=' text-slate-600'>{userData?.SavedJobs?.length}</span>)</p>
          {
               userData?.SavedJobs?.length>0 ? (
                 <div className=' mt-5'>
@@ -28,4 +29,4 @@ const page = (userData) => {
   )
 }
 
-export default page
+export default Page

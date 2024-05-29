@@ -10,18 +10,21 @@ import Setting from "../Settings/MainPage/page"
 import { useUser } from '@auth0/nextjs-auth0/client'
 import CreateProject from "../CreateProject/page"
 import Myproject from "../MyProject/Page"
+import { useDispatch, useSelector } from 'react-redux'
+import { updateUserDataSlice } from '../../../../../GlobalRedux/Features/Userdataslices'
 
 const Page = () => {
-  const [clicktrack, setclicktrack] = useState(0);
+  const {clicktrack}=useSelector((slices)=>slices.userDataSlice)
   const [userData, setUserData] = useState(null);
   const [loading, setloading] = useState(false);
   const { user, error, isLoading } = useUser();
+  const dispatch=useDispatch();
  
   const getUserDetails = async () => {
     try {
       setloading(true);
         const userDetailResponse = await GetUserDetail(user?.email);
-        console.log("userd",userDetailResponse)
+        dispatch(updateUserDataSlice(userDetailResponse.data.response));
         setUserData(userDetailResponse.data.response);
       setloading(false);
     } catch (error) {
@@ -49,7 +52,7 @@ const Page = () => {
           <div className='mt-2 border-t-[2px] border-slate-300 overflow-hidden'>
             <div className='w-8/12 mx-auto flex gap-2'>
             <div className=' h-screen border-r-[3px] border-slate-300   '>
-              <Sidebar clicktrack={clicktrack} setclicktrack={setclicktrack} />
+              <Sidebar />
             </div>
               <div className=''>
                 {
@@ -59,7 +62,7 @@ const Page = () => {
                       <CreateProject/>
                   ) : (
                     clicktrack==2 ? (
-                      <Myproject userData={userData} />
+                      <Myproject  />
                     ) : (
                       clicktrack==3 ? (
                         <AppliedProject  />

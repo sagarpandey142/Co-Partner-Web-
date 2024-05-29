@@ -2,15 +2,17 @@ import React from 'react';
 import DashboardPage from "../../../commonPage/DashboardPage";
 import Image from 'next/image';
 import not_found from "../../../Assets/404.png";
+import { useSelector } from 'react-redux';
 
 
 
 
 
-const Page =  ( userData ) => {
+const Page =  (  ) => {
+  const {userData}=useSelector((slice)=>slice.userDataSlice)
   return (
     <div className='w-[150%] p-20'>
-      <p className='text-slate-800 text-2xl font-semibold'>Applied Project ({userData?.AppliedProject.length})</p>
+      <p className='text-slate-800 text-2xl font-semibold'>Applied Project ({userData?.AppliedProject?.length})</p>
       {userData.AppliedProject?.length === 0 ? (
         <div>
           <Image src={not_found} alt='img' className='w-[25rem] h-[25rem] mx-auto' />

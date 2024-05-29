@@ -10,12 +10,13 @@ import { GiCancel } from "react-icons/gi";
 import Threedot from "./threedot"
 import { useUser } from '@auth0/nextjs-auth0/client';
 import Image from 'next/image';
+import { useSelector } from 'react-redux';
 
 
 
 
-const Personalpage = ( userData ) => {
-
+const Personalpage = (  ) => {
+  const {userData}=useSelector((slice)=>slice.userDataSlice)
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(userData?.ProfileImage ? userData?.ProfileImage : null);
   const { user, error, isLoading } = useUser();

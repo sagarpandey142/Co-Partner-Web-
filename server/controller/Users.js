@@ -104,7 +104,6 @@ exports.signup = async (req, res) => {
       user_Desc,
       country
     } = req.body;
-    console.log("req",req.body)
     if (
       !Full_Name ||
       !proffesional_Role ||
