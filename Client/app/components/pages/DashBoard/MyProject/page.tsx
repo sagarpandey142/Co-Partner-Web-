@@ -11,7 +11,7 @@ import toast from 'react-hot-toast'
 const Page = () => {
     const { user, error, isLoading } = useUser();
     const[projectData,setProjectData]=useState([]);
-    const[deleteproject,setdeleteproject]=useState(null);
+    const[deleteprojects,setdeleteproject]=useState(null);
 
     const fetchproject=async()=>{
         const response=await findProjectByEmail(user.email);
@@ -25,7 +25,7 @@ const Page = () => {
     }
   
     const deleteProject=async()=>{
-        const response=await DeleteProject(deleteproject);
+        const response=await DeleteProject(user.email,deleteprojects);
         if(response)
             {
                 toast.success("Project Deleted SuccessFully Please Reload")
@@ -33,7 +33,7 @@ const Page = () => {
             }
     }
 
-    if(deleteproject!=null){
+    if(deleteprojects!=null){
          deleteProject();
     }
   return (

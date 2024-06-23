@@ -1,4 +1,3 @@
-"use client"
 import React, { useState } from 'react';
 import { CiLocationOn } from "react-icons/ci";
 import { IoIosTime } from "react-icons/io";
@@ -15,23 +14,21 @@ import { RemoveSavedProject, addSavedProject } from '../../../app/Services/opera
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { useSelector } from 'react-redux';
 
-const FavouriteCommon = (cardData:[]) => {
-
+const FavouriteCommon = ({ cardData }) => {
   const router = useRouter();
   const [isSaved, setIsSaved] = useState(true);
   const { user, error, isLoading } = useUser();
-  const Email=user?.email
-  
-  function handleNavigate(projectid: string) {
+  const Email = user?.email;
+
+  function handleNavigate(projectid) {
     const queryString = new URLSearchParams({ projectid }).toString();
     router.push(`/components/ProjectInfo/ProjectDesc?${queryString}`);
   }
 
-  const getSkillImage = (skills: string[]) => {
+  const getSkillImage = (skills) => {
     if (!skills || skills.length === 0) return null;
 
     const lowerCaseSkills = skills.map(skill => skill.toLowerCase());
-    console.log("lower", lowerCaseSkills);
     if (lowerCaseSkills.includes('react.js') || lowerCaseSkills.includes('next.js')) {
       return <Image src={ReactImage} alt='React/Next.js' width={64} quality={90} layout='fixed' objectFit='contain' priority={true} className='rounded-lg h-14' />;
     } else if (lowerCaseSkills.includes('node.js')) {
@@ -50,7 +47,7 @@ const FavouriteCommon = (cardData:[]) => {
   const handleSavedProject = async () => {
     try {
       if (isSaved) {
-        await RemoveSavedProject(Email, cardData?._id);
+        await RemoveSavedProject(Email, cardData._id);
         setIsSaved(false);
         toast.success("Project Removed Successfully");
       } else {
@@ -78,11 +75,11 @@ const FavouriteCommon = (cardData:[]) => {
             <div className='text-slate-500 text-lg flex gap-3 '>
               <p className='flex gap-2 items-center text-lg'>
                 <CiLocationOn />
-                {location}
+                {/* Define location or extract from cardData */}
               </p>
               <p className='flex gap-1 items-center text-lg'>
                 <IoIosTime />
-                {cardData.BasicDetail.spanPeriod} Months
+                {cardData?.BasicDetail?.projectLength} Months
               </p>
             </div>
           </div>
