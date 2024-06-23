@@ -7,14 +7,15 @@ import { BsSuitcaseLgFill } from 'react-icons/bs';
 import { CiBookmarkMinus } from 'react-icons/ci';
 import { FaArrowRight } from "react-icons/fa";
 import not_found from "../../../Assets/404.png";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateclicktrack } from '../../../../../GlobalRedux/Features/Userdataslices';
 
 const Page = ( ) => {
    const {userData}=useSelector((slice)=>slice.userDataSlice)
-   console.log("us,",userData)
+   const dispatch=useDispatch();
   const router = useRouter();
   const handleNavigate = () => {
-    // setClickTrack(3);
+    dispatch(updateclicktrack(5));
   };
 
   return (

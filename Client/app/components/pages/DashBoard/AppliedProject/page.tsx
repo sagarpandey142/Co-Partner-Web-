@@ -9,7 +9,8 @@ import { useSelector } from 'react-redux';
 
 
 const Page =  (  ) => {
-  const {userData}=useSelector((slice)=>slice.userDataSlice)
+  
+  const {userData}= useSelector((state)=>state.userDataSlice)
   return (
     <div className='w-[150%] p-20'>
       <p className='text-slate-800 text-2xl font-semibold'>Applied Project ({userData?.AppliedProject?.length})</p>

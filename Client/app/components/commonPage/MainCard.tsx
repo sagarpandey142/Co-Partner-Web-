@@ -40,7 +40,6 @@ const MainCard: React.FC<MainCardProps> = ({ CardData = [] }) => {
   const router = useRouter(); 
 
   const getTimeDifference = (createdAt: string): string => {
-    console.log("created", createdAt)
     const currentTime: number = new Date().getTime(); 
     const createdTime: number = new Date(createdAt).getTime(); 
     const difference: number = Math.abs(currentTime - createdTime);

@@ -5,6 +5,7 @@ const Project = require("../Models/Project")
 exports.addSavedProject = async (req, res) => {
     try {
         const { Email, projectId } = req.body;
+        
         const profileInfo = await Profile.findOne({ Email }).populate("SavedJobs").exec();
         if (!profileInfo) {
             return res.status(404).json({
@@ -94,8 +95,7 @@ exports.getSavedProject = async(req, res) =>{
 
 exports.removeSavedProject= async(req,res)=>{
     try{
-        const{Email,ProjectId}=req.body;
-        console.log("email",Email,ProjectId)
+        const{ProjectId,Email}=req.body;
         if(!Email || !ProjectId){
               res.status(404).json({
                 success:false,
@@ -103,7 +103,7 @@ exports.removeSavedProject= async(req,res)=>{
               })
         }
         const updatedProfile = await Profile.findOne(
-            { Email: Email },
+            { Email },
           );
         console.log("ipdate",updatedProfile)
           updatedProfile.SavedJobs=updatedProfile.SavedJobs.filter((id)=>id.toString()!==ProjectId)

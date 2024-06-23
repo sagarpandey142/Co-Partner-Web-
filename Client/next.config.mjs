@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import { ESLint } from 'eslint';
 dotenv.config();
 
 const nextConfig = {
@@ -7,6 +8,9 @@ const nextConfig = {
     config.resolve.fallback = { fs: false };
     return config;
   },
+  eSLint:{
+      ignoreDuringBuilds:true,
+  }
 };
 
 

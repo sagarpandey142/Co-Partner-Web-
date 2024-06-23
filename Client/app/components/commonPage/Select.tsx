@@ -15,7 +15,7 @@ import {
 } from '@mui/base/Option';
 import { useTheme } from '@mui/system';
 import clsx from 'clsx';
-import UnfoldMoreRoundedIcon from '@mui/icons-material/UnfoldMoreRounded';
+
 
 const getOptionColorClasses = ({
   selected,
@@ -69,7 +69,6 @@ const Button = React.forwardRef(function Button<
   return (
     <button type="button" {...other} ref={ref}>
       {other.children}
-      <UnfoldMoreRoundedIcon />
     </button>
   );
 });

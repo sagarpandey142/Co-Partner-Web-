@@ -14,7 +14,7 @@ const Page = () => {
               userData?.SavedJobs?.length>0 ? (
                 <div className=' mt-5'>
                         {
-                          userData?.SavedJobs?.map((data,index)=>{
+                          userData?.SavedJobs?.map((data:any,index:any)=>{
                               return <FavouriteCommon  key={index} cardData={data}/>
                           })
                       }
