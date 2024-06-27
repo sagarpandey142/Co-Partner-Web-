@@ -1,13 +1,13 @@
 "use client"
 import React, { useCallback, useState } from 'react';
 import { Checkbox } from '@mui/material';
-import CountrySelect from '../../../../../app/components/commonPage/CountrySelect';
-import { SkillRequired } from '../../../../../app/components/ArrayUsable/SkillArray';
+import CountrySelect from '../../../commonPage/CountrySelect';
+import { SkillRequired } from '../../../ArrayUsable/SkillArray';
 import { MdOutlineCloudUpload } from "react-icons/md";
 import { useDropzone } from 'react-dropzone';
 
 import { useUser } from '@auth0/nextjs-auth0/client';
-import { addProjects } from '../../../../../app/Services/operations/ProjectHandler';
+import { addProjects } from '../../../../Services/operations/ProjectHandler';
 import toast from 'react-hot-toast';
 
 const Page = () => {
@@ -21,12 +21,13 @@ const Page = () => {
     fullyRemote: false,
     selectedSkills: [],
     projectDescription: '',
-    files: [],
+    files:[],
     projectLength:"",
-    spanPeriod:"", 
     LevelExperience:""
 
   });
+
+  
 
   const onDrop = useCallback((acceptedFiles) => {
     setFormData(prevState => ({
@@ -73,8 +74,7 @@ const Page = () => {
          // navigate
          toast.success("Project Create SuccessFully")
       }
-  }
-
+    }
 
   return (
     <div className='p-20 w-[130%] h-[100%]'>
@@ -106,7 +106,7 @@ const Page = () => {
              {/* level of experienc*/}
              <div className='  flex flex-col gap-2 mt-3 w-[50%] '>
                  <p className=' text-lg text-slate-700 font-semibold'>Level of Experience Needed</p>
-                 <input className=' border-[2px] border-slate-300 px-4 py-3 outline-none  ' placeholder=' Enter Level Of Experience..'  onChange={(e)=>{
+                 <input className=' border-[2px] border-slate-300 px-4 py-3 outline-none  '  type="number" placeholder=' Enter Level Of Experience in number..'  onChange={(e)=>{
                      setFormData({...formData,LevelExperience:e.target.value})
                  }}/>
              </div>
@@ -115,7 +115,7 @@ const Page = () => {
              {/*projectLength*/}
              <div  className='  flex flex-col gap-2 mt-3   w-[50%]'>
                  <p className=' text-lg text-slate-700 font-semibold'>Project Length</p>
-                 <input className=' border-[2px] border-slate-300 px-4 py-3 outline-none  ' placeholder=' Enter Length Of Project..' onChange={(e)=>{
+                 <input className=' border-[2px] border-slate-300 px-4 py-3 outline-none  '  type="number" placeholder=' Enter Length Of Project (Months) in number only..' onChange={(e)=>{
                      setFormData({...formData,projectLength:e.target.value})
                  }}/>
              </div>
@@ -182,11 +182,19 @@ const Page = () => {
         <div className=' mt-5'>
           <p className=' text-slate-800 text-2xl font-semibold'>Upload Photos</p>
           {/* drag & drop */}
-          <div className=' w-10/12 p-5 py-24 mt-5 flex flex-col gap-1 border-[3px] border-dashed border-slate-300' {...getRootProps()}>
+          <div className=' w-10/12 p-5 py-24 mt-5 flex flex-col gap-1 border-[3px] border-dashed border-slate-300  cursor-pointer' {...getRootProps()}>
             <input {...getInputProps()} />
             <MdOutlineCloudUpload className='mx-auto text-5xl text-blue-700' />
             <p className='mx-auto'><span className='text-blue-700 text-lg font-bold mx-auto'>Browse photo</span> or drop here</p>
             <p className='text-slate-500 mx-auto'>A photo larger than 400 pixels works best. Max photo size 5 MB</p>
+            {formData.files?.name && (
+              <div className='mt-3 mx-auto'>
+                <p className='text-lg text-slate-800 font-semibold'>Selected Files:</p>
+                <ul className='list-disc pl-5 text-slate-400 text-lg font-semibold'>
+                    <li>{formData.files?.name}</li>
+                </ul>
+              </div>
+            )}
           </div>
         </div>
 

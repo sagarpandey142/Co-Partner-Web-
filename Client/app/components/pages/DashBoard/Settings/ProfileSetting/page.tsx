@@ -7,12 +7,13 @@ import { FaSuitcase } from "react-icons/fa";
 import { MdOutlineMyLocation } from "react-icons/md";
 import { MdCancel } from "react-icons/md";
 import toast from 'react-hot-toast';
+import { useSelector } from 'react-redux';
 
 
 
 
-const Page = ({userData}) => {
-
+const Page = () => {
+  const {userData}=useSelector((slice)=>slice.userDataSlice)
     const[projectAlert,setProjectAlert]=useState({
         role:"",
         location:"",

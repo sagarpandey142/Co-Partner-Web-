@@ -6,13 +6,13 @@ import ProfilePage from "../Profile/page"
 import Socialpage from "../Socialinks/page"
 import ProfileSetting from "../ProfileSetting/page"
 import { useUser } from '@auth0/nextjs-auth0/client';
+import { useSelector } from 'react-redux';
 
 
 
-const Page = ({ userData }) => {
+const Page = (  ) => {
     const [clickable, setClickable] = useState(0);
-  
-
+    const {userData}=useSelector((slice)=>slice.userDataSlice)
     return (
         <div>
             <div className='p-20 w-[120%] h-[100%]'>
@@ -35,16 +35,16 @@ const Page = ({ userData }) => {
                      {
                          clickable===0 ? (
                              <div>
-                                  <Personalpage userData={userData}/>
+                                  <Personalpage />
                              </div>
                          ) : (
                              clickable==1 ? (
-                                 <ProfilePage userData={userData}/>
+                                 <ProfilePage />
                              ) : (
                                 clickable==2 ? (
-                                    <Socialpage userData={userData}/>
+                                    <Socialpage/>
                                 ) : (
-                                     <ProfileSetting userData={userData}/>
+                                     <ProfileSetting />
                                 )
                              )
                          ) 

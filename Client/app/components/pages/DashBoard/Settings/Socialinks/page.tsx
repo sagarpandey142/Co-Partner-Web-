@@ -5,13 +5,13 @@ import React, { useState } from 'react'
 import toast from 'react-hot-toast';
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa6";
-
+import { useSelector } from 'react-redux';
 import { ImCancelCircle } from "react-icons/im";
 
 
 
-const Page = ({userData}) => {
-
+const Page = () => {
+  const {userData}=useSelector((slice)=>slice.userDataSlice)
     const[state,setState]=useState({
         linkedinLink:userData?.LinkedIn ?? "",
         GithubLink:userData?.GithubLink ?? ""

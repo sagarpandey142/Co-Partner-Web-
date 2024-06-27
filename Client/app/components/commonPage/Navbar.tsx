@@ -95,7 +95,7 @@ const NavBar = () => {
       </div>
     </div>
 
-    {user ? (
+    {/* {user ? (
       <div className="flex gap-2 ml-3">
         <img
           src={user.picture}
@@ -106,7 +106,7 @@ const NavBar = () => {
       </div>
     ) : (
       <div>.</div>
-    )}
+    )} */}
   </div>
 </div>
 

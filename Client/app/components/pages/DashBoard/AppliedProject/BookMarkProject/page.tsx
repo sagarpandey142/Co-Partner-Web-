@@ -1,10 +1,11 @@
-import DashboardPage from '../../../../../app/components/commonPage/DashboardPage'
-
-import FavouriteCommon from '../../../../../app/components/commonPage/FavouriteCommon'
+"use client"
+import FavouriteCommon from '../../../../commonPage/FavouriteCommon'
 import Image from 'next/image'
 import React from 'react'
 import not_found from "../../../Assets/404.png"
+import { useSelector } from 'react-redux'
 
+<<<<<<< HEAD
 
 interface JobData {
   id: string;
@@ -24,15 +25,19 @@ interface UserData {
 }
 
 const page = ({userData}) => {
+=======
+const Page = () => {
+  const {userData}=useSelector((slice)=>slice.userDataSlice)
+>>>>>>> 212400127eb7f03c516211567386764245025621
   return (
     <div className=' p-20  w-[160%]   h-[100%]'>
-        <p className=' text-slate-800 text-2xl font-semibold'>Favourite Project (<span className=' text-slate-600'>{userData?.SavedJobs.length}</span>)</p>
+        <p className=' text-slate-800 text-2xl font-semibold'>Favourite Project (<span className=' text-slate-600'>{userData?.SavedJobs?.length}</span>)</p>
          {
               userData?.SavedJobs?.length>0 ? (
                 <div className=' mt-5'>
                         {
-                          userData?.SavedJobs?.map((data,index)=>{
-                              return <FavouriteCommon key={index} userdata={userData} Email={userData?.Email}  location={userData?.Location} cardData={data}/>
+                          userData?.SavedJobs?.map((data:any,index:any)=>{
+                              return <FavouriteCommon  key={index} cardData={data}/>
                           })
                       }
               </div>
@@ -46,4 +51,4 @@ const page = ({userData}) => {
   )
 }
 
-export default page
+export default Page

@@ -1,8 +1,7 @@
 const Project = require("../Models/Project");
 const User = require("../Models/User");
-const Profile = require("../Models/Profile")
-const Alert = require("../Models/Alert")
-
+const Profile = require("../Models/Profile");
+const Alert = require("../Models/Alert");
   
 
 // Get projects based on search criteria
@@ -28,7 +27,6 @@ async  function findProjects(req, res){
 async function findProjectByProjectName(req,res){
   try{
     const {projectName} = req.body;
-    console.log("proh",projectName)
     const response = await Project.findOne({projectName:projectName});
     
     return res.status(200).json({
@@ -88,7 +86,7 @@ async function updatedProject (req, res)  {
   // Delete project
 async function deleteProject(req, res) {
     try {
-      const { projectId } = req.params;
+      const { projectId } = req.body;
      
       if (!projectId) {
         return res.status(400).json({
@@ -99,20 +97,22 @@ async function deleteProject(req, res) {
   
       // Find the project by ID
       const existingProject = await Project.findById(projectId);
-  
+
       if (!existingProject) {
         return res.status(404).json({
           success: false,
           message: "Project not found",
         });
       }
-
+      
+      const UserData=await User.findOne({profileInf:existingProject.profileId});
       // Remove the project ID from the user's projects array
-      User.projects = User.projects.filter((id) => id !== existingProject._id);
-      await User.save();
+      console.log(UserData)
+      UserData.Project = UserData.Project.filter((id) => id.toString() !== projectId);
+      await UserData.save();
   
       // Delete the project
-      await existingProject.remove();
+      await Project.deleteOne({ _id: projectId });
   
       return res.status(200).json({
         success: true,
@@ -165,7 +165,7 @@ async function list(_criteria) {
 async function AddProject(req, res){
   console.log("hii", req.body)
   try {
-    const {Email, projectName, projectDescription,Skill,BasicDetail, Category } = req.body;
+    const {Email, projectName, projectDescription,Skill,BasicDetail, Category,projectPicture } = req.body;
     if (!Email || !Skill || !projectName || !projectDescription || !BasicDetail || !Category) {
       return res.status(400).json({
         message: "Email, projectName, and projectDescription are required",
@@ -189,7 +189,8 @@ async function AddProject(req, res){
       projectDescription: projectDescription,
       Skill: Skill,
       BasicDetail: BasicDetail,
-      Category: Category
+      Category: Category,
+      projectPicture:projectPicture
     });
 
     const user = await User.findOne({
@@ -202,17 +203,19 @@ async function AddProject(req, res){
     user.Project.push(newProject._id);
     await user.save();
     // create alert message
-    await Alert.create({
-      ProfileId:profile._id,
+   const alertdata= await Alert.create({
       message:"Congratulations! 🚀 Your project has been created successfully! 🎉",
       type:"info"
     })
+
+    profile.Alerts.push(alertdata._id)
     return res.status(200).json({
       success: true,
       message: "Project added successfully",
       project: newProject,
     });
   } catch (error) {
+    console.log("error",error)
     return res.status(500).json({
       message: "Error occurred",
       error: error.message,
@@ -248,13 +251,39 @@ async function findProjectById(req,res) {
   }
 }
 
+async function findProjectByEmail(req,res) {
+  try {
+    const {Email} = req.body
+
+    const profile=await Profile.findOne({Email});
+    const response = await Project.find({profileId:profile._id})
+      console.log("res",response)
+
+    if (!response) {
+      return res.status(404).json({
+        success: false,
+        message: "Project not found"
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Project retrieved successfully",
+      project: response 
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "An error occurred",
+      error: error.message
+    });
+  }
+}
+
 async function AppliedProject(req, res) {
   try {
     const { email, projectid } = req.body;
-   
     // Find the profile by email
     const profile = await Profile.findOne({ Email: email });
-    console.log("email",email,projectid)
     if (!profile) {
       return res.status(404).json({
         success: false,
@@ -265,18 +294,18 @@ async function AppliedProject(req, res) {
      // Check if project is already applied to
      const matchesProject = profile.AppliedProject.includes(projectid);
      if (matchesProject) {
-         return res.status(200).json({
+         return res.status(404).json({
              success: false,
              message: "Project already applied"
          });
      }
      // check edge case if user create the project
-     const ProjectInfo=await Project.findById(projectid);
+     const ProjectInfo=await Project.findById(projectid).populate("profileId").exec();
 
       // Check if the project creator is the same as the user applying for it
-      
+      console.log("projectid",profile,ProjectInfo)
     if (ProjectInfo.profileId.equals(profile._id)) {
-      return res.status(400).json({
+      return res.status(404).json({
         success: false,
         message: "You cannot apply to a project you've created."
       });
@@ -288,7 +317,8 @@ async function AppliedProject(req, res) {
 
     // Save the updated profile
     await profile.save();
-  
+   // sending mail in email
+   await nodemamailSender(ProjectInfo?.profileId?.Email,"Hii We Got Someone For Your Project Congrahulations",collaborationInvitationTemplate(ProjectInfo?.profileId?.name,profile?.name,profile?.Email,profile?.GithubLink,profile?.LinkedIn))
     // Respond with success
     return res.status(200).json({
       success: true,
@@ -312,7 +342,8 @@ module.exports = {
   deleteProject,
   AddProject,
   findProjectByProjectName,
-  findProjectById
+  findProjectById,
+  findProjectByEmail
 };
 
 

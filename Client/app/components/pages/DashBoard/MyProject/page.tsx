@@ -1,53 +1,48 @@
 
 "use client"
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import DashboardPage from "../../../commonPage/DashboardPage"
 import Image from 'next/image'
 import not_found from "../../../Assets/404.png"
 import { useUser } from '@auth0/nextjs-auth0/client'
-import { findProjectByEmail } from '../../../../../app/Services/operations/ProjectHandler'
+import { DeleteProject, findProjectByEmail } from '../../../../Services/operations/ProjectHandler'
+import toast from 'react-hot-toast' 
 
-const Page = ({userData}) => {
+const Page = () => {
     const { user, error, isLoading } = useUser();
-    const[projectData,setProjectData]=useState(null);
-    const[deleteproject,setdeleteproject]=useState(null);
+    const[projectData,setProjectData]=useState([]);
+    const[deleteprojects,setdeleteproject]=useState(null);
 
-    // const fetchproject=async()=>{
-    //     const response=await findProjectByEmail(user.email);
-    //     if(response){
-    //          setProjectData(response.data.project)
-    //     }
-    // }
-
-    // if(user && projectData==null){
-    //     fetchproject()
-    // }
-
-
-    useEffect(() => {
-        if (user) {
-          const fetchProject = async () => {
-            try {
-              const response = await findProjectByEmail(user.email);
-              if (response) {
-                setProjectData(response.data.project);
-              }
-            } catch (error) {
-              console.error('Error fetching projects:', error);
-            }
-          };
-    
-          fetchProject();
+    const fetchproject=async()=>{
+        const response=await findProjectByEmail(user.email);
+        if(response){
+             setProjectData(response.data.project)
         }
-      }, [user]);
+    }
 
+    if(user && projectData.length==0){
+        fetchproject()
+    }
+  
+    const deleteProject=async()=>{
+        const response=await DeleteProject(user.email,deleteprojects);
+        if(response)
+            {
+                toast.success("Project Deleted SuccessFully Please Reload")
+                setdeleteproject(null);
+            }
+    }
+
+    if(deleteprojects!=null){
+         deleteProject();
+    }
   return (
     <div className=' w-[150%] p-20  '>
          <p className=' text-slate-800 text-2xl font-semibold'>Your Project ({projectData?.length})</p>
                             {
-                                 Array.isArray(projectData) && projectData?.length === 0 ? (
+                                     projectData == null ? (
                                      <div className=''>
-                                            <Image src={not_found} alt='img' className=' w-[25rem] h-[25rem] mx-auto'/>
+                                            <Image alt='image' src={not_found} className=' w-[25rem] h-[25rem] mx-auto'/>
                                      </div>
                                  ) : (
                                         <div className=' mt-3 flex flex-col gap-4'>
@@ -83,4 +78,4 @@ const Page = ({userData}) => {
   )
 }
 
-export default Page;
+export default Page

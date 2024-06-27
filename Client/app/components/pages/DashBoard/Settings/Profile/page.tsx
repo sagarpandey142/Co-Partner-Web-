@@ -7,9 +7,12 @@ import CountrySelect from '../../../../../../app/components/commonPage/CountrySe
 import { UpdateProfile } from '../../../../../../app/Services/operations/ProfileHandler';
 import toast from 'react-hot-toast';
 import { useUser } from '@auth0/nextjs-auth0/client';
+import { useSelector } from 'react-redux';
 
 
-const Page = ({ userData }) => {
+const Page = (  ) => {
+
+  const {userData}=useSelector((slice)=>slice.userDataSlice)
   const [state, setState] = useState({
     gender: "",
     education: userData?.Education || "",

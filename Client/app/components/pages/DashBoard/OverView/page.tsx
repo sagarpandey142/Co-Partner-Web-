@@ -1,5 +1,4 @@
 "use client"
-import { DecodedTokenHandler, GetUserDetail } from '../../../../../app/Services/ProfileHandler';
 import DashboardPage from '../../../../../app/components/commonPage/DashboardPage';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -8,12 +7,15 @@ import { BsSuitcaseLgFill } from 'react-icons/bs';
 import { CiBookmarkMinus } from 'react-icons/ci';
 import { FaArrowRight } from "react-icons/fa";
 import not_found from "../../../Assets/404.png";
+import { useDispatch, useSelector } from 'react-redux';
+import { updateclicktrack } from '../../../../../GlobalRedux/Features/Userdataslices';
 
-const Page = ({ userData, setClickTrack }) => {
+const Page = ( ) => {
+   const {userData}=useSelector((slice)=>slice.userDataSlice)
+   const dispatch=useDispatch();
   const router = useRouter();
-
   const handleNavigate = () => {
-    setClickTrack(3);
+    dispatch(updateclicktrack(5));
   };
 
   return (
@@ -24,7 +26,7 @@ const Page = ({ userData, setClickTrack }) => {
         {/* Applied project */}
         <div className="bg-orange-200 flex justify-between items-center p-4 gap-5 rounded-xl px-9">
           <div className="flex flex-col p-3">
-            <p className="text-2xl text-slate-800 font-semibold">{userData?.AppliedProject.length}</p>
+            <p className="text-2xl text-slate-800 font-semibold">{userData?.AppliedProject?.length}</p>
             <p className="text-slate-600 text-lg font-semibold">Applied Projects</p>
           </div>
           <div className="bg-white p-5 rounded-lg">
@@ -35,7 +37,7 @@ const Page = ({ userData, setClickTrack }) => {
         {/* Favorite project */}
         <div className="bg-gray-300 flex items-center p-4 gap-5 rounded-xl px-9">
           <div className="flex flex-col">
-            <p className="text-2xl text-slate-800 font-semibold">{userData?.SavedJobs.length}</p>
+            <p className="text-2xl text-slate-800 font-semibold">{userData?.SavedJobs?.length}</p>
             <p className="text-slate-600 text-lg font-semibold">Favorite Projects</p>
           </div>
           <div className="bg-white p-5 rounded-lg">
@@ -46,7 +48,7 @@ const Page = ({ userData, setClickTrack }) => {
         {/* Project Alerts */}
         <div className="bg-green-300 flex items-center gap-6 p-1 rounded-xl px-9">
           <div className="flex flex-col">
-            <p className="text-2xl text-slate-800 font-semibold">{userData?.Alerts.length}</p>
+            <p className="text-2xl text-slate-800 font-semibold">{userData?.Alerts?.length}</p>
             <p className="text-slate-600 text-lg font-semibold">Total Alerts</p>
           </div>
           <div className="bg-white p-5 rounded-lg">
@@ -58,7 +60,7 @@ const Page = ({ userData, setClickTrack }) => {
       {/* Compliments */}
       <div className="w-11/23 mt-4 bg-red-400 p-9 rounded-xl font-semibold flex justify-between items-center">
         <div>
-          <Image src={userData?.ProfileImage} alt="Profile Image" className="rounded-full h-[4rem] w-[4rem] object-cover" />
+          <img src={userData?.ProfileImage}  className="rounded-full h-[4rem] w-[4rem]  object-cover" />
         </div>
         <div className="flex gap-4 rounded-full">
           <div className="flex flex-col gap-2">

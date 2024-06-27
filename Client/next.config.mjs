@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import { ESLint } from 'eslint';
 dotenv.config();
 
 const nextConfig = {
@@ -10,7 +11,12 @@ const nextConfig = {
   images: {
     domains: ['img.freepik.com'],
   },
+  eSLint:{
+      ignoreDuringBuilds:true,
+  }
 };
+
+
 
 export default nextConfig;
  

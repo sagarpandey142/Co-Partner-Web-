@@ -10,12 +10,13 @@ import { GiCancel } from "react-icons/gi";
 import Threedot from "./threedot"
 import { useUser } from '@auth0/nextjs-auth0/client';
 import Image from 'next/image';
+import { useSelector } from 'react-redux';
 
 
 
 
-const Personalpage = ({ userData }) => {
-
+const Personalpage = (  ) => {
+  const {userData}=useSelector((slice)=>slice.userDataSlice)
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(userData?.ProfileImage ? userData?.ProfileImage : null);
   const { user, error, isLoading } = useUser();
@@ -105,7 +106,7 @@ const Personalpage = ({ userData }) => {
             <div {...getRootProps()} className='cursor-pointer mt-1 border-dashed border-4 border-gray-300 py-20 px-4 rounded-xl bg-gray-100'>
               <input {...getInputProps()} />
               {previewUrl ? (
-                <Image src={previewUrl} alt="Selected" className='w-full h-28  object-fill' />
+                <img src={previewUrl} alt="Selected" className='w-full h-28  object-fill' />
               ) : (
                 <div className='flex flex-col gap-1 mx-auto'>
                   <IoCloudUploadOutline className='mx-auto text-5xl text-slate-500' />
