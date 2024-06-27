@@ -8,7 +8,7 @@ import { Router } from "next/router";
 import MainContent from "./components/commonPage/MainContent";
 import RatingsAndReviewsPage from "./components/commonPage/RatingsAndReview";
 import TechStack from "./components/commonPage/TechStack"
-// import Featured from './components/commonPage/Featured'
+import Featured from './components/commonPage/Featured'
 import Footer from "./components/commonPage/Footer"
 import ProjectCard from "./components/commonPage/ProjectCard"
 import Category from "./components/commonPage/category"
@@ -29,7 +29,7 @@ export default async function Home() {
       <TechStack/>
       <Category/>
       <RatingsAndReviewsPage/>
-      {/* <Featured/> */}
+      <Featured/>
       <ProjectCard />
       <Footer/>
       

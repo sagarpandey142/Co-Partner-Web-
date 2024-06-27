@@ -11,9 +11,7 @@ const nextConfig = {
   images: {
     domains: ['img.freepik.com'],
   },
-  eSLint:{
-      ignoreDuringBuilds:true,
-  }
+
 };
 
 
