@@ -5,6 +5,24 @@ import Image from 'next/image'
 import React from 'react'
 import not_found from "../../../Assets/404.png"
 
+
+interface JobData {
+  id: string;
+  title: string;
+  description: string;
+  // Add other relevant fields
+}
+
+interface UserData {
+  id: string;
+  email: string;
+  name: string;
+  location: string;
+  SavedJobs?: JobData[];
+  AppliedProject?: any[];  // Define more specific types if needed
+  // Add other fields as necessary
+}
+
 const page = ({userData}) => {
   return (
     <div className=' p-20  w-[160%]   h-[100%]'>
@@ -20,7 +38,7 @@ const page = ({userData}) => {
               </div>
               ) : (
                 <div className=''>
-                      <Image src={not_found} className=' w-[25rem] h-[25rem] mx-auto'/>
+                      <Image src={not_found} alt='img' className=' w-[25rem] h-[25rem] mx-auto'/>
                  </div>
               )
          }

@@ -7,6 +7,10 @@ const nextConfig = {
     config.resolve.fallback = { fs: false };
     return config;
   },
+  images: {
+    domains: ['img.freepik.com'],
+  },
 };
 
 export default nextConfig;
+ 

@@ -10,6 +10,8 @@ import RatingsAndReviewsPage from "./components/commonPage/RatingsAndReview";
 import TechStack from "./components/commonPage/TechStack"
 import Featured from './components/commonPage/Featured'
 import Footer from "./components/commonPage/Footer"
+import ProjectCard from "./components/commonPage/ProjectCard"
+import Category from "./components/commonPage/category"
 
 
 export default async function Home() {
@@ -25,8 +27,10 @@ export default async function Home() {
       <NavBar/>
       <MainContent/>
       <TechStack/>
+      <Category/>
       <RatingsAndReviewsPage/>
       <Featured/>
+      <ProjectCard />
       <Footer/>
       
       
