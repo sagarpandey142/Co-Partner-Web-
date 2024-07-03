@@ -29,17 +29,17 @@ const Page = () => {
         dispatch(updateclicktrack(index));
   }
   return (
-    <div className=' w-[25rem]  overflow-hidden '>
-      <p className=' mt-8 text-slate-600 uppercase text-lg font-semibold'>Candidate Dashboard</p>
+    <div className=' w-[19rem]  overflow-hidden '>
+      <p className=' mt-8 text-slate-600 uppercase text-md font-semibold'>Candidate Dashboard</p>
       <div className=' flex flex-col  mt-5'>
         {DashboardArray.map((data, index) => {
           const IconComponent = iconMap[data.icon];
           return (
             <div key={index} onClick={()=>{
               handleclicktrack(index)
-            }} className={`flex gap-5 items-center p-4 pl-2 font-semibold cursor-pointer ${clicktrack==index ? "bg-blue-100 text-blue-700 border-l-[4px] border-blue-600" : "text-slate-600 "}`}>
-              <div className='text-3xl'>{IconComponent && <IconComponent />}</div>
-              <div className='text-lg'>{data.name}</div>
+            }} className={`flex gap-4 items-center p-4 pl-2 font-semibold cursor-pointer ${clicktrack==index ? "bg-blue-100 text-blue-700 border-l-[4px] border-blue-600" : "text-slate-600 "}`}>
+              <div className='text-2xl'>{IconComponent && <IconComponent />}</div>
+              <div className='text-md'>{data.name}</div>
             </div>
           );
         })}

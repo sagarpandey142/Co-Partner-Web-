@@ -11,7 +11,7 @@ const SkillButton: React.FC<SkillButtonProps> = ({ text, flag }) => {
 
   return (
     <button
-      className={`border-2 border-gray-300 gap-3 text-[#007AE9] px-4 py-1 rounded-full flex items-center mt-4 ${
+      className={`border-2 border-gray-300 gap-2 text-[#007AE9] px-2 py-1 rounded-full flex items-center mt-2 ${
         isSelected ? 'bg-[#007AE9] text-white font-bold' : ''
       }`}
     >

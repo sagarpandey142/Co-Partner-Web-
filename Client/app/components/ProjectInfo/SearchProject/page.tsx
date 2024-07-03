@@ -76,57 +76,71 @@ const Page = () => {
 );
 
 
-    function setProjectPublishedBasedOnFilter(){
-         if(FilterBasesOnTitle===""){
-             return;
-         } else{
-            let filtered = ProjectPublished?.filter((project) => {
-               const projectName = project?.projectName?.toLowerCase();
-               const projectDesc = project?.projectDescription?.toLowerCase();
-               const keyword = FilterBasesOnTitle?.toLowerCase();
-               return projectName.includes(keyword) || projectDesc.includes(keyword);
-             });
-             
-             const locationKeyword=FilterBasesOnLocation.toLowerCase();
-             const BasesOnLocation=ProjectPublished?.filter((project)=>{
-                   locationKeyword ? project?.profileId?.Location.toLowerCase().includes(locationKeyword) : true;
-             })
+function setProjectPublishedBasedOnFilter() {
+   if (FilterBasesOnTitle === "") {
+       return;
+   } else {
+       const keyword = FilterBasesOnTitle.toLowerCase();
+       const locationKeyword = FilterBasesOnLocation.toLowerCase();
 
-             
-             if(filtered.length<=0) return;
-            
-             setProjectPublished([...filtered,...BasesOnLocation,...ProjectPublished]);
-         }
-    }
+       let filtered = ProjectPublished?.filter((project) => {
+           const projectName = project?.projectName?.toLowerCase();
+           const projectDesc = project?.projectDescription?.toLowerCase();
+           return projectName.includes(keyword) || projectDesc.includes(keyword);
+       });
+
+       let BasesOnLocation = ProjectPublished?.filter((project) => {
+           return locationKeyword ? project?.profileId?.Location.toLowerCase().includes(locationKeyword) : true;
+       });
+
+       if (filtered.length <= 0) return;
+
+       const combinedProjects = [...filtered, ...BasesOnLocation, ...ProjectPublished];
+       
+       // Create a new Set to ensure uniqueness
+       const uniqueProjects = Array.from(new Set(combinedProjects.map(project => project._id)))
+                                   .map(id => combinedProjects.find(project => project._id === id));
+       
+       setProjectPublished(uniqueProjects);
+   }
+}
+
    
-    function filterBasesonFilterData(){
-      let filtered = [...ProjectPublished];
-      let filteredByIndustry = [];
-      let filteredByProjectLength = [];
-      let filteredByTechStack = [];
-      let filteredByRecent = [];
+function filterBasesonFilterData() {
+   let filtered = [...ProjectPublished];
+   let filteredByIndustry = [];
+   let filteredByProjectLength = [];
+   let filteredByTechStack = [];
+   let filteredByRecent = [];
+ 
+   if (filterdata.Industry) {
+       filteredByIndustry = filtered.filter((project) => project?.Category === filterdata.Industry);
+   }
+ 
+   if (filterdata.ProjectLength) {
+       filteredByProjectLength = filtered.filter((project) => project?.BasicDetail.projectLength === filterdata.ProjectLength);
+   }
+ 
+   if (filterdata.techStack.length > 0) {
+       filteredByTechStack = filtered.filter((project) =>
+           filterdata.techStack.every((tech) => project?.Skill.includes(tech))
+       );
+   }
   
-      if (filterdata.Industry) {
-          filteredByIndustry = filtered.filter((project) => project?.Category === filterdata.Industry);
-      }
-  
-      if (filterdata.ProjectLength) {
-          filteredByProjectLength = filtered.filter((project) => project?.BasicDetail.projectLength === filterdata.ProjectLength);
-      }
-  
-      if (filterdata.techStack.length > 0) {
-          filteredByTechStack = filtered.filter((project) =>
-              filterdata.techStack.every((tech) => project?.Skill.includes(tech))
-          );
-      }
-   
-      if (filterdata.ifRecentSelected) {
-          filteredByRecent = filtered.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-      }
-     setFilterOpen(false);
-     setProjectPublished([...ProjectPublished,...filteredByIndustry,...filteredByProjectLength,...filteredByTechStack,...filteredByRecent]);
-  }
-  
+   if (filterdata.ifRecentSelected) {
+       filteredByRecent = filtered.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+   }
+
+   const combinedProjects = [...ProjectPublished, ...filteredByIndustry, ...filteredByProjectLength, ...filteredByTechStack, ...filteredByRecent];
+
+   // Create a new Set to ensure uniqueness
+   const uniqueProjects = Array.from(new Set(combinedProjects.map(project => project._id)))
+                               .map(id => combinedProjects.find(project => project._id === id));
+
+   setFilterOpen(false);
+   setProjectPublished(uniqueProjects);
+}
+
     useEffect(()=>{
        getAllprojectPublishes();
     },[])
@@ -139,8 +153,8 @@ const Page = () => {
            <Navbar/>
            <div className=' bg-gray-200 p-5'>
                       <div className=' flex w-8/12 mx-auto justify-between'>
-                         <div className='font-bold text-lg'>Find Projects</div>
-                         <div className='font-bold text-lg'>Home/Find Project</div>
+                         <div className='font-bold text-sm'>Find Projects</div>
+                         <div className='font-bold text-sm'>Home/Find Project</div>
                       </div>
            </div>
 
@@ -163,20 +177,20 @@ const Page = () => {
                      <div className="  ">
                               <div className='w-8/12 mx-auto mt-7' >
                               <div className='flex gap-3 border-[2px] border-slate-300 p-2 rounded-xl'> 
-                                    <div className=' flex items-center gap-3 text-xl border-r-[3px] border-slate-300  w-[40%] '>
-                                       <CiSearch className=' text-4xl text-[#007AE9]' />
+                                    <div className=' flex items-center gap-3 text-md border-r-[3px] border-slate-300  w-[50%] '>
+                                       <CiSearch className=' text-2xl text-[#007AE9]' />
                                        <input placeholder='Search by : job title,position,KeyWords...' value={FilterBasesOnTitle} onChange={(e)=>{
                                           setFilterBasesOnTitle(e.target.value)
                                        }
                                        
-                                       }  className='outline-none text-slate-800 text-2xl'
+                                       }  className='outline-none text-slate-800 text-xl'
                                        onKeyDown={(e)=>{
                                           if(e.key=='Enter'){
                                              setProjectPublishedBasedOnFilter();
                                           }
                                        }}/>
                                     </div>
-                                    <div className=' flex items-center gap-3 text-xl w-[40%] '>
+                                    <div className=' flex items-center gap-3 text-md w-[40%] '>
                                        <IoLocationSharp className=' text-3xl text-[#007AE9]'/>
                                     <Autosuggest
                                        suggestions={locationSuggestions}
@@ -194,7 +208,7 @@ const Page = () => {
                                        <MdMyLocation className=' text-3xl text-[#007AE9] ml-28' />
                                     </div>
                                  
-                                    <button onClick={() => setFilterOpen(!filterOpen)} className=' border-[3px] border-slate-300 p-3 px-8 py-3 rounded-xl bg-gray-300 font-bold flex gap-2 items-center '>
+                                    <button onClick={() => setFilterOpen(!filterOpen)} className=' border-[3px] border-slate-300 p-3 px-5 py-2 rounded-xl bg-gray-300 font-bold flex gap-2 items-center '>
                                        <LuFilter/>
                                        <div>Filters</div>
                                     </button>
@@ -204,13 +218,13 @@ const Page = () => {
                               </div>
 
                               <div className=' mt-4 flex gap-3'>
-                                 <div className='text-slate-400 text-xl'>Popular Searches:</div>
+                                 <div className='text-slate-400 text-md'>Popular Searches:</div>
                                  {
                                        PopularSearches.slice(0,9).map((data,index)=>(
                                              <div key={index} className='font-semibold cursor-pointer' onClick={()=>{
                                                 setFilterBasesOnTitle(data);
                                              }}>
-                                                <div  className=' text-lg text-slate-500'>{data}</div>
+                                                <div  className=' text-md text-slate-500'>{data}</div>
                                              </div>
                                        ))
                                  }
@@ -224,7 +238,7 @@ const Page = () => {
                                     <div className="fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-md z-50 ">
                                        <div className="absolute w-[24rem] h-full transform  bg-white  rounded-xl overflow-scroll">
                                              <div className="flex justify-between p-6">
-                                                   <div className=" text-xl font-semibold text-slate-800">Filters</div>
+                                                   <div className=" text-md font-semibold text-slate-800">Filters</div>
                                                    <MdCancel className=" text-2xl font-semibold text-slate-800 cursor-pointer" onClick={()=>{
                                                       setFilterOpen(false);
                                                    }}/>
@@ -233,16 +247,18 @@ const Page = () => {
                                              {/* Display selected filters */}
                                              { (filterdata.Industry || filterdata.ProjectLength || filterdata.techStack.length > 0 || filterdata.ifRecentSelected) &&
                                                 <div className=" p-4 mt-4">
-                                                   <div className="text-lg font-semibold">Selected Filters:</div>
+                                                   <div className="text-md font-semibold">Selected Filters:</div>
                                                    <div className="mt-2 flex gap-2 flex-wrap">
                                                       {filterdata.Industry && <div className="bg-slate-200 text-slate-800  w-fit h-fit p-2 rounded-lg font-semibold"> {filterdata.Industry}</div>}
                                                       {filterdata.ProjectLength && <div  className="bg-slate-200 text-slate-800  w-fit h-fit p-2 rounded-lg font-semibold">{filterdata.ProjectLength}</div>}
                                                       {filterdata.techStack.length > 0 && (
                                                             <div className=" mt-2">
-                                                               <div className=" text-slate-800 text-xl font-semibold">Selected Tech Stack</div>
+                                                               <div className=" text-slate-800 text-md font-semibold">Selected Tech Stack</div>
+                                                             <div className=" flex gap-2">
                                                                {filterdata.techStack.map((tech, index) => (
                                                                   <div  className="bg-slate-200 text-slate-800  w-fit h-fit p-2 rounded-lg font-semibold" key={index}>{tech}</div>
                                                                ))}
+                                                            </div>
                                                             </div>
                                                       )}
                                                       {filterdata.ifRecentSelected && <div className="bg-slate-200 text-slate-800  w-fit h-fit p-2 rounded-lg font-semibold">Recent Projects</div>}
@@ -252,14 +268,14 @@ const Page = () => {
                                                             
                                              {/*indutry*/}
                                              <div className=" mt-4 p-6  border-b-2 border-slate-300">
-                                                   <div className="text-lg text-[#007AE9] font-semibold">Industry</div>
+                                                   <div className="text-md text-[#007AE9] font-semibold">Industry</div>
                                                    <div className=" ">
                                                       {
                                                          IndustryArray.map((data:String,index:number)=>(
                                                                <div className={`mt-2  cursor-pointer `} key={index} onClick={()=>{
                                                                   setFilterData({...filterdata,Industry:data})
                                                                }}>
-                                                                     <div className={`text-lg  font-semibold ${filterdata.Industry==data ? "bg-blue-200  p-2 rounded-lg text-[#007AE9]" : ""}`}>{data}</div>
+                                                                     <div className={`text-md  font-semibold ${filterdata.Industry==data ? "bg-blue-200  p-2 rounded-lg text-[#007AE9]" : ""}`}>{data}</div>
                                                                </div>
                                                          ))
                                                       }
@@ -268,7 +284,7 @@ const Page = () => {
 
                                              {/*Project type*/}
                                              <div className=" mt-4 p-6  border-b-2 border-slate-300">
-                                                <div  className="text-lg text-[#007AE9] font-semibold">Project Type</div>
+                                                <div  className="text-md text-[#007AE9] font-semibold">Project Type</div>
                                                 <div>
                                                       { 
                                                             ProjectLength.map((data:String,index:number)=>(
@@ -276,7 +292,7 @@ const Page = () => {
                                                                   setFilterData({...filterdata,ProjectLength:data})
                                                                }}>
                                                                      <Checkbox/>
-                                                                     <div className="text-lg text-slate-800 font-semibold">{data}</div>
+                                                                     <div className="text-md text-slate-800 font-semibold">{data}</div>
                                                                </div>
                                                          ))
                                                       }
@@ -284,8 +300,8 @@ const Page = () => {
                                              </div>
 
                                              {/*tech stack*/}
-                                             <div className="  p-6  border-b-2 border-slate-300">
-                                                      <div  className="text-lg text-[#007AE9] font-semibold">Select Tech Stack</div>
+                                             <div className="  p-4  border-b-2 border-slate-300">
+                                                      <div  className="text-md text-[#007AE9] font-semibold">Select Tech Stack</div>
                                                       <div className=" flex flex-wrap gap-1">
                                                             {
                                                                SkillRequired?.map((data:String,index:number)=>(

@@ -37,17 +37,17 @@ const Page = () => {
          deleteProject();
     }
   return (
-    <div className=' w-[150%] p-20  '>
+    <div className=' w-[140%] p-16  '>
          <p className=' text-slate-800 text-2xl font-semibold'>Your Project ({projectData?.length})</p>
                             {
                                      projectData == null ? (
                                      <div className=''>
-                                            <Image alt='image' src={not_found} className=' w-[25rem] h-[25rem] mx-auto'/>
+                                            <Image alt='image' src={not_found} className=' w-[20rem] h-[20rem] mx-auto'/>
                                      </div>
                                  ) : (
                                         <div className=' mt-3 flex flex-col gap-4'>
                                                     <div className=' mt-3 bg-gray-200 p-2 rounded-lg pl-2 pr-2'>
-                                                            <div className=' flex  text-slate-800 text-lg justify-around'>
+                                                            <div className=' flex  text-slate-800 text-md justify-around'>
                                                                     <div>
                                                                         Project
                                                                     </div>

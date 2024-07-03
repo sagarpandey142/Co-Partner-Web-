@@ -77,36 +77,36 @@ const Page = () => {
     }
 
   return (
-    <div className='p-20 w-[130%] h-[100%]'>
-      <p className='text-2xl text-slate-800 font-semibold'>Post A Project</p>
-      <div className='mt-5'>
+    <div className='p-20 w-[130%] h-[100%]  border-l-[3px] border-gray-200'>
+      <p className='text-md text-slate-800 font-semibold'>Post A Project</p>
+      <div className='mt-5 '>
         <div className='flex flex-col gap-2'>
-          <label htmlFor='title' className='text-lg text-slate-700 font-semibold'>Project Title</label>
+          <label htmlFor='title' className='text-md text-slate-700 font-semibold'>Project Title</label>
           <input
             id='title'
             placeholder='Add Project Title, Keywords, Etc'
             value={formData.title}
             onChange={handleInputChange}
-            className='rounded-xl outline-none pl-12 pr-4 py-3 border-[2px] border-slate-300 text-xl w-full'
+            className='rounded-xl outline-none pl-12 pr-4 py-2 border-[2px] border-slate-300 text-md w-full'
           />
         </div>
-        <div className='flex flex-col gap-2'>
-          <label htmlFor='category' className='text-lg text-slate-800 font-semibold'>Category</label>
+        <div className='flex flex-col gap-2 mt-2'>
+          <label htmlFor='category' className='text-md text-slate-800 font-semibold'>Category</label>
           <input
             id='category'
             placeholder='Add Category of Your Project'
             value={formData.category}
             onChange={handleInputChange}
-            className='rounded-xl outline-none pl-12 pr-4 py-3 border-[2px] border-slate-300 text-xl w-full'
+            className='rounded-xl outline-none pl-12 pr-4 py-2 border-[2px] border-slate-300 text-md w-full'
           />
         </div>
         <div className=' mt-5'>
-             <p className=' text-2xl text-slate-800 font-semibold'>Basic Details</p>
+             <p className=' text-md text-slate-800 font-semibold'>Basic Details</p>
             <div className=' flex gap-4  '>
              {/* level of experienc*/}
              <div className='  flex flex-col gap-2 mt-3 w-[50%] '>
-                 <p className=' text-lg text-slate-700 font-semibold'>Level of Experience Needed</p>
-                 <input className=' border-[2px] border-slate-300 px-4 py-3 outline-none  '  type="number" placeholder=' Enter Level Of Experience in number..'  onChange={(e)=>{
+                 <p className=' text-md text-slate-700 font-semibold'>Level of Experience Needed</p>
+                 <input className=' border-[2px] border-slate-300 px-4 py-2 outline-none  text-md '  type="number" placeholder=' Enter Level Of Experience in number..'  onChange={(e)=>{
                      setFormData({...formData,LevelExperience:e.target.value})
                  }}/>
              </div>
@@ -114,18 +114,18 @@ const Page = () => {
 
              {/*projectLength*/}
              <div  className='  flex flex-col gap-2 mt-3   w-[50%]'>
-                 <p className=' text-lg text-slate-700 font-semibold'>Project Length</p>
-                 <input className=' border-[2px] border-slate-300 px-4 py-3 outline-none  '  type="number" placeholder=' Enter Length Of Project (Months) in number only..' onChange={(e)=>{
+                 <p className=' text-md text-slate-700 font-semibold'>Project Length</p>
+                 <input className=' border-[2px] border-slate-300 px-4 py-3 outline-none  text-md '  type="number" placeholder=' Enter Length Of Project (Months) in number only..' onChange={(e)=>{
                      setFormData({...formData,projectLength:e.target.value})
                  }}/>
              </div>
          </div>
         </div>
-        <div className='mt-6 bg-gray-100 rounded-lg p-7 py-5'>
-          <p className='text-xl text-slate-800 font-semibold'>Location</p>
+        <div className='mt-6 bg-gray-100 rounded-lg p-7 py-3'>
+          <p className='text-md text-slate-800 font-semibold'>Location</p>
           <div className='flex items-center gap-4'>
             <div className='mt-3 w-[50%] flex flex-col gap-2'>
-              <label className='text-lg text-slate-800 font-semibold'>Country</label>
+              <label className='text-md text-slate-800 font-semibold'>Country</label>
               <CountrySelect
                 value={formData.country}
                 onChange={(value) => setFormData(prevState => ({
@@ -137,13 +137,13 @@ const Page = () => {
               />
             </div>
             <div className='mt-3 w-[50%] flex flex-col gap-2'>
-              <label htmlFor='city' className='text-lg text-slate-800 font-semibold'>City</label>
+              <label htmlFor='city' className='text-md text-slate-800 font-semibold'>City</label>
               <input
                 id='city'
                 placeholder='Type Your City...'
                 value={formData.city}
                 onChange={handleInputChange}
-                className='rounded-xl outline-none pl-12 pr-4 py-3 border-[2px] border-slate-300 text-xl w-full'
+                className='rounded-xl outline-none  p-2 pr-3 py-3 border-[2px] border-slate-300 text-md w-full'
               />
             </div>
           </div>
@@ -153,8 +153,8 @@ const Page = () => {
               checked={formData.fullyRemote}
               onChange={handleInputChange}
             />
-            <p className='text-slate-500 text-lg flex'>
-              Fully Remote Position - <span className='text-slate-800 font-semibold text-lg'>Worldwide</span>
+            <p className='text-slate-500 text-md flex'>
+              Fully Remote Position - <span className='text-slate-800 font-semibold text-md'>Worldwide</span>
             </p>
           </div>
         </div>
@@ -166,7 +166,7 @@ const Page = () => {
               <div
                 key={index}
                 onClick={() => handleSkillClick(data.name)}
-                className={`rounded-lg px-4 py-2 cursor-pointer bg-gray-100 ${
+                className={`rounded-lg px-3 py-1 cursor-pointer bg-gray-100 ${
                   formData.selectedSkills.includes(data.name)
                     ? 'text-blue-700 border-blue-700 font-bold border-[2px]'
                     : ' border-gray-400 text-gray-500 border-[2px]'
@@ -185,12 +185,12 @@ const Page = () => {
           <div className=' w-10/12 p-5 py-24 mt-5 flex flex-col gap-1 border-[3px] border-dashed border-slate-300  cursor-pointer' {...getRootProps()}>
             <input {...getInputProps()} />
             <MdOutlineCloudUpload className='mx-auto text-5xl text-blue-700' />
-            <p className='mx-auto'><span className='text-blue-700 text-lg font-bold mx-auto'>Browse photo</span> or drop here</p>
+            <p className='mx-auto'><span className='text-blue-700 text-md font-bold mx-auto'>Browse photo</span> or drop here</p>
             <p className='text-slate-500 mx-auto'>A photo larger than 400 pixels works best. Max photo size 5 MB</p>
             {formData.files?.name && (
               <div className='mt-3 mx-auto'>
-                <p className='text-lg text-slate-800 font-semibold'>Selected Files:</p>
-                <ul className='list-disc pl-5 text-slate-400 text-lg font-semibold'>
+                <p className='text-md text-slate-800 font-semibold'>Selected Files:</p>
+                <ul className='list-disc pl-5 text-slate-400 text-md font-semibold'>
                     <li>{formData.files?.name}</li>
                 </ul>
               </div>
@@ -206,7 +206,7 @@ const Page = () => {
             placeholder='Add Your Project Description'
             value={formData.projectDescription}
             onChange={handleInputChange}
-            className='text-lg text-slate-800 p-3 outline-none border-[2px] border-slate-300 w-full'
+            className='text-md text-slate-800 p-3 outline-none border-[2px] border-slate-300 w-full'
           />
         </div>
 

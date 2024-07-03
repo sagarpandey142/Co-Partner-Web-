@@ -24,7 +24,7 @@ const Page = () => {
   const[userdata,setUserdata]=useState(null);
   const[applied,setapplied]=useState(false);
   const projectId = searchParams.get("projectid");
-  const [isSaved, setIsSaved] = useState(userdata && userdata?.AppliedProject.some(project => project._id === projectId));
+  const [isSaved, setIsSaved] = useState(false);
   const dispatch=useDispatch();
   const projectPublished = useSelector((state) => state.ProjectSlice.ProjectPublished);
   const[loading,setloading]=useState(false);
@@ -34,6 +34,7 @@ const Page = () => {
        getProjectDetails();
       
   }, []);
+ 
 
 
   const getProjectDetails = async () => {
@@ -54,7 +55,7 @@ const Page = () => {
   const findUserDetail = async () => {
     try {
       const response = await GetUserDetail(user?.email);
-      setUserdata(response?.data?.response);
+       setUserdata(response?.data?.response);
     } catch (error) {
       console.error("Error fetching user details:", error);
     }
@@ -63,6 +64,7 @@ const Page = () => {
   if(user && userdata==null){
        findUserDetail();
   }
+
 
   const handleSavedProject = async (projectId) => {
     
@@ -88,6 +90,11 @@ const Page = () => {
       toast.error("Project Already Applied")
       return;
      }
+     if(response?.data?.message == "You cannot apply to a project you've created."){
+      setapplied(true)
+      toast.error("You cannot apply to a project you've created.")
+      return;
+     }
      
      setapplied(true);
   }
@@ -95,6 +102,25 @@ const Page = () => {
   const handlearrowclick=()=>{
        router.push("/components/ProjectInfo/SearchProject")
   }
+
+  const setissavedafterUserData=()=>{
+    const issaved=userdata?.SavedJobs?.some(project =>
+        project._id==projectId);
+    setIsSaved(issaved);
+  }
+
+  const setisAppliedafterUserData=()=>{
+    const isApplied=userdata?.AppliedProject?.some(project =>
+        project._id==projectId);
+      setapplied(isApplied);
+  }
+
+  useEffect(()=>{
+     setissavedafterUserData();
+     setisAppliedafterUserData();
+  },[userdata])
+
+
 
  
   return (
@@ -110,7 +136,7 @@ const Page = () => {
          }
       <div className='bg-gray-200 p-5'>
         <div className='flex w-8/12 mx-auto justify-between'>
-          <div className='font-bold text-lg'>Job Details</div>
+          <div className='font-bold text-md'>Job Details</div>
           <div className='font-semibold text-md text-slate-400 flex'>
             Home / Find Job / {projectData?.Category} / <div className='text-black'>Job Details</div>
           </div>
@@ -125,7 +151,7 @@ const Page = () => {
             <div className='flex flex-col gap-1'>
               <p className='text-slate-900 font-bold text-2xl'>{projectData?.projectName}</p>
               <div className='flex gap-2 items-center'>
-                <p className='text-slate-600 text-lg'>By {projectData?.profileId?.name}</p>
+                <p className='text-slate-600 text-md'>By {projectData?.profileId?.name}</p>
                 <p className='bg-green-600 text-white font-semibold px-3 py-2 rounded-md'>{projectData?.BasicDetail?.projectLength} Months</p>
                 <p className='bg-pink-200 text-pink-400 px-2 py-2 font-bold rounded-lg'>Featured</p>
               </div>
@@ -144,16 +170,16 @@ const Page = () => {
         <div className='mt-10 flex gap-2'>
           {/* Project description */}
           <div className='w-[60%] flex flex-col gap-3'>
-            <p className='text-xl text-slate-900 font-bold'>Project Description</p>
-            <p className='text-slate-600 text-xl w-10/12'>{projectData?.projectDescription}</p>
+            <p className='text-md text-slate-900 font-bold'>Project Description</p>
+            <p className='text-slate-600 text-md w-10/12'>{projectData?.projectDescription}</p>
             <div className='mt-4 flex flex-col gap-2'>
-              <p className='text-xl text-slate-600 font-bold flex gap-2'>
+              <p className='text-md text-slate-600 font-bold flex gap-2'>
                 More About <div className='text-slate-900'>{projectData?.profileId?.name}</div>
               </p>
-              <p className='text-slate-600 text-xl w-10/12'>{projectData?.profileId?.User_Bio}</p>
+              <p className='text-slate-600 text-md w-10/12'>{projectData?.profileId?.User_Bio}</p>
             </div>
             <div className='ml-3 mt-2 flex flex-col gap-2 border-[3px] border-slate-300 rounded-lg p-3 w-10/12'>
-              <p className='text-xl text-slate-900 font-bold flex items-center gap-2'>
+              <p className='text-md text-slate-900 font-bold flex items-center gap-2'>
                 <FaArrowRight /> His Technical Skills
               </p>
               <div className='flex gap-2 flex-wrap'>
@@ -169,18 +195,18 @@ const Page = () => {
             <div className='border-[3px] border-slate-300 flex h-[10rem] p-2 rounded-lg'>
               <div className='flex flex-col justify-center items-center mx-auto p-3 w-[50%]'>
                 <AiFillExperiment className='text-3xl text-[#007AE9]' />
-                <p className='mx-auto text-lg text-slate-900 font-bold'>Level of Experience</p>
-                <p className='text-lg text-green-700 font-semibold uppercase'>{projectData?.BasicDetail?.LevelExperience}</p>
+                <p className='mx-auto text-sm text-slate-900 font-bold'>Level of Experience</p>
+                <p className='text-sm text-green-700 font-semibold uppercase'>{projectData?.BasicDetail?.LevelExperience}</p>
               </div>
               <div className='flex flex-col justify-center items-center mx-auto p-3 w-[50%] border-l-[2px] border-slate-300'>
                 <IoMapSharp className='text-3xl text-[#007AE9]' />
-                <p className='mx-auto text-lg text-slate-900 font-bold'>Job Location</p>
-                <p className='text-lg text-slate-500 uppercase'>{projectData?.profileId?.Location ? projectData?.profileId?.Location : "India"}</p>
+                <p className='mx-auto text-md text-slate-900 font-bold'>Job Location</p>
+                <p className='text-md text-slate-500 uppercase'>{projectData?.profileId?.Location ? projectData?.profileId?.Location : "India"}</p>
               </div>
             </div>
             {/* Key skills required */}
             <div className='flex flex-col gap-2 border-[3px] border-slate-300 rounded-lg p-3'>
-              <p className='text-xl text-slate-900 font-bold gap-2'>Key Technical Skills Needed</p>
+              <p className='text-md text-slate-900 font-bold gap-2'>Key Technical Skills Needed</p>
               <div className='flex gap-2 flex-wrap'>
                 {projectData?.Skill?.map((data, index) => (
                   <div key={index} className='bg-slate-300 p-2 px-3 rounded-lg text-green-800 font-semibold'>

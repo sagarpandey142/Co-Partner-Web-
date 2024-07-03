@@ -38,7 +38,7 @@ const DashboardPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-            <p className="mt-4 text-lg text-gray-600">Welcome back, User! Here&apos;s your dashboard.</p>
+            <p className="mt-4 text-md text-gray-600">Welcome back, User! Here&apos;s your dashboard.</p>
             <div className="mt-6">
               {/* Your dashboard content */}
             </div>

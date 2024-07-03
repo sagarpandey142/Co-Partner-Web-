@@ -26,7 +26,7 @@ const PopularTechStackSection: React.FC = () => {
         {techStack.map((tech) => (
           <div key={tech.id} className="flex flex-col items-center justify-center bg-white shadow-md rounded-lg overflow-hidden">
             <img src={tech.logo} alt={tech.name} className="h-20 w-20 object-contain" />
-            <h2 className="text-lg font-semibold mt-4">{tech.name}</h2>
+            <h2 className="text-md font-semibold mt-4">{tech.name}</h2>
           </div>
         ))}
       </div>

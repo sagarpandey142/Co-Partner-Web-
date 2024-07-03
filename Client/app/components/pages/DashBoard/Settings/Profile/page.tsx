@@ -56,17 +56,17 @@ const Page = (  ) => {
   return (
     <div className='mt-7 w-full flex flex-wrap gap-4'>
       <div className='flex flex-col gap-2 w-[47%]'>
-        <label htmlFor='nationality' className='text-lg text-slate-800 font-semibold'>Nationality</label>
+        <label htmlFor='nationality' className='text-md text-slate-800 font-semibold'>Nationality</label>
         <CountrySelect />
       </div>
 
       <div className='flex flex-col gap-2 w-[47%]'>
-        <label htmlFor='gender' className='text-lg text-slate-800 font-semibold'>Gender</label>
+        <label htmlFor='gender' className='text-md text-slate-800 font-semibold'>Gender</label>
         <select 
           name="gender" 
           value={state.gender} 
           onChange={handleInputChange} 
-          className='outline-none px-2 py-4 border-[2px] border-slate-300 text-lg'
+          className='outline-none px-2 py-4 border-[2px] border-slate-300 text-md'
         >
           <option value="">Select an option...</option>
           <option value="male">Male</option>
@@ -75,12 +75,12 @@ const Page = (  ) => {
       </div>
 
       <div className='flex flex-col gap-2 w-[47%]'>
-        <label htmlFor='education' className='text-lg text-slate-800 font-semibold'>Education</label>
+        <label htmlFor='education' className='text-md text-slate-800 font-semibold'>Education</label>
         <select 
           name="education" 
           value={state.education} 
           onChange={handleInputChange} 
-          className='outline-none px-2 py-4 border-[2px] border-slate-300 text-lg'
+          className='outline-none px-2 py-4 border-[2px] border-slate-300 text-md'
         >
           <option value="">Select an option...</option>
           <option value="school">School</option>
@@ -90,12 +90,12 @@ const Page = (  ) => {
       </div>
 
       <div className='flex flex-col gap-2 w-[47%]'>
-        <label htmlFor='experience' className='text-lg text-slate-800 font-semibold'>Experience</label>
+        <label htmlFor='experience' className='text-md text-slate-800 font-semibold'>Experience</label>
         <select 
           name="experience" 
           value={state.experience} 
           onChange={handleInputChange} 
-          className='outline-none px-2 py-4 border-[2px] border-slate-300 text-lg place-content-start'
+          className='outline-none px-2 py-4 border-[2px] border-slate-300 text-md place-content-start'
         >
           <option value="">Select an option...</option>
           <option value="less_than_1">Less than 1 year</option>
@@ -105,7 +105,7 @@ const Page = (  ) => {
       </div>
 
       <div className='flex flex-col gap-2 w-[100%] h-fit p-3'>
-        <label htmlFor='description' className='text-lg text-slate-800 font-semibold'>Biography</label>
+        <label htmlFor='description' className='text-md text-slate-800 font-semibold'>Biography</label>
         <ReactQuill 
           value={state.editorContent} 
           onChange={handleEditorChange} 

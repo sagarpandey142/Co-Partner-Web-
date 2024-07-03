@@ -16,7 +16,7 @@ const RatingsAndReviewsPage: React.FC = () => {
         {reviews.map((review) => (
           <div key={review.id} className="bg-white shadow-md rounded-lg overflow-hidden">
             <div className="p-4">
-              <h2 className="text-lg font-semibold">{review.name}</h2>
+              <h2 className="text-md font-semibold">{review.name}</h2>
               <div className="flex items-center mt-2">
                 <div className="flex items-center">
                   {[...Array(review.rating)].map((_, index) => (

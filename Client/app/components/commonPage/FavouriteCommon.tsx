@@ -14,7 +14,7 @@ import { RemoveSavedProject, addSavedProject } from '../../../app/Services/opera
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { useSelector } from 'react-redux';
 
-const FavouriteCommon = (cardData:[] ) => {
+const FavouriteCommon = ({cardData }) => {
   const router = useRouter();
   const [isSaved, setIsSaved] = useState(true);
   const { user, error, isLoading } = useUser();
@@ -61,7 +61,7 @@ const FavouriteCommon = (cardData:[] ) => {
   };
 
   return (
-    <div className='flex justify-between items-center border-b-[2px] border-slate-300 p-2 mb-5 '>
+    <div className='flex justify-between items-center border-b-[3px] border-slate-300 p-2 mb-5 '>
        <div>
         <div className='flex gap-3'>
           <div>
@@ -69,15 +69,15 @@ const FavouriteCommon = (cardData:[] ) => {
           </div>
           <div className='flex flex-col gap-1'>
             <div className='flex gap-3'>
-              <p className='text-xl text-slate-800 font-semibold'>{cardData.projectName}</p>
+              <p className='text-md text-slate-800 font-semibold'>{cardData.projectName}</p>
               <p className='bg-blue-100 text-blue-700 rounded-2xl px-2 py-1'>Remote</p>
             </div>
-            <div className='text-slate-500 text-lg flex gap-3 '>
-              <p className='flex gap-2 items-center text-lg'>
+            <div className='text-slate-500 text-md flex gap-3 '>
+              <p className='flex gap-2 items-center text-md'>
                 <CiLocationOn />
                 {/* Define location or extract from cardData */}
               </p>
-              <p className='flex gap-1 items-center text-lg'>
+              <p className='flex gap-1 items-center text-md'>
                 <IoIosTime />
                 {cardData?.BasicDetail?.projectLength} Months
               </p>
@@ -87,10 +87,10 @@ const FavouriteCommon = (cardData:[] ) => {
       </div>
 
       <div className='flex gap-3 items-center'>      
-        <div className='bg-blue-200 px-4 py-4 rounded-lg cursor-pointer' onClick={() => handleSavedProject()}>
-          {isSaved ? <FaBookmark className='text-2xl text-blue-700 font-bold' /> : <CiBookmark className='text-2xl text-blue-700 font-bold' />}
+        <div className='bg-blue-200 px-4 py-3 rounded-lg cursor-pointer' onClick={() => handleSavedProject()}>
+          {isSaved ? <FaBookmark className='text-xl text-blue-700 font-bold' /> : <CiBookmark className='text-2xl text-blue-700 font-bold' />}
         </div>  
-        <div className='cursor-pointer text-white font-bold bg-blue-600 h-fit p-5 rounded-lg text-lg flex items-center gap-2'
+        <div className='cursor-pointer text-white font-bold bg-blue-600 h-fit p-3 rounded-lg text-md flex items-center gap-2'
           onClick={() => {
             handleNavigate(cardData._id);
           }}>

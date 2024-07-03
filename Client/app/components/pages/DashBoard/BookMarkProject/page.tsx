@@ -8,8 +8,8 @@ import { useSelector } from 'react-redux'
 const Page = () => {
   const {userData}=useSelector((slice)=>slice.userDataSlice)
   return (
-    <div className=' p-20  w-[160%]   h-[100%]'>
-        <p className=' text-slate-800 text-2xl font-semibold'>Favourite Project (<span className=' text-slate-600'>{userData?.SavedJobs?.length}</span>)</p>
+    <div className=' p-16  w-[150%]   h-[100%] border-l-[2px] border-gray-200'>
+        <p className=' text-slate-800 text-xl font-semibold'>Favourite Project (<span className=' text-slate-600'>{userData?.SavedJobs?.length}</span>)</p>
          {
               userData?.SavedJobs?.length>0 ? (
                 <div className=' mt-5'>
@@ -21,7 +21,7 @@ const Page = () => {
               </div>
               ) : (
                 <div className=''>
-                      <Image src={not_found} className=' w-[25rem] h-[25rem] mx-auto'/>
+                      <Image src={not_found} className=' w-[20rem] h-[20rem] mx-auto'/>
                  </div>
               )
          }

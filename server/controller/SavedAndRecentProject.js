@@ -5,7 +5,7 @@ const Project = require("../Models/Project")
 exports.addSavedProject = async (req, res) => {
     try {
         const { Email, projectId } = req.body;
-        
+        console.log("re",req.body)
         const profileInfo = await Profile.findOne({ Email }).populate("SavedJobs").exec();
         if (!profileInfo) {
             return res.status(404).json({
@@ -24,11 +24,10 @@ exports.addSavedProject = async (req, res) => {
         }
 
         profileInfo.SavedJobs.push(projectId);
-
+       
 
         await profileInfo.save();
 
-        // await profileInfo.populate("SavedJobs").execPopulate();
         await profileInfo.populate("SavedJobs");
 
 

@@ -67,23 +67,23 @@ const MainCard: React.FC<MainCardProps> = ({ CardData = [] }) => {
         {currentCards.map((data: Project, index: number) => {
           const actualIndex: number = indexOfFirstCard + index;
           return (
-            <div key={actualIndex} className='bg-white w-[32rem] p-2 flex flex-col cursor-pointer'>
-              <Image src={actualIndex % 2 === 0 ? cardpic : cardpic3} alt='img' className='h-[17rem] rounded-t-lg'/>
+            <div key={actualIndex} className='bg-white w-[25rem] p-2 flex flex-col cursor-pointer'>
+              <Image src={actualIndex % 2 === 0 ? cardpic : cardpic3} alt='img' className='h-[15rem] rounded-t-lg'/>
               <div className='rounded-b-lg border-[3px] border-slate-300'>
                 <div className='w-11/12 mt-4'>
                   <div className='flex justify-between items-center ml-7'>
-                    <div className='uppercase text-slate-500 font-semibold text-lg'>{data?.profileId?.Professional_Role}</div>
+                    <div className='uppercase text-slate-500 font-semibold text-sm'>{data?.profileId?.Professional_Role}</div>
                     <div className='uppercase text-slate-600 text-md pr-3'>{getTimeDifference(data?.createdAt)}</div>
                   </div>
                   <div className='mt-2 flex flex-col gap-3 ml-7'>
-                    <div className='text-2xl text-slate-800 font-bold w-11/12'>{data?.projectName}</div>
-                    <div className='text-xl w-11/12'>
+                    <div className='text-md text-slate-800 font-bold w-11/12'>{data?.projectName}</div>
+                    <div className='text-sm w-11/12'>
                       {data?.projectDescription.length > 90 
                           ? `${data?.projectDescription.slice(0, 90)}...` 
                           : data?.projectDescription}
                     </div>
                   </div>
-                  <div className='flex justify-between mt-4 text-lg font-semibold mb-4 ml-7'>
+                  <div className='flex justify-between mt-4 text-md font-semibold mb-4 ml-7'>
                     <div className='flex gap-2 items-center'>
                       <div>
                         <img src={data?.profileId?.ProfileImage} className='rounded-full h-[3rem] w-[3rem] object-cover' alt='Image'/>

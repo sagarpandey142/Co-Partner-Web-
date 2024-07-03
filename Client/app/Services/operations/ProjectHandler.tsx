@@ -47,7 +47,7 @@ export const findProjectByEmail = async (Email) => {
 export const addSavedProject = async (_id, Email) => {
   const loadingToast = toast.loading("Saving project...");
   try {
-    const response = await axios.post(ProjectApiDetail.addSavedProject, { projectId: _id ,Email});
+    const response = await axios.post(ProjectApiDetail.addSavedProject, {Email, projectId: _id });
     toast.dismiss(loadingToast);
     toast.success("Project saved successfully!");
     return response;

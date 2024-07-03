@@ -51,7 +51,7 @@ const Page = () => {
         ) : (
           <div className='mt-2 border-t-[2px] border-slate-300 overflow-hidden'>
             <div className='w-8/12 mx-auto flex gap-2'>
-            <div className=' h-screen border-r-[3px] border-slate-300   '>
+            <div className=' h-screen   '>
               <Sidebar />
             </div>
               <div className=''>

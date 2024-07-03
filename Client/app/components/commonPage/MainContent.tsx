@@ -40,7 +40,7 @@ const MainContent  = () => {
       
         <div className='flex flex-col gap-5'>
           <p className='text-4xl text-slate-800 font-semibold '>Find a Project that suits your interest & skills.</p>
-          <p className="text-slate-600 text-lg max-w-[80%] ">
+          <p className="text-slate-600 text-md max-w-[80%] ">
             Creating a successful project involves defining clear and specific goals, developing a comprehensive plan with timelines and milestones.
           </p>
           <button className="mt-10 bg-blue-600 text-white max-w-[40%] px-4 py-2 rounded-md hover:bg-blue-700 border-2 border-blue-600 transition-colors duration-300 text-center whitespace-nowrap" onClick={()=>router.push('/createProject')}>Post A Project...</button>

@@ -163,7 +163,7 @@ async function list(_criteria) {
 // Assuming you have the necessary imports and setup
 
 async function AddProject(req, res){
-  console.log("hii", req.body)
+ 
   try {
     const {Email, projectName, projectDescription,Skill,BasicDetail, Category,projectPicture } = req.body;
     if (!Email || !Skill || !projectName || !projectDescription || !BasicDetail || !Category) {
@@ -294,7 +294,7 @@ async function AppliedProject(req, res) {
      // Check if project is already applied to
      const matchesProject = profile.AppliedProject.includes(projectid);
      if (matchesProject) {
-         return res.status(404).json({
+         return res.status(200).json({
              success: false,
              message: "Project already applied"
          });
@@ -305,7 +305,7 @@ async function AppliedProject(req, res) {
       // Check if the project creator is the same as the user applying for it
       console.log("projectid",profile,ProjectInfo)
     if (ProjectInfo.profileId.equals(profile._id)) {
-      return res.status(404).json({
+      return res.status(200).json({
         success: false,
         message: "You cannot apply to a project you've created."
       });
