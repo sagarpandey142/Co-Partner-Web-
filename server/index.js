@@ -6,12 +6,14 @@ const { dbConnect } = require("./config/DbConnection");
 
 var fileUpload = require('express-fileupload');
 app.use(fileUpload());
+
 // Routes
 const Profile = require("./Routes/Profile");
 const User = require("./Routes/User");
 const Project = require('./Routes/Project');
 const SavedAndRecentRoute = require("./Routes/SavedAndRecent");
 const AlertRoute=require("./Routes/Alert")
+const RatingAndReviewRoute=require("./Routes/RatingAndReviewRoute")
 
 const cors = require("cors");
 const PORT = 4000;
@@ -42,6 +44,7 @@ app.use("/v1", Profile);
 app.use("/v1", Project);
 app.use("/v1", SavedAndRecentRoute);
 app.use("/v1",AlertRoute)
+app.use("/v1",RatingAndReviewRoute)
 
 // Start the server
 app.listen(PORT, () => {

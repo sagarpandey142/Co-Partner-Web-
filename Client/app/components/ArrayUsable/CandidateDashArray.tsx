@@ -1,4 +1,4 @@
-export const  DashboardArray=[
+ const  DashboardArray=[
     {icon:"MdOutlineLibraryBooks",name:"OverView"},
     {icon:"LuBadgePlus",name:"Post A Project"},
     {icon:"IoCopyOutline",name:"Your Projects"},
@@ -6,3 +6,5 @@ export const  DashboardArray=[
     {icon:"CiBookmarkMinus",name:"Favourite Project"},
     {icon:"MdOutlineSettings",name:"Settings"},
 ]
+
+export default DashboardArray

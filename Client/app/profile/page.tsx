@@ -1,9 +1,9 @@
 import { getSession } from "@auth0/nextjs-auth0";
 import ProfileClient from "./components/user-client";
 import { redirect } from "next/navigation";
-import NavBar from '../../app/components/commonPage/Navbar'
+import NavBar from '../components/HomePage/MainContent'
 import Image from "next/image"
-import MainContent from "../components/commonPage/MainContent";
+import MainContent from "../components/HomePage/MainContent";
 
 const Profile = async () => {
   const session = await getSession();

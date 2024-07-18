@@ -34,3 +34,9 @@ export const  profileApiDetail={
   updateResume:BACKEND_URL  +"v1/updateResume",
   deleteProfile:BACKEND_URL+"v1/deleteProfile"
 }
+
+export const RatingAndReviewApi={
+    CreateRating:BACKEND_URL+"v1/createRating",
+    getAllRating:BACKEND_URL+"v1/getRating",
+    CheckSpecificUserRating:BACKEND_URL+"v1/CheckUserRating"
+}

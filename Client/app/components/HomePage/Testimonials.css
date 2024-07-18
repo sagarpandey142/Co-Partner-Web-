@@ -1,0 +1,40 @@
+/* Testimonials.css */
+
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Adjust as needed */
+}
+
+.swiper-pagination {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #007AE9;
+    font-size: 2rem; /* Adjust size as needed */
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.swiper-button-next {
+    right: 10px; /* Adjust positioning as needed */
+}
+
+.swiper-button-prev {
+    left: 10px; /* Adjust positioning as needed */
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    color: #0056b3; /* Adjust color on hover */
+}

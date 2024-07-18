@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import React from 'react';
 import { CiLocationOn } from "react-icons/ci";
@@ -8,9 +8,24 @@ import { FaArrowRight } from "react-icons/fa";
 import { useRouter } from 'next/navigation';
 import { RiDeleteBack2Line } from "react-icons/ri";
 
+interface BasicDetail {
+  projectLength: number; // Adjust the type based on actual data structure
+}
 
+interface CardData {
+  _id: string;
+  projectName: string;
+  BasicDetail: BasicDetail;
+}
 
-const DashboardPage= ({
+interface DashboardPageProps {
+  cardData: CardData;
+  Location?: string;
+  deleteicon?: boolean;
+  setdeleteproject?: (id: string) => void;
+}
+
+const DashboardPage: React.FC<DashboardPageProps> = ({
   cardData,
   Location = "India",
   deleteicon = false,

@@ -18,7 +18,7 @@ import Switch from '@mui/material/Switch';
 import Autosuggest from 'react-autosuggest';
 import { useDispatch, useSelector } from "react-redux";
 import { updateProjectSlice } from "../../../../GlobalRedux/Features/ProjectSlice";
-import Navbar from "../../commonPage/Navbar";
+import Navbar from "../../HomePage/Navbar";
 import Footer from "../../commonPage/Footer";
 import Image from "next/image";
 import not_found from "../../Assets/404.png"

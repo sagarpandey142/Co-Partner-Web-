@@ -2,14 +2,18 @@
 import Image from "next/image";
 import { getSession } from "@auth0/nextjs-auth0";
 import front from "./components/Assets/front.jpg"
-import NavBar from "./components/commonPage/Navbar"
 import ProfileClient from "./profile/components/user-client";
 import { Router } from "next/router";
-import MainContent from "./components/commonPage/MainContent";
+import MainContent from "./components/HomePage/MainContent";
 import RatingsAndReviewsPage from "./components/commonPage/RatingsAndReview";
-import TechStack from "./components/commonPage/TechStack"
-// import Featured from './components/commonPage/Featured'
+import Featured from './components/commonPage/Featured'
 import Footer from "./components/commonPage/Footer"
+import ProjectCard from "./components/commonPage/ProjectCard"
+import Vacancy from "./components/HomePage/Vacancy"
+import Working from "./components/HomePage/Working";
+import Category from "./components/HomePage/Category";
+import FeaturedProject from "./components/HomePage/FeaturedProject";
+import Testimonials from "./components/HomePage/Testimonials";
 
 
 export default async function Home() {
@@ -22,14 +26,14 @@ export default async function Home() {
     
     <div className=''>
       {/* <ProfileClient/> */}
-      <NavBar/>
+
       <MainContent/>
-      <TechStack/>
-      <RatingsAndReviewsPage/>
-      {/* <Featured/>  */}
+      <Vacancy/>
+      <Working/>
+      <Category/>
+      <FeaturedProject/>
+      <Testimonials/>
       <Footer/>
-      
-      
     </div>
   );
 }

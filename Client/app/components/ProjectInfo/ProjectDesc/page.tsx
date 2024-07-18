@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import {ApplyProject, FetchProjectById, RemoveSavedProject, addSavedProject, findProjectById} from "../../../Services/operations/ProjectHandler"
-import Navbar from '../../../../app/components/commonPage/Navbar'
+import Navbar from '../../HomePage/Navbar'
 import { CiBookmark } from "react-icons/ci";
 import { FaArrowRight } from "react-icons/fa";
 import Footer from '../../commonPage/Footer';

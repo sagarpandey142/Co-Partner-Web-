@@ -6,7 +6,7 @@ import Page from "../PrivacyPolicy/page"
 import Footer from '../commonPage/Footer';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import NavBar from '../commonPage/Navbar';
+import NavBar from '../HomePage/MainContent';
 
 const Home = () => {
   return (
