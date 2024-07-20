@@ -117,4 +117,4 @@ const ReviewSidebarModal= ({ setreviewModal }) => {
   );
 };
 
-export default ReviewSidebarModal;
+export default ReviewSidebarModal
