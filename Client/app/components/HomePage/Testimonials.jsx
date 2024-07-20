@@ -5,16 +5,8 @@ import ReactStars from 'react-stars';
 import { FaStar, FaQuoteLeft } from 'react-icons/fa';
 import { GetUserDetail } from '../../Services/operations/ProfileHanlder';
 import { useUser } from '@auth0/nextjs-auth0/client';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import './Testimonials.css'; // Ensure this CSS file exists and is correctly styled
 
-import SwiperCore, { Autoplay, Pagination, Navigation } from 'swiper';
 
-// Install Swiper modules
-SwiperCore.use([Autoplay, Pagination, Navigation]);
 
 const Testimonials = () => {
     const [RatingData, setRatingData] = useState([]);
@@ -52,26 +44,12 @@ const Testimonials = () => {
     return (
         <div className='bg-gray-200 p-10 h-[30rem]'>
            <p className="text-2xl font-bold flex justify-center items-center text-slate-700">Student&apos;s Testimonials</p>
-            <Swiper
-                spaceBetween={20}
-                slidesPerView={2}
-                loop={true}
-                autoplay={{
-                    delay: 2500,
-                    disableOnInteraction: false
-                }}
-                pagination={{
-                    clickable: true,
-                    el: '.swiper-pagination'
-                }}
-                navigation={{
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev'
-                }}
+            <div
+               
                 className='max-w-3xl mx-auto mt-9'
             >
                 {RatingData.map((data, index) => (
-                    <SwiperSlide key={index} className='swiper-slide flex flex-col gap-6 bg-white rounded-xl w-[23rem] h-[12rem] p-4'>
+                    <div key={index} className='swiper-slide flex flex-col gap-6 bg-white rounded-xl w-[23rem] h-[12rem] p-4'>
                         <div>
                             <ReactStars
                                 count={5}
@@ -98,9 +76,9 @@ const Testimonials = () => {
                                 <FaQuoteLeft />
                             </div>
                         </div>
-                    </SwiperSlide>
+                    </div>
                 ))}
-            </Swiper>
+            </div>
         </div>
     );
 };
