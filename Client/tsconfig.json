@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "target": "es5",
     "lib": [
       "dom",
       "dom.iterable",
@@ -8,22 +7,15 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
+    "strict": false,
     "noEmit": true,
-    "esModuleInterop": true,
+    "incremental": true,
     "module": "esnext",
+    "esModuleInterop": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    },
     "plugins": [
       {
         "name": "next"
@@ -32,10 +24,10 @@
   },
   "include": [
     "next-env.d.ts",
+    ".next/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ],
+    "**/*.tsx"
+, "app/components/commonPage/Button.jsx", "app/components/commonPage/Featured.jsx", "app/components/commonPage/CountrySelect.jsx", "app/components/commonPage/DashboardPage.jsx", "app/components/commonPage/FavouriteCommon.jsx", "app/components/commonPage/Footer.jsx", "app/components/commonPage/HomePageCard.jsx", "app/components/commonPage/IconBtn.jsx", "app/components/commonPage/MainCard.jsx", "app/components/commonPage/ProjectCard.jsx", "app/components/commonPage/SkillButton.jsx", "app/components/commonPage/Select.jsx", "app/components/pages/OtpPage/page.jsx", "app/components/pages/react-toastify.jsx", "middleware.js"  ],
   "exclude": [
     "node_modules"
   ]
