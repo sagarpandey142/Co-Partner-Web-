@@ -27,7 +27,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "app/components/commonPage/Button.jsx", "app/components/commonPage/Featured.jsx", "app/components/commonPage/CountrySelect.jsx", "app/components/commonPage/DashboardPage.jsx", "app/components/commonPage/FavouriteCommon.jsx", "app/components/commonPage/Footer.jsx", "app/components/commonPage/HomePageCard.jsx", "app/components/commonPage/IconBtn.jsx", "app/components/commonPage/MainCard.jsx", "app/components/commonPage/ProjectCard.jsx", "app/components/commonPage/SkillButton.jsx", "app/components/commonPage/Select.jsx", "app/components/pages/OtpPage/page.jsx", "app/components/pages/react-toastify.jsx", "middleware.js"  ],
+  ],
   "exclude": [
     "node_modules"
   ]
