@@ -1,7 +1,0 @@
-{
-    "rewrites": [
-      { "source": "/api/protected-data", "destination": "/api/protected-data" },
-      { "source": "/api/edge", "destination": "/api/edge" }
-    ]
-  }
-  
