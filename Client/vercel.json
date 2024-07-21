@@ -1,6 +1,7 @@
 {
     "rewrites": [
-      { "source": "/api/:path*", "destination": "/api/edge" }
+      { "source": "/api/protected-data", "destination": "/api/protected-data" },
+      { "source": "/api/edge", "destination": "/api/edge" }
     ]
   }
   
