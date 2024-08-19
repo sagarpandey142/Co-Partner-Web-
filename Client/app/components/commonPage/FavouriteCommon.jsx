@@ -4,7 +4,7 @@ import { CiLocationOn } from "react-icons/ci";
 import { IoIosTime } from "react-icons/io";
 import { TiTick } from "react-icons/ti";
 import { FaArrowRight } from "react-icons/fa";
-import { SiReact, SiHtml5, SiCss3, SiJavascript } from "react-icons/si"; 
+import { TbCategory } from "react-icons/tb";
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { FaBookmark } from "react-icons/fa";
@@ -16,6 +16,8 @@ import { useUser } from '@auth0/nextjs-auth0/client';
 
 
 const FavouriteCommon=({ cardData }) => {
+
+  console.log("data",cardData)
   const router = useRouter();
   const [isSaved, setIsSaved] = useState(true);
   const { user } = useUser();
@@ -65,9 +67,9 @@ const FavouriteCommon=({ cardData }) => {
     <div className='flex justify-between items-center border-b-[3px] border-slate-300 p-2 mb-5 '>
       <div>
         <div className='flex gap-3'>
-          <div>
+          {/* <div>
             {getSkillImage(cardData.Skill)}
-          </div>
+          </div> */}
           <div className='flex flex-col gap-1'>
             <div className='flex gap-3'>
               <p className='text-md text-slate-800 font-semibold'>{cardData.projectName}</p>
@@ -75,8 +77,8 @@ const FavouriteCommon=({ cardData }) => {
             </div>
             <div className='text-slate-500 text-md flex gap-3 '>
               <p className='flex gap-2 items-center text-md'>
-                <CiLocationOn />
-                {/* Define location or extract from cardData */}
+                <TbCategory />
+                {cardData?.Category}
               </p>
               <p className='flex gap-1 items-center text-md'>
                 <IoIosTime />

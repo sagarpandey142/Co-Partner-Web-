@@ -6,6 +6,7 @@ import { UpdateProfile } from '../../../../../Services/operations/ProfileHandler
 import toast from 'react-hot-toast';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
 // Dynamically import ReactQuill
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });

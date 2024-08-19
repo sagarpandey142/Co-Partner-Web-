@@ -53,9 +53,6 @@ const Page = () => {
                                                                     </div>
                                                                 
                                                                         <div>
-                                                                            Date Applied
-                                                                        </div>
-                                                                        <div>
                                                                             Saved
                                                                         </div>
                                                                         <div>

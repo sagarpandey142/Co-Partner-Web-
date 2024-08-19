@@ -8,6 +8,7 @@ import { LogoutButton } from '../logout-button';
 import { MdOutlineGeneratingTokens } from "react-icons/md";
 import { CheckUserRating } from '../../Services/operations/RatingAndReview';
 import ReviewSidebarModal from './RatingAndReview';
+import Link from 'next/link';
 
 
 const Navbar = () => {
@@ -41,7 +42,7 @@ const Navbar = () => {
          <nav className="flex justify-around items-center bg-gray-200">
         <div className=" flex justify-center items-center p-2">
           <div className="snap-center shrink-0 pe-5 sm:pe-8 sm:last:pe-0">
-            <a className="inline-flex font-semibold items-center gap-x-2 hover:text-blue-500 text-sm hover:underline text-slate-500" href="/components/pages/DashBoard/MainPage">Dashboard</a>
+            <Link className="inline-flex font-semibold items-center gap-x-2 hover:text-blue-500 text-sm hover:underline text-slate-500" href="/components/pages/DashBoard/MainPage">Dashboard</Link>
           </div>
           <div className="snap-center shrink-0 pe-5 sm:pe-8 sm:last:pe-0">
             <a className="inline-flex font-semibold items-center gap-x-2 hover:text-blue-500 text-sm hover:underline text-slate-500" href="#">Users</a>
@@ -72,7 +73,7 @@ const Navbar = () => {
       <div className="flex gap-5">
         <div className="flex justify-between items-center gap-2 ml-6">
           <SiApacheopenoffice className="text-2xl text-blue-600" />
-          <a className="text-xl font-bold" href="#" aria-label="Brand">ProjectBuddy</a>
+          <a className="text-xl font-bold" href="/" aria-label="Brand">ProjectBuddy</a>
         </div>
 
         <div className="hidden sm:flex items-center">

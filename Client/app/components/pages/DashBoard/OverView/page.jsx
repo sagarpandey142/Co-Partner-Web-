@@ -87,10 +87,9 @@ const Page = ( ) => {
         <div className="flex flex-col gap-4">
           <div className="mt-3 bg-gray-200 p-2 rounded-lg pl-2 pr-2">
             <div className="flex text-slate-800 text-md justify-between ">
-              <div>Project</div>
+              <div className='pl-8'>Project</div>
              <div className=' flex  w-[55%] justify-around'>
-              <div>Date Applied</div>
-              <div>Saved</div>
+              <div>Status</div>
               <div>Action</div>
             </div>
             </div>

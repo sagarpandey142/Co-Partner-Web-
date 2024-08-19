@@ -25,8 +25,8 @@ const Page =  (  ) => {
             <div className='flex text-slate-800 text-md justify-around'>
               <div>Project</div>
               <div className=' flex  w-[45%] justify-around'>
-              <div>Date Applied</div>
-              <div>Saved</div>
+            
+              <div>Status</div>
               <div>Action</div>
             </div>
             </div>

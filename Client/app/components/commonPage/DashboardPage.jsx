@@ -38,9 +38,7 @@ const DashboardPage = ({
           </p>
         </div>
       </div>
-      <div className='text-md text-slate-600'>
-        Feb 2 2019 19:28
-      </div>
+     
       <div className='flex gap-2 items-center text-md text-green-600 font-bold'>
         <TiTick />
         Active
@@ -57,7 +55,7 @@ const DashboardPage = ({
         </div>
         {deleteicon && setdeleteproject && (
           <div
-            className='bg-red-100 rounded-lg p-5'
+            className='bg-red-100 rounded-lg p-3'
             onClick={() => {
               setdeleteproject(cardData._id);
             }}

@@ -6,7 +6,6 @@ exports.createRating=async(req,res)=>{
     try{
           //data fetch
      const {Email,rating,review} = req.body;
-     console.log("re",req.body)
      const User_Profile=await Profile.findOne({Email});
   
 
@@ -52,7 +51,7 @@ exports.getAllRating=async(req,res)=>{
                                                     path:"User_Profile"
                                               })
                                               .exec();
-
+                                        
                                              return res.status(200).json({
                                                 success:true,
                                                 message:"All Rating Fetched SuccessFully",

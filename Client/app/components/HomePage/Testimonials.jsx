@@ -3,15 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { FetchAllRating } from '../../Services/operations/RatingAndReview';
 import ReactStars from 'react-stars';
 import { FaStar, FaQuoteLeft } from 'react-icons/fa';
-import { GetUserDetail } from '../../Services/operations/ProfileHanlder';
-import { useUser } from '@auth0/nextjs-auth0/client';
+
 
 
 
 const Testimonials = () => {
     const [RatingData, setRatingData] = useState([]);
-    const [Userdata, setUserdata] = useState('');
-    const { user } = useUser();
 
     const fetchAllUserRating = async () => {
         try {
@@ -22,24 +19,12 @@ const Testimonials = () => {
         }
     };
 
-    const findUserDetail = async () => {
-        try {
-            const response = await GetUserDetail(user.email);
-            setUserdata(response?.data?.response);
-        } catch (error) {
-            console.error("Error fetching user details:", error);
-        }
-    };
-
+   
     useEffect(() => {
         fetchAllUserRating();
     }, []);
 
-    useEffect(() => {
-        if (user?.email) {
-            findUserDetail();
-        }
-    }, [user]);
+   
 
     return (
         <div className='bg-gray-200 p-10 h-[30rem]'>
@@ -65,11 +50,11 @@ const Testimonials = () => {
                         <div className='flex justify-between items-center mt-5'>
                             <div className='flex gap-2 items-center'>
                                 <div>
-                                    <img src={Userdata?.ProfileImage} className='rounded-full h-[2rem] w-[2rem] object-cover' alt='Profile' />
+                                    <img src={data?.User_Profile?.ProfileImage} className='rounded-full h-[2rem] w-[2rem] object-cover' alt='Profile' />
                                 </div>
                                 <div className='flex flex-col gap-2'>
-                                    <div className='text-[#007AE9] text-sm'>{Userdata?.name}</div>
-                                    <div className='uppercase text-slate-400 text-sm'>{Userdata?.Professional_Role}</div>
+                                    <div className='text-[#007AE9] text-sm'>{data?.User_Profile?.name}</div>
+                                    <div className='uppercase text-slate-400 text-sm'>{data?.User_Profile?.Professional_Role}</div>
                                 </div>
                             </div>
                             <div className='text-2xl text-slate-500 font-semibold'>
