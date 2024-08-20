@@ -11,6 +11,7 @@ import ReviewSidebarModal from './RatingAndReview';
 import Link from 'next/link';
 
 
+
 const Navbar = () => {
     const { user, error, isLoading } = useUser(); 
     const [showRating,setShowRating]=useState(false);
@@ -42,8 +43,18 @@ const Navbar = () => {
          <nav className="flex justify-around items-center bg-gray-200">
         <div className=" flex justify-center items-center p-2">
           <div className="snap-center shrink-0 pe-5 sm:pe-8 sm:last:pe-0">
-            <Link className="inline-flex font-semibold items-center gap-x-2 hover:text-blue-500 text-sm hover:underline text-slate-500" href="/components/pages/DashBoard/MainPage">Dashboard</Link>
-          </div>
+          {
+            user?.email ? (
+               <div>
+                   <Link className="inline-flex font-semibold items-center gap-x-2 hover:text-blue-500 text-sm hover:underline text-slate-500" href="/components/pages/DashBoard/MainPage">Dashboard</Link>
+               </div>
+            ) : (
+               <div className="inline-flex font-semibold items-center gap-x-2 hover:text-blue-500 text-sm hover:underline text-slate-500" onClick={()=>{
+                  
+               }}>Dashboard</div>
+            )
+          }
+           </div>
           <div className="snap-center shrink-0 pe-5 sm:pe-8 sm:last:pe-0">
             <a className="inline-flex font-semibold items-center gap-x-2 hover:text-blue-500 text-sm hover:underline text-slate-500" href="#">Users</a>
           </div>
