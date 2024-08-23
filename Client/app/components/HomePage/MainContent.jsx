@@ -2,12 +2,6 @@
 import React from 'react';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { useRouter } from 'next/navigation';
-import {SignupButton} from '../signup-button'
-import { LoginButton } from '../login-button';
-import { LogoutButton } from '../logout-button';
-import { IoCallSharp } from "react-icons/io5";
-import { SiApacheopenoffice } from "react-icons/si";
-import { FaPhoneVolume } from "react-icons/fa6";
 import Image from 'next/image'
 import image1 from "../Assets/homepic1.png"
 import { CiSearch } from "react-icons/ci";
@@ -17,9 +11,7 @@ import { PiSuitcaseSimpleDuotone } from "react-icons/pi";
 import { IoPeople } from "react-icons/io5";
 import Navbar from './Navbar';
 import Link from 'next/link';
-
-
-
+import NavBottom from './NavBottom'
 
 
 const MainContent = () => {
@@ -28,7 +20,8 @@ const MainContent = () => {
   return (
     <header className="">
       <nav className="">
-      <Navbar/>
+      {!isLoading && user && <Navbar />}
+      <NavBottom/>
         <div className=' bg-gray-100'> 
         <div className="w-9/12 mx-auto flex justify-around items-center  py-20 ">
       

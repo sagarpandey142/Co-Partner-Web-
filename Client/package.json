@@ -46,7 +46,7 @@
     "sanitize-html": "^2.13.0",
     "sharp": "^0.33.4",
     "slick-carousel": "^1.8.1",
-    "swiper": "^11.1.4"
+    "swiper": "^11.1.9"
   },
   "devDependencies": {
     "@types/node": "^20",
