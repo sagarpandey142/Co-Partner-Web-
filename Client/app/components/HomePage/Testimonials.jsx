@@ -28,15 +28,16 @@ const Testimonials = () => {
     return (
         <div className='bg-gray-200 p-10 h-[30rem] relative'>
             <p className="text-2xl font-bold flex justify-center items-center text-slate-700">Student&apos;s Testimonials</p>
-            <div className='max-w-3xl mx-auto mt-9 relative'>
+            <div className=' mx-auto mt-9 relative'>
                 {/* Navigation Arrows */}
-                <div className='absolute top-1/2 transform -translate-y-1/2 left-0 text-3xl text-gray-500 cursor-pointer z-10'>
+                <div className='absolute top-1/2 transform -translate-y-1/2 left-0 text-3xl text-gray-500 cursor-pointer z-10 bg-white p-2 rounded-full'>
                     <AiOutlineArrowLeft />
                 </div>
-                <div className='absolute top-1/2 transform -translate-y-1/2 right-0 text-3xl text-gray-500 cursor-pointer z-10'>
+                <div className='absolute top-1/2 transform -translate-y-1/2 right-0 text-3xl text-gray-500 cursor-pointer z-10 bg-white p-2 rounded-full'>
                     <AiOutlineArrowRight />
                 </div>
 
+                <div className='ml-16'>
                 <Swiper
                     modules={[Navigation]}
                     navigation={{
@@ -62,7 +63,7 @@ const Testimonials = () => {
                 >
                     {RatingData.map((data, index) => (
                         <SwiperSlide key={index}>
-                            <div className='flex flex-col gap-6 bg-white rounded-xl p-4'>
+                            <div className='flex flex-col gap-6 bg-white rounded-xl p-4 max-w-76'>
                                 <div>
                                     <ReactStars
                                         count={5}
@@ -75,7 +76,7 @@ const Testimonials = () => {
                                     />
                                     <div className='text-slate-600 text-sm max-w-[90%]'>{`"${data.review}"`}</div>
                                 </div>
-                                <div className='flex justify-between items-center mt-5'>
+                                <div className='flex justify-between items-center'>
                                     <div className='flex gap-2 items-center'>
                                         <div>
                                             <img src={data?.User_Profile?.ProfileImage} className='rounded-full h-[2rem] w-[2rem] object-cover' alt='Profile' />
@@ -93,6 +94,7 @@ const Testimonials = () => {
                         </SwiperSlide>
                     ))}
                 </Swiper>
+                </div>
             </div>
         </div>
     );
