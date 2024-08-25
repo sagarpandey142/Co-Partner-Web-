@@ -30,7 +30,7 @@ const MainContent = () => {
               <p className="text-slate-400 text-md max-w-[70%]">
                 Creating a successful project involves defining clear and specific goals, developing a comprehensive plan with timelines and milestones.
               </p>
-            <Link href="components/ProjectInfo/SearchProject">
+            <Link href="components/ProjectInfo/SearchProject" prefetch={true}>
                 <div className=' flex max-w-[89%]  px-3 py-4 bg-white'>
                     <div className=' h-auto flex justify-center items-center gap-3 border-r-[3px] border-gray-200'>
                           <CiSearch className=' text-blue-700 text-2xl'/>

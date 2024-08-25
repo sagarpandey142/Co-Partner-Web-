@@ -43,17 +43,12 @@ const Navbar = () => {
          <nav className="flex justify-around items-center bg-gray-200">
         <div className=" flex justify-center items-center p-2">
           <div className="snap-center shrink-0 pe-5 sm:pe-8 sm:last:pe-0">
-          {
-            user?.email ? (
+       
                <div>
-                   <Link className="inline-flex font-semibold items-center gap-x-2 hover:text-blue-500 text-sm hover:underline text-slate-500" href="/components/pages/DashBoard/MainPage">Dashboard</Link>
+                   <Link className="inline-flex font-semibold items-center gap-x-2 hover:text-blue-500 text-sm hover:underline text-slate-500" href="/components/pages/DashBoard/MainPage" prefetch={true}>Dashboard</Link>
                </div>
-            ) : (
-               <div className="inline-flex font-semibold items-center gap-x-2 hover:text-blue-500 text-sm hover:underline text-slate-500" onClick={()=>{
-                  
-               }}>Dashboard</div>
-            )
-          }
+        
+          
            </div>
           <div className="snap-center shrink-0 pe-5 sm:pe-8 sm:last:pe-0">
             <a className="inline-flex font-semibold items-center gap-x-2 hover:text-blue-500 text-sm hover:underline text-slate-500" href="#">Users</a>
@@ -76,7 +71,7 @@ const Navbar = () => {
         </div>
         <div className='flex items-center gap-2'>
             <FaPhoneVolume className='text-md'/>
-            <a className='text-sm text-slate-500'>+111111111111</a>
+            <a className='text-sm text-slate-500'>+123 562902</a>
         </div>
       </nav>
 

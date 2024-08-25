@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { updateProjectDescriptionData } from '../../../../GlobalRedux/Features/ProjectSlice'
 import MainCard from '../../commonPage/MainCard'
 import { useUser } from "@auth0/nextjs-auth0/client";
+import NavBottom from '../../HomePage/NavBottom'
 
 
 
@@ -126,6 +127,7 @@ const Page = () => {
   return (
     <div className='w-full'>
       <Navbar />
+      <NavBottom/>
       {/*spinner*/}
       {
                 loading==true && (

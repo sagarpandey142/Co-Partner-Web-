@@ -12,6 +12,7 @@ import CreateProject from "../CreateProject/page"
 import Myproject from "../MyProject/Page"
 import { useDispatch, useSelector } from 'react-redux'
 import { updateclicktrack, updateUserDataSlice } from '../../../../../GlobalRedux/Features/Userdataslices'
+import NavBottom from '../../../HomePage/NavBottom'
 
 const Page = () => {
   const { clicktrack } = useSelector(state=>state.userDataSlice); // Define RootState inline
@@ -43,6 +44,7 @@ const Page = () => {
   return (
     <div className='overflow-hidden'>
       <NavBar />
+      <NavBottom/>
       {
         loading ? (
           <div className="fixed inset-0 flex justify-center items-center h-screen bg-gray-100 bg-opacity-90 z-50">

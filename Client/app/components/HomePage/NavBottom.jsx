@@ -42,34 +42,14 @@ const NavBottom = () => {
     <div>
 
 
-      <div className="flex gap-5 p-5 justify-around items-center">
+      <div className=" max-w-[80%] flex gap-5 p-5 justify-between  items-center mx-auto">
       <div className="flex gap-5">
         <div className="flex justify-between items-center gap-2 ml-6">
           <SiApacheopenoffice className="text-2xl text-blue-600" />
           <a className="text-xl font-bold" href="/" aria-label="Brand">ProjectBuddy</a>
         </div>
 
-        <div className="hidden sm:flex items-center">
-          <label htmlFor="country" className="sr-only">Country</label>
-          <select id="country" name="country" className="py-2 px-3 border border-slate-200 rounded-lg text-sm mr-3">
-            <option value="india" selected>India</option>
-            <option value="usa">USA</option>
-            <option value="uk">UK</option>
-            <option value="canada">Canada</option>
-            {/* Add more options as needed */}
-          </select>
-
-          <label htmlFor="icon" className="sr-only">Search</label>
-          <div className="relative">
-            <div className="absolute inset-y-0 flex items-center pointer-events-none pl-4">
-              <svg className="flex-shrink-0 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="11" cy="11" r="8" />
-                <path d="m21 21-4.3-4.3" />
-              </svg>
-            </div>
-            <input type="text" id="icon" name="icon" className="py-2 px-40 ps-10 block w-full border border-slate-200 rounded-lg text-sm" placeholder="Search Projects, Keyword" />
-          </div>
-        </div>
+        
       </div>
 
       <div className="hs-dropdown relative inline-flex" data-hs-dropdown-placement="bottom-right">
