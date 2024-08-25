@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import NavBar from '../components/HomePage/MainContent'
 import Image from "next/image"
 import MainContent from "../components/HomePage/MainContent";
+import Testimonials from "../components/HomePage/Testimonials";
 
 const Profile = async () => {
   const session = await getSession();
@@ -16,7 +17,7 @@ const Profile = async () => {
        {/* <ProfileClient /> */}
         <NavBar/>
         <MainContent/>
-        
+        <Testimonials/>
     </div>
   );
 };
