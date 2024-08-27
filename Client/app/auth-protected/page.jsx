@@ -1,11 +1,11 @@
-import { NextPage } from "next";
+
 import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
 import React from "react";
 
-const AuthProtected: NextPage = withPageAuthRequired(
+const AuthProtected = withPageAuthRequired(
   async () => {
     const session = await getSession();
-    const user: any = session?.user;
+    const user = session?.user;
     return (
       <div className="content-layout px-44">
         <img src={user.picture} alt={user.name} />
