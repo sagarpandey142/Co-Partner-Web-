@@ -22,6 +22,7 @@ import Navbar from "../../HomePage/Navbar";
 import Footer from "../../commonPage/Footer";
 import Image from "next/image";
 import not_found from "../../Assets/404.png"
+import NavBottom from "../../HomePage/NavBottom";
 
 const Page = () => {
    
@@ -151,6 +152,7 @@ function filterBasesonFilterData() {
   return (
      <div className='w-full '>
            <Navbar/>
+           <NavBottom/>
            <div className=' bg-gray-200 p-5'>
                       <div className=' flex w-8/12 mx-auto justify-between'>
                          <div className='font-bold text-sm'>Find Projects</div>
@@ -176,9 +178,9 @@ function filterBasesonFilterData() {
                 ) : (
                      <div className="  ">
                               <div className='w-8/12 mx-auto mt-7' >
-                              <div className='flex gap-3 border-[2px] border-slate-300 p-2 rounded-xl'> 
+                              <div className='flex gap-3 border-[2px] border-slate-300 p-1 rounded-xl'> 
                                     <div className=' flex items-center gap-3 text-md border-r-[3px] border-slate-300  w-[50%] '>
-                                       <CiSearch className=' text-2xl text-[#007AE9]' />
+                                       <CiSearch className=' text-xl text-[#007AE9]' />
                                        <input placeholder='Search by : job title,position,KeyWords...' value={FilterBasesOnTitle} onChange={(e)=>{
                                           setFilterBasesOnTitle(e.target.value)
                                        }
@@ -190,7 +192,7 @@ function filterBasesonFilterData() {
                                           }
                                        }}/>
                                     </div>
-                                    <div className=' flex items-center gap-3 text-md w-[40%] '>
+                                    <div className=' flex items-center gap-3 text-md w-[50%] '>
                                        <IoLocationSharp className=' text-3xl text-[#007AE9]'/>
                                     <Autosuggest
                                        suggestions={locationSuggestions}
