@@ -8,6 +8,7 @@ import Working from "./components/HomePage/Working";
 import Category from "./components/HomePage/Category";
 import FeaturedProject from "./components/HomePage/FeaturedProject";
 import Testimonials from "./components/HomePage/Testimonials";
+import "./globals.css"
 
 
 export default async function Home() {
