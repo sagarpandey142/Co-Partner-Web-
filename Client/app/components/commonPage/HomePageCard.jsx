@@ -21,7 +21,7 @@ const HomePageCard = ({ CardData = [] }) => {
 
   const handlePageNavigation = (projectid) => {
     const url = 'https://co-partner-web-zyjv.vercel.app/components/ProjectInfo/ProjectDesc' + "?" + createQueryString("projectid", projectid);
-    window.open(url, '_blank', 'noopener,noreferrer');
+    window.open(url, '_blank', 'noopener,noreferrer')
   }
   
   
