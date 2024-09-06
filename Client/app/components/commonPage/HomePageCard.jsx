@@ -20,8 +20,10 @@ const HomePageCard = ({ CardData = [] }) => {
   };
 
   const handlePageNavigation = (projectid) => {
-    router.push('components/ProjectInfo/ProjectDesc' + "?" + createQueryString("projectid", projectid))
+    const url = 'https://co-partner-web-zyjv.vercel.app/components/ProjectInfo/ProjectDesc' + "?" + createQueryString("projectid", projectid);
+    window.open(url, '_blank', 'noopener,noreferrer');
   }
+  
   
   return (
     <div className='w-11/12 mx-auto mt-9'>

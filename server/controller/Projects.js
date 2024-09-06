@@ -2,6 +2,8 @@ const Project = require("../Models/Project");
 const User = require("../Models/User");
 const Profile = require("../Models/Profile");
 const Alert = require("../Models/Alert");
+const nodemamailSender = require("../Utils/MailSender");
+const collaborationInvitationTemplate=require("../Template/collaborationInvitationTemplate")
   
 
 // Get projects based on search criteria
@@ -303,7 +305,7 @@ async function AppliedProject(req, res) {
      const ProjectInfo=await Project.findById(projectid).populate("profileId").exec();
 
       // Check if the project creator is the same as the user applying for it
-      console.log("projectid",profile,ProjectInfo)
+      
     if (ProjectInfo.profileId.equals(profile._id)) {
       return res.status(200).json({
         success: false,

@@ -36,7 +36,8 @@ const MainCard= ({ CardData = [] }) => {
   };
 
   const handlePageNavigation = (projectid) => {
-    router.push('ProjectDesc' + "?" + createQueryString("projectid", projectid))
+    const url='https://co-partner-web-zyjv.vercel.app/components/ProjectInfo/ProjectDesc' + "?" + createQueryString("projectid", projectid)
+    window.open(url, '_blank', 'noopener,noreferrer');
   }
 
   return (

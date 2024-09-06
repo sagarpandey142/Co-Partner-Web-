@@ -71,8 +71,19 @@ const Page = () => {
       const country=`${formData.city},${formData.country}`
       const response=await  addProjects(user?.email,formData.title,formData.projectDescription,formData.selectedSkills,basicdetail,formData.category,country,formData.files)
       if(response){
-         // navigate
          toast.success("Project Create SuccessFully")
+         setFormData({
+          title: '',
+          category: '',
+          country: 'India',
+          city: '',
+          fullyRemote: false,
+          selectedSkills: [],
+          projectDescription: '',
+          files: [],
+          projectLength: "",
+          LevelExperience: ""
+        });
       }
     }
 
@@ -160,7 +171,7 @@ const Page = () => {
         </div>
 
         <div className=' mt-4'>
-          <p className='text-2xl text-slate-800 font-semibold'>Project Tech Stack Required:</p>
+          <p className='text-xl text-slate-800 font-semibold'>Project Tech Stack Required:</p>
           <div className='mt-5 w-11/12 flex gap-3 flex-wrap'>
             {SkillRequired.map((data, index) => (
               <div
@@ -180,11 +191,11 @@ const Page = () => {
 
         {/* upload photos  */}
         <div className=' mt-5'>
-          <p className=' text-slate-800 text-2xl font-semibold'>Upload Photos</p>
+          <p className=' text-slate-800 text-xl font-semibold'>Upload Photos</p>
           {/* drag & drop */}
           <div className=' w-10/12 p-5 py-24 mt-5 flex flex-col gap-1 border-[3px] border-dashed border-slate-300  cursor-pointer' {...getRootProps()}>
             <input {...getInputProps()} />
-            <MdOutlineCloudUpload className='mx-auto text-5xl text-blue-700' />
+            <MdOutlineCloudUpload className='mx-auto text-3xl text-blue-700' />
             <p className='mx-auto'><span className='text-blue-700 text-md font-bold mx-auto'>Browse photo</span> or drop here</p>
             <p className='text-slate-500 mx-auto'>A photo larger than 400 pixels works best. Max photo size 5 MB</p>
             {formData.files?.name && (
@@ -199,10 +210,10 @@ const Page = () => {
         </div>
 
         <div className='mt-4 flex flex-col gap-4'>
-          <p className='text-2xl text-slate-800 font-semibold'>Project Description</p>
+          <p className='text-xl text-slate-800 font-semibold'>Project Description</p>
           <textarea
             id='projectDescription'
-            rows={12}
+            rows={10}
             placeholder='Add Your Project Description'
             value={formData.projectDescription}
             onChange={handleInputChange}
@@ -211,7 +222,7 @@ const Page = () => {
         </div>
 
         <div
-          className='mt-4 bg-blue-600 px-5 py-5 rounded-xl w-fit text-white font-semibold cursor-pointer'
+          className='mt-4 bg-blue-600 px-3 py-3 rounded-xl w-fit text-white font-semibold cursor-pointer'
           onClick={handlesavechanges} // replace this with your form submission logic
         >
           Post A Project
