@@ -13,7 +13,7 @@ const Page =  (  ) => {
   
   const {userData}= useSelector((state)=>state.userDataSlice)
   return (
-    <div className='w-[140%] p-16 border-l-[3px] border-gray-200'>
+    <div className='w-[140%] h-screen p-16 border-l-[3px] border-gray-200'>
       <p className='text-slate-800 text-xl font-semibold'>Applied Project ({userData?.AppliedProject?.length})</p>
       {userData.AppliedProject?.length === 0 ? (
         <div>

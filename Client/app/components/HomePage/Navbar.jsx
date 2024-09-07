@@ -45,7 +45,7 @@ const Navbar = () => {
           <div className="snap-center shrink-0 pe-5 sm:pe-8 sm:last:pe-0">
        
                <div>
-                   <Link className="inline-flex font-semibold items-center gap-x-2 hover:text-blue-500 text-sm hover:underline text-slate-500" href="https://co-partner-web-zyjv.vercel.app/components/pages/DashBoard/MainPage"    target="_blank" 
+                   <Link className="inline-flex font-semibold items-center gap-x-2 hover:text-blue-500 text-sm hover:underline text-slate-500" href="http://localhost:3000/components/pages/DashBoard/MainPage"    target="_blank" 
   rel="noopener noreferrer">Dashboard</Link>
                </div>
         

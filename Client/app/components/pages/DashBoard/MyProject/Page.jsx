@@ -37,7 +37,7 @@ const Page = () => {
          deleteProject();
     }
   return (
-    <div className=' w-[140%] p-16  '>
+    <div className=' w-[140%] h-screen p-16 border-l-[2px] border-gray-200 '>
          <p className=' text-slate-800 text-2xl font-semibold'>Your Project ({projectData?.length})</p>
                             {
                                      projectData == null ? (
