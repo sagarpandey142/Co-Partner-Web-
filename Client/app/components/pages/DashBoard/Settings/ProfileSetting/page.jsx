@@ -8,12 +8,17 @@ import { MdOutlineMyLocation } from "react-icons/md";
 import { MdCancel } from "react-icons/md";
 import toast from 'react-hot-toast';
 import { useSelector } from 'react-redux';
+import { useUser } from '@auth0/nextjs-auth0/client'
+import { DeleteProfile } from '../../../../../Services/operations/ProfileHandler'
+
 
 
 
 
 const Page = () => {
   const {userData}=useSelector((slice)=>slice.userDataSlice)
+  const {user}=useUser();
+  const [warning,setWarning]=useState(false);
     const[projectAlert,setProjectAlert]=useState({
         role:"",
         location:"",
@@ -23,6 +28,20 @@ const Page = () => {
          toast.success(
             'you will notify when anybody will post a project'
          )
+    }
+
+    const deleteAccount=()=>{
+       if(warning===false){
+           toast.error("Please Think Again If It's Deleted Once Can't Be Recovered");
+           return;
+       } 
+
+       // log out
+       
+       // delete account 
+       DeleteProfile(user.email);
+      
+       toast.success("Thankyou For Beaing With Us");
     }
   return (
     <div className=' mt-10'>

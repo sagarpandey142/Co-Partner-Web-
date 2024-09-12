@@ -64,7 +64,7 @@ export const UpdateResume = async (file, Email) => {
 
 export const DeleteProfile = async (data) => {
     try {
-        const response = await axios.delete(profileApiDetail.DeleteProfile, { data });
+        const response = await axios.delete(profileApiDetail.deleteProfile, { data });
         if (response) {
             return response;
         }
