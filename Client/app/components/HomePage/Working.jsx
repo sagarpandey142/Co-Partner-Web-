@@ -10,9 +10,9 @@ import { FaUserPlus } from "react-icons/fa";
 
 const Working = () => {
   return (
-    <div className='bg-gray-200 p-10 h-[32rem] flex flex-col justify-center items-center'>
+    <div className='bg-gray-200 lg:p-12 p-7 flex flex-col justify-center items-center'>
       <p className='text-2xl text-slate-700 flex justify-center font-bold'>How Project Buddy Works</p>
-      <div className='flex justify-center items-center gap-32 mt-11 '>
+      <div className='flex flex-wrap justify-center items-center lg:gap-32 gap-16 mt-11 '>
         <div id="element1" className='flex flex-col gap-3 items-center justify-center'>
           <div className='bg-white w-fit p-3 mx-auto rounded-full'>
             <FaUserPlus className='text-blue-600 text-3xl mx-auto' />

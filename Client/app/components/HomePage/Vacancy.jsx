@@ -19,7 +19,7 @@ const Vacancy = () => {
 
   return (
     <div className=" px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto mb-14">
-      <h1 className="text-3xl font-bold mb-10 pl-28">Most Popular Tech Stack</h1>
+      <h1 className="lg:text-3xl text-2xl font-bold mb-10 pl-28">Most Popular Tech Stack</h1>
       <div className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-1 sm:gap-6">
         {techStack.map((tech, index) => (
           <a key={index} className="group flex flex-col bg-white rounded-xl " href="#">

@@ -13,6 +13,9 @@ import Myproject from "../MyProject/Page"
 import { useDispatch, useSelector } from 'react-redux'
 import { updateclicktrack, updateUserDataSlice } from '../../../../../GlobalRedux/Features/Userdataslices'
 import NavBottom from '../../../HomePage/NavBottom'
+import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
+
 
 const Page = () => {
   const { clicktrack } = useSelector(state=>state.userDataSlice); // Define RootState inline
@@ -20,6 +23,7 @@ const Page = () => {
   const [loading, setloading] = useState(false);
   const { user, error, isLoading } = useUser();
   const dispatch=useDispatch();
+  const router=useRouter();
   const getUserDetails = async () => {
     try {
       setloading(true);
@@ -35,7 +39,12 @@ const Page = () => {
   };
 
   useEffect(() => {
-    if (user && userData === null) {
+    if (user?.email==null) {
+       toast.error("Please Sign In First")
+       router.push("/")
+       return;
+    }
+   else if (user && userData === null) {
       getUserDetails();
     }
   }, [user, userData]);

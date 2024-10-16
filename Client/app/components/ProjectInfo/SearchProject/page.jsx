@@ -179,7 +179,7 @@ function filterBasesonFilterData() {
                      <div className="  ">
                               <div className='w-8/12 mx-auto mt-7' >
                               <div className='flex gap-3 border-[2px] border-slate-300 p-1 rounded-xl'> 
-                                    <div className=' flex items-center gap-3 text-md border-r-[3px] border-slate-300  w-[50%] '>
+                                    <div className=' flex items-center gap-3 text-md border-r-[3px] border-slate-300 w-[50%] '>
                                        <CiSearch className=' text-xl text-[#007AE9]' />
                                        <input placeholder='Search by : job title,position,KeyWords...' value={FilterBasesOnTitle} onChange={(e)=>{
                                           setFilterBasesOnTitle(e.target.value)
@@ -219,17 +219,19 @@ function filterBasesonFilterData() {
                                     </button>
                               </div>
 
-                              <div className=' mt-4 flex gap-3'>
+                              <div className=' mt-4 flex flex-col lg:flex-row gap-3 '>
                                  <div className='text-slate-400 text-md'>Popular Searches:</div>
-                                 {
-                                       PopularSearches.slice(0,9).map((data,index)=>(
-                                             <div key={index} className='font-semibold cursor-pointer' onClick={()=>{
-                                                setFilterBasesOnTitle(data);
-                                             }}>
-                                                <div  className=' text-md text-slate-500'>{data}</div>
-                                             </div>
-                                       ))
-                                 }
+                              <div className="flex flex-wrap gap-2">
+                                       {
+                                             PopularSearches.slice(0,9).map((data,index)=>(
+                                                   <div key={index} className='font-semibold cursor-pointer' onClick={()=>{
+                                                      setFilterBasesOnTitle(data);
+                                                   }}>
+                                                      <div  className=' text-md text-slate-500'>{data}</div>
+                                                   </div>
+                                             ))
+                                       }
+                                 </div>
                               </div>
                  
                   

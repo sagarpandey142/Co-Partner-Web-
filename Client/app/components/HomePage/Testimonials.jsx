@@ -27,7 +27,7 @@ const Testimonials = () => {
 
     return (
         <div className='bg-gray-200 p-10 h-[30rem] relative'>
-            <p className="text-2xl font-bold flex justify-center items-center text-slate-700">Student&apos;s Testimonials</p>
+            <p className="lg:text-2xl text-xl font-bold flex justify-center items-center text-slate-700">Student&apos;s Testimonials</p>
             <div className=' mx-auto mt-9 relative'>
                 {/* Navigation Arrows */}
                 <div className='absolute top-1/2 transform -translate-y-1/2 left-0 text-3xl text-gray-500 cursor-pointer z-10 bg-white p-2 rounded-full'>
@@ -74,19 +74,35 @@ const Testimonials = () => {
                                         emptyIcon={<FaStar />}
                                         fullIcon={<FaStar />}
                                     />
-                                    <div className='text-slate-600 text-sm max-w-[90%]'>{`"${data.review}"`}</div>
+                                    <div className='text-slate-600 text-sm max-w-[90%]'><div className='text-slate-600 text-sm max-w-[90%]'>
+                                        {window.innerWidth >= 1024 // Check if the screen size is large (`lg`) or greater
+                                            ? data.review.length > 60 
+                                            ? `"${data.review.substring(0, 60)}..."` 
+                                            : `"${data.review}"`
+                                            : data.review.length > 10 // For smaller screens
+                                            ? `"${data.review.substring(0, 10)}..."` 
+                                            : `"${data.review}"`}
+                                        </div>
+                                        </div>
                                 </div>
                                 <div className='flex justify-between items-center'>
-                                    <div className='flex gap-2 items-center'>
+                                    <div className='flex lg:flex-row flex-col gap-2 items-center'>
                                         <div>
-                                            <img src={data?.User_Profile?.ProfileImage} className='rounded-full h-[2rem] w-[2rem] object-cover' alt='Profile' />
+                                            <img src={data?.User_Profile?.ProfileImage} className='rounded-full h-[2rem] w-[2rem]  object-cover' alt='Profile' />
                                         </div>
                                         <div className='flex flex-col gap-2'>
                                             <div className='text-[#007AE9] text-sm'>{data?.User_Profile?.name}</div>
-                                            <div className='uppercase text-slate-400 text-sm'>{data?.User_Profile?.Professional_Role}</div>
+                                            <div className='uppercase text-slate-400 text-xs'>
+                                            {window.innerWidth >= 1024 // Check if the screen size is large (`lg`) or greater
+                                            ? data?.User_Profile?.Professional_Role.length > 60 
+                                            ? `"${data?.User_Profile?.Professional_Role.substring(0, 60)}..."` 
+                                            : `"${data?.User_Profile?.Professional_Role}"`
+                                            : data?.User_Profile?.Professional_Role.length > 10 // For smaller screens
+                                            ? `"${data?.User_Profile?.Professional_Role.substring(0, 10)}..."` 
+                                            : `"${data?.User_Profile?.Professional_Role}"`}</div>
                                         </div>
                                     </div>
-                                    <div className='text-2xl text-slate-500 font-semibold'>
+                                    <div className='lg:text-2xl text-lg text-slate-500 font-semibold'>
                                         <FaQuoteLeft />
                                     </div>
                                 </div>

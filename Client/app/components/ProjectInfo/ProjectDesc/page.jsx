@@ -146,7 +146,7 @@ const Page = () => {
       </div>
       <div className='mt-20 w-8/12 mx-auto'>
         {/* Top section */}
-        <div className='flex justify-between'>
+        <div className='flex justify-between flex-wrap gap-2'>
           <div>
             {/* Image placeholder */}
             <div></div>
@@ -169,7 +169,7 @@ const Page = () => {
             </button>
           </div>
         </div>
-        <div className='mt-10 flex gap-2'>
+        <div className='mt-10 flex gap-2   flex-col-reverse md:flex-row'>
           {/* Project description */}
           <div className='w-[60%] flex flex-col gap-3'>
             <p className='text-md text-slate-900 font-bold'>Project Description</p>
@@ -193,14 +193,14 @@ const Page = () => {
               </div>
             </div>
           </div>
-          <div className='flex flex-col gap-3 w-[35%]'>
-            <div className='border-[3px] border-slate-300 flex h-[10rem] p-2 rounded-lg'>
+          <div className='flex flex-col lg:gap-3 gap-10 md:w-[35%] w-[50%]'>
+            <div className='border-[3px] border-slate-300 flex flex-col md:flex-row  p-2 rounded-lg'>
               <div className='flex flex-col justify-center items-center mx-auto p-3 w-[50%]'>
                 <AiFillExperiment className='text-3xl text-[#007AE9]' />
                 <p className='mx-auto text-sm text-slate-900 font-bold'>Level of Experience</p>
                 <p className='text-sm text-green-700 font-semibold uppercase'>{projectData?.BasicDetail?.LevelExperience}</p>
               </div>
-              <div className='flex flex-col justify-center items-center mx-auto p-3 w-[50%] border-l-[2px] border-slate-300'>
+              <div className='flex flex-col justify-center items-center mx-auto p-3 w-[50%] md:border-l-[2px]   border-t-[2px] border-slate-300'>
                 <IoMapSharp className='text-3xl text-[#007AE9]' />
                 <p className='mx-auto text-md text-slate-900 font-bold'>Job Location</p>
                 <p className='text-md text-slate-500 uppercase'>{projectData?.profileId?.Location ? projectData?.profileId?.Location : "India"}</p>
