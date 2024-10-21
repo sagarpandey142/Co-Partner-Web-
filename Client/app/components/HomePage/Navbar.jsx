@@ -9,6 +9,8 @@ import { MdOutlineGeneratingTokens } from "react-icons/md";
 import { CheckUserRating } from '../../Services/operations/RatingAndReview';
 import ReviewSidebarModal from './RatingAndReview';
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
+import { updateclicktrack } from '../../../GlobalRedux/Features/Userdataslices';
 
 
 
@@ -16,6 +18,7 @@ const Navbar = () => {
     const { user, error, isLoading } = useUser(); 
     const [showRating,setShowRating]=useState(false);
     const[reviewModal,setreviewModal]=useState(false);
+    const dispatch=useDispatch();
 
     async function CheckUserRatingAndReview() {
       if (user?.email) {
@@ -24,8 +27,18 @@ const Navbar = () => {
             setShowRating(true)
         }
       } else {
-        console.log("Usome error occured ");
+        console.log("some error occured ");
       }
+    }
+
+     function HandleAccountClick() {
+       dispatch(updateclicktrack(5));
+       window.open('https://co-partner-web-zyjv.vercel.app/components/pages/DashBoard/MainPage');
+    }
+
+    function HandleProjectClick(){
+      dispatch(updateclicktrack(2));
+      window.open('https://co-partner-web-zyjv.vercel.app/components/pages/DashBoard/MainPage');
     }
   
     useEffect(() => {
@@ -55,18 +68,15 @@ const Navbar = () => {
             <a className="inline-flex font-semibold items-center gap-x-2 hover:text-blue-500 text-sm hover:underline text-slate-500" href="#">Users</a>
           </div>
           <div className="snap-center shrink-0 pe-5 sm:pe-8 sm:last:pe-0">
-            <a className="inline-flex font-semibold items-center gap-x-2 hover:text-blue-500 text-sm hover:underline text-slate-500" href="#">Account</a>
+            <a className="inline-flex font-semibold items-center gap-x-2 hover:text-blue-500 text-sm hover:underline text-slate-500 cursor-pointer"  onClick={HandleAccountClick}>Account</a>
           </div>
           <div className="snap-center shrink-0 pe-5 sm:pe-8 sm:last:pe-0">
-            <a className="inline-flex font-semibold items-center gap-x-2 hover:text-blue-500 text-sm hover:underline text-slate-500" href="#">Projects</a>
+            <a className="inline-flex font-semibold items-center gap-x-2 hover:text-blue-500 text-sm hover:underline text-slate-500" onClick={HandleProjectClick}>Projects</a>
           </div>
-          <div className="snap-center shrink-0 pe-5 sm:pe-8 sm:last:pe-0">
-            <a className="inline-flex font-semibold items-center gap-x-2 hover:text-blue-500 text-sm hover:underline text-slate-500" href="#">Calendar</a>
-          </div>
+          
           <div className="snap-center shrink-0 pe-5 sm:pe-8 sm:last:pe-0">
             <a className="inline-flex font-semibold items-center gap-x-2 hover:text-blue-500 text-sm hover:underline text-slate-500" href="#">
               Documentation
-              
             </a>
           </div>
         </div>

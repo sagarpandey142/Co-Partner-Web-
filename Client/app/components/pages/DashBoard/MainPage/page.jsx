@@ -18,7 +18,8 @@ import toast from 'react-hot-toast'
 
 
 const Page = () => {
-  const { clicktrack } = useSelector(state=>state.userDataSlice); // Define RootState inline
+  const { clicktrack } = useSelector(state=>state.userDataSlice); 
+  console.log("click",clicktrack)
   const [userData, setUserData] = useState(null);
   const [loading, setloading] = useState(false);
   const { user, error, isLoading } = useUser();
@@ -29,7 +30,6 @@ const Page = () => {
       setloading(true);
         const userDetailResponse = await GetUserDetail(user?.email);
         dispatch(updateUserDataSlice(userDetailResponse.data.response));
-        dispatch(updateclicktrack(0));
         setUserData(userDetailResponse.data.response);
         setloading(false);
     } catch (error) {
@@ -39,16 +39,19 @@ const Page = () => {
   };
 
   useEffect(() => {
-    if (user?.email==null) {
-       toast.error("Please Sign In First")
-       router.push("/")
-       return;
-    }
-   else if (user && userData === null) {
-      getUserDetails();
-    }
-  }, [user, userData]);
+    const timer = setTimeout(() => {
+      if (user?.email == null) {
+        toast.error("Please Sign In First");
+        router.push("/");
+        return;
+      } else if (user && userData === null) {
+        getUserDetails();
+      }
+    }, 6000);
 
+    // Clean up the timer if the component is unmounted or user/userData changes
+    return () => clearTimeout(timer);
+  }, [user, userData]);
 
   return (
     <div className='overflow-hidden'>
@@ -61,7 +64,7 @@ const Page = () => {
           </div>
         ) : (
           <div className='mt-2 border-t-[2px] border-slate-300 overflow-hidden '>
-            <div className='w-8/12 mx-auto flex gap-2'>
+            <div className='w-8/12 mx-auto flex  gap-2'>
             <div className=''>
               <Sidebar />
             </div>

@@ -46,7 +46,7 @@ import Userdataslices from "./Features/Userdataslices";
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['token', 'data', 'skill', 'desc'], // List of state keys to persist
+  whitelist: ['token', 'data', 'skill', 'desc','clicktrack'], // List of state keys to persist
 };
 
 // Create a persisted reducer
