@@ -82,7 +82,7 @@ const Navbar = () => {
         </div>
         <div className='flex items-center gap-2'>
             <FaPhoneVolume className='text-md'/>
-            <a className='text-sm text-slate-500'>+123 562902</a>
+            <a className='text-sm text-slate-500'>+123 562902 222</a>
         </div>
       </nav>
 
