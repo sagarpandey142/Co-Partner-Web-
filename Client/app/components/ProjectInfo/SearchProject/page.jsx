@@ -23,6 +23,8 @@ import Footer from "../../commonPage/Footer";
 import Image from "next/image";
 import not_found from "../../Assets/404.png"
 import NavBottom from "../../HomePage/NavBottom";
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 const Page = () => {
    
@@ -178,22 +180,23 @@ function filterBasesonFilterData() {
                 ) : (
                      <div className="  ">
                               <div className='w-8/12 mx-auto mt-7' >
-                              <div className='flex gap-3 border-[2px] border-slate-300 p-1 rounded-xl'> 
-                                    <div className=' flex items-center gap-3 text-md border-r-[3px] border-slate-300 w-[50%] '>
-                                       <CiSearch className=' text-xl text-[#007AE9]' />
-                                       <input placeholder='Search by : job title,position,KeyWords...' value={FilterBasesOnTitle} onChange={(e)=>{
-                                          setFilterBasesOnTitle(e.target.value)
+                              {/* <div className='w-full flex flex-col md:flex-row gap-3 border-[2px] border-slate-300 p-1 rounded-xl'>
+                                 <div className='flex items-center gap-3 text-sm border-r-[3px] border-slate-300 w-full md:w-[130%]'>
+                                    <CiSearch className='text-xl text-[#007AE9]' />
+                                    <input
+                                       placeholder='Search by : job title,position,KeyWords...'
+                                       value={FilterBasesOnTitle}
+                                       onChange={(e) => setFilterBasesOnTitle(e.target.value)}
+                                       className='outline-none text-slate-800 text-xl w-full'
+                                       onKeyDown={(e) => {
+                                       if (e.key === 'Enter') {
+                                          setProjectPublishedBasedOnFilter();
                                        }
-                                       
-                                       }  className='outline-none text-slate-800 text-xl'
-                                       onKeyDown={(e)=>{
-                                          if(e.key=='Enter'){
-                                             setProjectPublishedBasedOnFilter();
-                                          }
-                                       }}/>
-                                    </div>
-                                    <div className=' flex items-center gap-3 text-md w-[50%] '>
-                                       <IoLocationSharp className=' text-3xl text-[#007AE9]'/>
+                                       }}
+                                    />
+                                 </div>
+                                 <div className='flex items-center gap-3 text-md w-full md:w-[90%]'>
+                                    <IoLocationSharp className='text-3xl text-[#007AE9]' />
                                     <Autosuggest
                                        suggestions={locationSuggestions}
                                        onSuggestionsFetchRequested={onSuggestionsFetchRequested}
@@ -201,23 +204,50 @@ function filterBasesonFilterData() {
                                        getSuggestionValue={(suggestion) => suggestion}
                                        renderSuggestion={renderSuggestion}
                                        inputProps={{
-                                          placeholder: 'City, state or zip code',
-                                          value: FilterBasesOnLocation,
-                                          onChange: onLocationChange,
-                                          className: 'outline-none w-full'
+                                       placeholder: 'City, state or zip code',
+                                       value: FilterBasesOnLocation,
+                                       onChange: onLocationChange,
+                                       className: 'outline-none w-full'
                                        }}
                                     />
-                                       <MdMyLocation className=' text-3xl text-[#007AE9] ml-28' />
-                                    </div>
+                                    <MdMyLocation className='text-3xl text-[#007AE9] ml-auto md:ml-28' />
+                                 </div>
                                  
-                                    <button onClick={() => setFilterOpen(!filterOpen)} className=' border-[3px] border-slate-300 p-3 px-5 py-2 rounded-xl bg-gray-300 font-bold flex gap-2 items-center '>
-                                       <LuFilter/>
+                                 <div className='flex gap-3 justify-between md:justify-start w-full'>
+                                    <button
+                                       onClick={() => setFilterOpen(!filterOpen)}
+                                       className='border-[3px] border-slate-300 p-3 px-5 py-2 rounded-xl bg-gray-300 font-bold flex gap-2 items-center w-full md:w-auto'>
+                                       <LuFilter />
                                        <div>Filters</div>
                                     </button>
-                                    <button className=' border-2 p-3 px-10 py-3 rounded-xl bg-[#007AE9] text-white font-bold ' onClick={setProjectPublishedBasedOnFilter}>
-                                       Search 
+                                    <button
+                                       className='border-2 p-3 px-10 py-3 rounded-xl bg-[#007AE9] text-white font-bold w-full md:w-auto'
+                                       onClick={setProjectPublishedBasedOnFilter}>
+                                       Search
                                     </button>
-                              </div>
+                                 </div>
+                                 </div> */}
+
+                                 <Box sx={{display:'flex', gap:3, maxWidth: '80%' }}>
+                                    <TextField
+                                       fullWidth
+                                       label="Search by: job title, position, Keywords..."
+                                       id="fullWidth"
+                                       value={FilterBasesOnTitle}
+                                       onChange={(e) => setFilterBasesOnTitle(e.target.value)}
+                                       onKeyDown={(e) => {
+                                          if (e.key === 'Enter') {
+                                             setProjectPublishedBasedOnFilter();
+                                          }
+                                       }}
+                                    />
+                                     <button
+                                       onClick={() => setFilterOpen(!filterOpen)}
+                                       className='border-[3px] border-slate-300 p-3 px-4 py-2 rounded-xl bg-gray-300 font-bold flex gap-2 items-center w-full md:w-auto'>
+                                       <LuFilter />
+                                       <div>Filters</div>
+                                    </button>
+                                    </Box>
 
                               <div className=' mt-4 flex flex-col lg:flex-row gap-3 '>
                                  <div className='text-slate-400 text-md'>Popular Searches:</div>
@@ -227,7 +257,7 @@ function filterBasesonFilterData() {
                                                    <div key={index} className='font-semibold cursor-pointer' onClick={()=>{
                                                       setFilterBasesOnTitle(data);
                                                    }}>
-                                                      <div  className=' text-md text-slate-500'>{data}</div>
+                                                      <div  className=' text-sm sm:text-md text-slate-500'>{data}</div>
                                                    </div>
                                              ))
                                        }

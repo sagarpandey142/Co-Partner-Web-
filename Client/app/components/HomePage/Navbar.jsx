@@ -32,12 +32,10 @@ const Navbar = () => {
     }
 
      function HandleAccountClick() {
-       dispatch(updateclicktrack(5));
        window.open('https://co-partner-web-zyjv.vercel.app/components/pages/DashBoard/MainPage');
     }
 
     function HandleProjectClick(){
-      dispatch(updateclicktrack(2));
       window.open('https://co-partner-web-zyjv.vercel.app/components/pages/DashBoard/MainPage');
     }
   
@@ -53,8 +51,8 @@ const Navbar = () => {
 
   return (
     <div>
-         <nav className="flex justify-around items-center bg-gray-200">
-        <div className=" flex justify-center items-center p-2">
+         <nav className="sm:flex hidden justify-around items-center bg-gray-200">
+        <div className=" flex flex-wrap justify-center items-center p-2">
           <div className="snap-center shrink-0 pe-5 sm:pe-8 sm:last:pe-0">
        
                <div>

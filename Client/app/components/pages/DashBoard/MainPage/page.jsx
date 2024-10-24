@@ -29,6 +29,7 @@ const Page = () => {
     try {
       setloading(true);
         const userDetailResponse = await GetUserDetail(user?.email);
+        dispatch(updateclicktrack(0));
         dispatch(updateUserDataSlice(userDetailResponse.data.response));
         setUserData(userDetailResponse.data.response);
         setloading(false);
@@ -63,7 +64,7 @@ const Page = () => {
             <iframe src="https://lottie.host/embed/3854ae56-d940-4e39-b00a-90c6d18a90f2/j4pg2cwMEq.json" style={{ width: '300px', height: '300px' }}></iframe>
           </div>
         ) : (
-          <div className='mt-2 border-t-[2px] border-slate-300 overflow-hidden '>
+          <div className='w-screen mt-2 border-t-[2px] border-slate-300 overflow-hidden '>
             <div className='w-8/12 mx-auto flex  gap-2'>
             <div className=''>
               <Sidebar />

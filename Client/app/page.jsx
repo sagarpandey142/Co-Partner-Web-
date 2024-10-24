@@ -9,6 +9,8 @@ import Category from "./components/HomePage/Category";
 import FeaturedProject from "./components/HomePage/FeaturedProject";
 import Testimonials from "./components/HomePage/Testimonials";
 import "./globals.css"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default async function Home() {
@@ -21,7 +23,6 @@ export default async function Home() {
     
     <div className=''>
       {/* <ProfileClient/> */}
-
       <MainContent/>
       <Vacancy/>
       <Working/>
@@ -29,6 +30,7 @@ export default async function Home() {
       <FeaturedProject/>
       <Testimonials/>
       <Footer/>
+      <ToastContainer/>
     </div>
   );
 }

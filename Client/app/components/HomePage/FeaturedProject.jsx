@@ -20,11 +20,11 @@ const FeaturedProject = () => {
    },[])
    console.log("project",ProjectPublished?.length)
   return (
-    <div className=' '>
+    <div className=' w-screen'>
        {
            ProjectPublished?.length>0 ? (
                 <div className='p-20'>
-                <div className='flex  justify-between items-center'>
+                <div className='flex flex-wrap  justify-between items-center'>
                     <p className=' text-2xl text-slate-800 font-bold'>Featured Projects</p>
                         <div className=' flex gap-2  items-center text-blue-600 cursor-pointer' onClick={()=>{
                             router.push("/components/ProjectInfo/SearchProject")

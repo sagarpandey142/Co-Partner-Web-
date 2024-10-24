@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image'
@@ -12,13 +12,36 @@ import { IoPeople } from "react-icons/io5";
 import Navbar from './Navbar';
 import Link from 'next/link';
 import NavBottom from './NavBottom'
+import { useToast,toast } from 'react-toastify';
 
 
 const MainContent = () => {
   const { user, error, isLoading } = useUser(); 
   const router = useRouter();
+ 
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {  // Tailwind's sm breakpoint is 640px
+        toast.warn("You are viewing this site from mobile. In the absence of a dedicated mobile design, the website is free of cost, so we can show you only limited access.");
+      }
+    };
+
+    // Call on component mount
+    handleResize(); 
+
+    // Add resize event listener
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup event listener on unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+
   return (
-    <header className="">
+    <header className={``}>
       <nav className="">
       {!isLoading && user && <Navbar />}
       <NavBottom/>
@@ -32,7 +55,7 @@ const MainContent = () => {
               </p>
             <Link href="https://co-partner-web-zyjv.vercel.app/components/ProjectInfo/SearchProject" target="_blank" 
   rel="noopener noreferrer" >
-                <div className=' flex lg:max-w-[89%] md:max-w-[90%]  lg:px-2 lg:py-2 md:px-1 md:py-2 bg-white rounded-xl'>
+                <div className=' hidden sm:flex lg:max-w-[89%] md:max-w-[90%]   lg:px-2 lg:py-2 md:px-1 md:py-2 bg-white rounded-xl'>
                     <div className=' h-auto flex justify-center items-center gap-3 border-r-[3px] border-gray-200'>
                           <CiSearch className=' text-blue-700 lg:text-2xl md:text-md'/>
                           <p className=' text-slate-500 mr-3 text-sm lg:text-lg lg:whitespace-nowrap'>Project Title, Keyword...</p>
@@ -47,7 +70,7 @@ const MainContent = () => {
                     </div>
                 </div>
               </Link>
-              <p className='flex lg:flex-row flex-col md:max-w-[60%]  text-sm'><div className=' text-slate-400'>Suggestion :</div> <span>Designer , Programming , Digital Marketing , Video , Animation </span></p>
+              <p className='flex flex-wrap  border text-sm'><div className=' text-slate-400'>Suggestion : </div> <span>Designer , Programming , Digital Marketing , Video , Animation </span></p>
               <div className=' mt-3 flex gap-5'>
                 <div className=" bg-white flex lg:flex-row flex-col items-center lg:p-3 p-2 gap-5 rounded-xl lg:px-5 px-4 ">
                   <div className="bg-white p-3 rounded-lg">

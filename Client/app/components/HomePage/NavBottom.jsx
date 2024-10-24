@@ -42,11 +42,11 @@ const NavBottom = () => {
     <div>
 
 
-      <div className=" max-w-[80%] flex gap-5 p-5 justify-between  items-center mx-auto">
+      <div className=" max-w-[80%] flex flex-wrap gap-5 p-5 justify-between  items-center mx-auto">
       <div className="flex gap-5">
         <div className="flex justify-between items-center gap-2 ml-6">
           <SiApacheopenoffice className="text-2xl text-blue-600" />
-          <a className="text-xl font-bold" href="/" aria-label="Brand">ProjectBuddy</a>
+          <a className="md:text-xl text-lg font-bold" href="/" aria-label="Brand">ProjectBuddy</a>
         </div>
 
         
@@ -54,7 +54,7 @@ const NavBottom = () => {
 
       <div className="hs-dropdown relative inline-flex" data-hs-dropdown-placement="bottom-right">
         <div className="flex flex-row gap-3 items-center">
-          <div className="flex gap-4 justify-evenly">
+          <div className="flex flex-col md:flex-row gap-4 justify-evenly">
             {!user && !isLoading && (
               <>
                 <SignupButton />

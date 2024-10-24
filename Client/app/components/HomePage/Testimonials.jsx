@@ -47,6 +47,10 @@ const Testimonials = () => {
                     spaceBetween={20} // Adjust the space between slides
                     slidesPerView={3} // Show 3 slides at a time
                     breakpoints={{
+                        100:{
+                            slidesPerView: 1,
+                            spaceBetween: 10,
+                        },
                         640: {
                             slidesPerView: 1,
                             spaceBetween: 10,

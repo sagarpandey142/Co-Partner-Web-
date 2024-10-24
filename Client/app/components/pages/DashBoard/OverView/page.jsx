@@ -22,7 +22,7 @@ const Page = ( ) => {
     <div className="p-16 lg:w-[130%] md:w-[70%] sm:w-[40%] h-[100%] border-l-[2px] border-gray-200">
       <p className="text-slate-800 text-2xl font-semibold">Welcome, {userData?.name} 🎉</p>
       <p className="mt-2 text-slate-600 text-md">Here is your daily activities and project alerts</p>
-      <div className="lg:w-12/12 md:7/12 sm:5/12 mt-8 gap-3 flex  flex-wrap">
+      <div className=" mt-8 gap-3 flex ">
         {/* Applied project */}
         <div className="bg-orange-200 flex justify-between items-center p-2 gap-5 rounded-xl px-3">
           <div className="flex flex-col p-3">
